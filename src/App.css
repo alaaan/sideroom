@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  --yellow: #E2E1B9;
+  --green: #5A7D7C;
+  --mont-font: 'Montserrat', sans-serif;
+  --alt-font: 'Righteous', cursive;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+
+  font-family: var(--mont-font);
+  color: var(--yellow);
+}
+
+.section-wrapper {
+  width: 100%;
+  height: 100%;
+  /* position: relative; */
+}
+
+.loading-section {
+  height: 100vh;
+  background: #302B27;
+  /* position: absolute; */
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-section {
+  padding-left: 1rem;
+}
+
+.loading-section h1 {
+  font-family: var(--mont-font);
+}
+
+.phone {
+  color: white;
+  width: 150px;
+}
+
+.loading-text {
+  opacity: 0;
+  color: white;
+}
+
+.section-1 {
+  height: 100vh;
+  width: 100%;
+  background: var(--green);
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  /* grid-template-columns: 2fr 1fr; */
+  /* z-index: -1; */
+}
+
+.section-2 {
+  display: grid;
+  grid-template-rows: auto 200px;
+  padding: 20px;
+  padding-bottom: 40px;
+  justify-content: center;
+
+}
+
+.host-grid {
+  display: grid;
+  margin-left: 20px;
+  margin-right: 20px;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+}
+
+.host-card {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  height: 200px;
+  border-width: .1px;
+  /* border-color: rgba(112, 112, 112, .25); */
+  border-color: rgba(226, 225, 185, .1);
+  border-style: solid;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.host-card-img {
+  max-width: 200px;
+  max-height: 200px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.host-card-info {
+  height: 200px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+}
+
+#host-name {
+  font-size: 1.5rem;
+}
+
+#host-price {
+  align-self: end;
+  position: absolute;
+  bottom: 10px;
+  right: -50px;
+  color: var(--yellow);
+}
+
+.section-3 {
+  display: grid;
+  grid-template-rows: auto 300px;
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.living-room {
+  /* position: absolute;
+  bottom: 0;
+  right: 0; */
+  grid-row: 3;
+  grid-column: 3;
+  justify-self: end;
+}
+
+.section-2 {
+  height: 100vh;
+  background: black;
+}
+
+.section-3 {
+  height: 100vh;
+  background: var(--green);
+}
