@@ -1,14 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
   --yellow: #E2E1B9;
   --green: #5A7D7C;
   --mont-font: 'Montserrat', sans-serif;
   --alt-font: 'Righteous', cursive;
+  --new-font: 'Barlow', sans-serif;
+  --raleway: 'Raleway', sans-serif;
+
+}
+
+#root {
+  background-color: black;
+}
+
+.root-router {
+  background-color: black;
+}
+
+.root-container {
+  display: grid;
+  grid-template-rows: 10vh 90vh;
 }
 
 html,
@@ -34,7 +51,7 @@ h2,
 h3,
 h4 {
 
-  font-family: var(--mont-font);
+  font-family: var(--new-font);
   color: var(--yellow);
 }
 
@@ -59,6 +76,11 @@ h4 {
   padding-left: 1rem;
 }
 
+.header-logo {
+  position: fixed;
+  top: 0;
+}
+
 .loading-section h1 {
   font-family: var(--mont-font);
 }
@@ -74,12 +96,9 @@ h4 {
 }
 
 .section-1 {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   background: var(--green);
-  position: absolute;
-  top: 0;
-  opacity: 0;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   /* grid-template-columns: 2fr 1fr; */
@@ -88,10 +107,12 @@ h4 {
 
 .section-2 {
   display: grid;
-  grid-template-rows: auto 200px;
+  grid-template-rows: 200px auto;
   padding: 20px;
   padding-bottom: 40px;
   justify-content: center;
+  height: 60vh;
+  background: black;
 
 }
 
@@ -99,9 +120,12 @@ h4 {
   display: grid;
   margin-left: 20px;
   margin-right: 20px;
-  grid-template-rows: repeat(4, 1fr);
+  height: 30vh;
+  grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
+  row-gap: 20px;
+  align-self: center;
 }
 
 .host-card {
@@ -111,7 +135,7 @@ h4 {
   height: 200px;
   border-width: .1px;
   /* border-color: rgba(112, 112, 112, .25); */
-  border-color: rgba(226, 225, 185, .1);
+  border-color: rgba(226, 225, 185, .2);
   border-style: solid;
   border-radius: 20px;
   overflow: hidden;
@@ -126,7 +150,9 @@ h4 {
 
 .host-card-info {
   height: 200px;
-  padding-left: 20px;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -135,15 +161,99 @@ h4 {
 }
 
 #host-name {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 #host-price {
   align-self: end;
   position: absolute;
   bottom: 10px;
-  right: -50px;
-  color: var(--yellow);
+  right: 0;
+  color: white;
+}
+
+.host-detail-page {
+  height: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.host-detail-card {
+  display: grid;
+  grid-template-rows: 100px 75px 1fr;
+  justify-content: space-between;
+  width: 60vw;
+  align-items: start;
+  justify-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-color: rgba(226, 225, 185, .5);
+  border-style: solid;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+}
+
+
+.host-detail-card [data-isCheckout="true"] {
+  align-items: start;
+  grid-template-rows: 50px 1fr 5fr;
+}
+
+.host-detail-card img {
+  width: 250px;
+  border-radius: 125px;
+}
+
+.host-detail-card img[data-isCheckout="true"] {
+  justify-self: start;
+}
+
+.host-header-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.host-header-layout[data-isCheckout="true"] {
+  flex-direction: row;
+  align-items: center;
+  grid-row: 1;
+}
+
+.host-detail-card p {
+  font-family: var(--new-font);
+  font-size: 20px;
+  color: white;
+}
+
+.host-detail-card a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.checkout-button {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  background-color: var(--yellow);
+}
+
+.checkout-button h2 {
+  color: black;
+  font-size: 1.5rem;
+
 }
 
 .section-3 {
@@ -162,12 +272,7 @@ h4 {
   justify-self: end;
 }
 
-.section-2 {
-  height: 100vh;
-  background: black;
-}
-
 .section-3 {
-  height: 100vh;
+  height: 90vh;
   background: var(--green);
 }
