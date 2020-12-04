@@ -202,19 +202,16 @@ h4 {
 }
 
 
-.host-detail-card [data-isCheckout="true"] {
-  align-items: start;
-  grid-template-rows: 50px 1fr 5fr;
-}
+.host-detail-card [data-isCheckout="true"] {}
 
 .host-detail-card img {
   width: 250px;
   border-radius: 125px;
 }
 
-.host-detail-card img[data-isCheckout="true"] {
+/* .host-detail-card img[data-isCheckout="true"] {
   justify-self: start;
-}
+} */
 
 .host-header-layout {
   display: flex;
@@ -227,7 +224,8 @@ h4 {
 
 .host-header-layout[data-isCheckout="true"] {
   flex-direction: row;
-  align-items: center;
+  justify-items: flex-start;
+  width: 100%;
   grid-row: 1;
 }
 

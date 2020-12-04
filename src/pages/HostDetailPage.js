@@ -14,12 +14,12 @@ const HostDetailPage = () => {
   const [checkoutOn, toggleCheckout] = useCycle(false, true);
 
   const imgVariants = {
-    checkout: { scale: .3 },
+    checkout: { scale: .85 },
     noCheckout: { scale: 1 }
   }
 
   const nameVariants = {
-    checkout: { scale: .3 },
+    checkout: { display: 'none' },
     noCheckout: { scale: 1 },
   }
 
