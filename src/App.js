@@ -10,7 +10,6 @@ const App = () => {
   return (
     <>
       <div className="root-container">
-        <Header />
         <div style={{ overflow: 'scroll' }}>
           <AnimatePresence>
             <Switch>

@@ -1,6 +1,7 @@
 
 import '../App.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import hero from '../img/header-illustration.png';
 
 
 
@@ -11,7 +12,6 @@ import {
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { TextPlugin } from "gsap/TextPlugin";
-import LivingRoom from '../components/livingroom'
 import Phone from '../components/phone'
 import Sofa from '../img/sofa.png';
 import HostCard from '../components/HostCard'
@@ -21,21 +21,21 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
+function HostCards(props) {
+  const hosts = props.hosts;
+  const hostCardsList = hosts.map((host) => {
+    return (<HostCard name={host.name} img={host.img} genre={host.genre} price={host.price} slug={host.id} />);
+  })
+  return (hostCardsList);
+}
+
+
+
 function App() {
-  const icon = {
-    hidden: {
-      opacity: 0,
-      pathLength: 0,
-      fill: "rgba(255, 255, 255, 0)"
-    },
-    visible: {
-      opacity: 1,
-      pathLength: 1,
-      fill: "rgba(255, 255, 255, 1)"
-    }
-  };
 
   useEffect(() => {
+
+    //setup animations here
 
     // let tl = gsap.timeline({
     //   smoothChildTiming: true,
@@ -87,14 +87,6 @@ function App() {
       price: "$100",
       id: "bradpitt"
     },
-
-    {
-      name: "Dansby Swanson",
-      img: "https://i.pravatar.cc/200",
-      genre: "athlete",
-      price: "$100",
-      id: "dansby"
-    },
     {
       name: "brad pitt",
       img: "https://i.pravatar.cc/200",
@@ -103,26 +95,9 @@ function App() {
       id: "bradpitt"
     },
 
-    {
-      name: "Dansby Swanson",
-      img: "https://i.pravatar.cc/200",
-      genre: "athlete",
-      price: "$100",
-      id: "dansby"
-    },
-
   ];
 
-  function HostCards(props) {
-    const hosts = props.hosts;
-    const hostCardsList = hosts.map((host) => {
-      console.log("got into host mapping");
-      return (<HostCard name={host.name} img={host.img} genre={host.genre} price={host.price} slug={host.id} />);
-    })
-
-    return (hostCardsList);
-
-  }
+  
 
   return (
     <motion.div className="App"
@@ -135,20 +110,20 @@ function App() {
           <img className="sofa" src={Sofa} />
           <h1 className="loading-text"></h1>
         </section> */}
-        <section className="section-1">
-          <div style={{ gridRow: '3', gridColumn: '1', alignSelf: 'center', paddingLeft: '1rem' }}>
-            <h1 className="hero-text-secondary" style={{ alignSelf: 'center', justifySelf: 'center' }}>Get a call from your favorite celeb</h1>
-            <h2 className="hero-text" style={{ alignSelf: 'center', justifySelf: 'center' }}>Meet them in the sideroom.</h2>
+        <section className="hero-section">
+          <div className="hero-left-container"  style={{gridRow:2,gridColumn:2}}>
+            <h1>Get a call from your favorite celeb.</h1>
+            <h2 className="hero-secondary-text">Meet them in the sideroom.</h2>
           </div>
-          <LivingRoom />
+          <img src={hero} style={{gridRow:2,gridColumn:3}} />
         </section>
 
-        <section className="section-2">
-          <div style={{ alignSelf: 'start', justifySelf: 'end' }}>
+        <section className="host-section">
+          <div style={{gridRow:2}}>
             <h1 className="get-call-headline">Ready for a call?</h1>
-            <h2 className="get-call-subheading">Pick your host to get started.</h2>
+            <h2 className="host-secondary-text">Pick your host to get started.</h2>
           </div>
-          <div className="host-grid">
+          <div className="host-grid" style={{gridRow:3}}>
             <HostCards hosts={dummyHosts} />
           </div>
 
