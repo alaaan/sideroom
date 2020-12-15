@@ -55,6 +55,19 @@ h4 {
   color: var(--yellow);
 }
 
+.card-element {
+  padding: 20px;
+  border: .1px;
+  border-color: grey;
+  border-style: solid;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.card-element:hover {
+  border-color: white;
+}
+
 .section-wrapper {
   width: 100%;
   height: 100%;
@@ -181,10 +194,18 @@ h4 {
   justify-content: center;
   align-items: center;
   justify-items: center;
+  margin-top: 100px;
+}
+
+.host-detail-page [data-CheckoutCard="false"] {
+  height: 70vh;
+  grid-template-rows: auto;
+  margin-top: 0;
 }
 
 .host-detail-card {
   display: grid;
+  position: relative;
   grid-template-rows: 100px 75px 1fr;
   justify-content: space-between;
   width: 60vw;
@@ -202,7 +223,9 @@ h4 {
 }
 
 
-.host-detail-card [data-isCheckout="true"] {}
+.host-detail-card [data-isCardCheckout="true"] {
+  background-color: salmon;
+}
 
 .host-detail-card img {
   width: 250px;

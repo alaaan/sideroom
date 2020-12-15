@@ -2,6 +2,9 @@ import { React, useState } from 'react'
 import { motion, useCycle } from 'framer-motion';
 import { useHistory } from 'react-router-dom';
 import CheckoutForm from '../components/CheckoutForm'
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 
 const HostDetailPage = () => {
   const hostInfo = {
@@ -20,9 +23,11 @@ const HostDetailPage = () => {
 
   const nameVariants = {
     checkout: { display: 'none' },
-    noCheckout: { scale: 1 },
+    noCheckout: { scale: 1, display: 'visible' },
   }
 
+  //load stripe
+  const stripePromise = loadStripe("pk_test_3buay5fqqWRRQ6lsNDXiqph5");
 
 
   return (
@@ -31,9 +36,10 @@ const HostDetailPage = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      exit={{ y: 200, opacity: 0 }}>
+      exit={{ y: 200, opacity: 0 }}
+      data-isCheckout={checkoutOn}>
 
-      <div className="host-detail-card" data-isCheckout={checkoutOn}>
+      <div className="host-detail-card" data-CheckoutCard={checkoutOn}>
         {checkoutOn && <motion.h2>CHECKOUT</motion.h2>}
         <div className="host-header-layout" data-isCheckout={checkoutOn}>
           <motion.img
@@ -46,9 +52,11 @@ const HostDetailPage = () => {
             variants={nameVariants}
             layout>Dave Shaw</motion.h1>
         </div>
-        {checkoutOn && <CheckoutForm />}
-        {!checkoutOn && <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fuga, doloremque voluptatum sed quo rerum dolorum eligendi sint et dicta.</p>}
-        {!checkoutOn && <h2 onClick={() => toggleCheckout()}>Purchase</h2>}
+        <Elements stripe={stripePromise}>
+          {checkoutOn && <CheckoutForm toggle={toggleCheckout} />}
+          {!checkoutOn && <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fuga, doloremque voluptatum sed quo rerum dolorum eligendi sint et dicta.</p>}
+          {!checkoutOn && <h2 onClick={() => toggleCheckout()}>Purchase</h2>}
+        </Elements>
       </div>
 
       {/* {checkoutVisible && <div className="checkout">

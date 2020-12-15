@@ -8,10 +8,10 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#ff8f00" // This is an orange looking color
+      main: "#E2E1B9" // This is an orange looking color
     },
     secondary: {
-      main: "#ffcc80" //Another orange-ish color
+      main: "#E2E1B9" //Another orange-ish color
     }
   },
   fontFamily: '"Raleway'
