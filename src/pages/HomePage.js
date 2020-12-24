@@ -2,6 +2,12 @@
 import '../App.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import hero from '../img/header-illustration.png';
+import step1 from '../img/step1.png'
+import calendar from '../img/calendar.png';
+import waiting from '../img/waiting.png'
+import step4 from '../img/step4.png';
+import Header from '../components/Header';
+import door from '../img/door.png';
 
 
 
@@ -29,6 +35,16 @@ function HostCards(props) {
   return (hostCardsList);
 }
 
+function StepImage(props) {
+
+  return (
+    <div className="step-img-container">
+      <img className="step-img" src={props.src} />
+    </div>
+
+  )
+
+}
 
 
 function App() {
@@ -87,6 +103,14 @@ function App() {
       price: "$100",
       id: "bradpitt"
     },
+
+    {
+      name: "brad pitt",
+      img: "https://i.pravatar.cc/200",
+      genre: "actor",
+      price: "$100",
+      id: "bradpitt"
+    },
     {
       name: "brad pitt",
       img: "https://i.pravatar.cc/200",
@@ -95,9 +119,17 @@ function App() {
       id: "bradpitt"
     },
 
+    {
+      name: "Dansby Swanson",
+      img: "https://i.pravatar.cc/200",
+      genre: "athlete",
+      price: "$100",
+      id: "dansby"
+    }
+
   ];
 
-  
+
 
   return (
     <motion.div className="App"
@@ -105,33 +137,54 @@ function App() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}>
+      <Header />
       <div className="section-wrapper">
         {/* <section className="loading-section">
           <img className="sofa" src={Sofa} />
           <h1 className="loading-text"></h1>
         </section> */}
         <section className="hero-section">
-          <div className="hero-left-container"  style={{gridRow:2,gridColumn:2}}>
+          <div className="hero-left-container" style={{ gridRow: 2, gridColumn: 2 }}>
             <h1>Get a call from your favorite celeb.</h1>
             <h2 className="hero-secondary-text">Meet them in the sideroom.</h2>
           </div>
-          <img src={hero} style={{gridRow:2,gridColumn:3}} />
+          <img src={hero} style={{ gridRow: 2, gridColumn: 3 }} />
         </section>
 
         <section className="host-section">
-          <div style={{gridRow:2}}>
+          <div style={{ gridRow: 2, gridColumn: 2 }}>
             <h1 className="get-call-headline">Ready for a call?</h1>
             <h2 className="host-secondary-text">Pick your host to get started.</h2>
           </div>
-          <div className="host-grid" style={{gridRow:3}}>
+          <div className="host-grid" style={{ gridRow: 3, gridColumnStart: 2, gridColumnEnd: 4 }}>
             <HostCards hosts={dummyHosts} />
           </div>
 
         </section>
-        <section className="section-3">
-          <div className="howto-grid"></div>
-          <div style={{ alignSelf: 'end' }}>
-            <h1>How does this work?</h1>
+        <section className="how-to-section">
+          <div style={{ gridRow: 2, gridColumn: 2 }}>
+            <h1 className="get-call-headline">How does this work?</h1>
+            <h2 className="hero-secondary-text">We got you covered.</h2>
+          </div>
+          <div className="how-to-grid">
+            <div className="step-container">
+              <div className="step-1">
+                <StepImage src={step1} />
+                <h2 style={{ justifySelf: "end", marginRight: '100px' }}>Pick your favorite host</h2>
+              </div>
+              <div className="step-2">
+                <h2 style={{ justifySelf: "start", marginLeft: '100px' }}>Pick your preffered date</h2>
+                <StepImage src={calendar} />
+              </div>
+              <div className="step-3">
+                <StepImage src={waiting} />
+                <h2 style={{ justifySelf: "end", marginLeft: '100px' }}>Wait for that special moment.</h2>
+              </div>
+              <div className="step-4">
+                <h2 style={{ justifySelf: "start", marginLeft: '100px' }}>Get your call!</h2>
+                <StepImage src={step4} />
+              </div>
+            </div>
           </div>
         </section>
 

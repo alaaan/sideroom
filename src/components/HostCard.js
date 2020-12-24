@@ -13,25 +13,25 @@ const HostCard = (props) => {
 
     <Route render={(props) => (
       <div className="host-card" onClick={() => { history.push('/host') }} >
-         
+
         <div className="host-img-container">
           <div className="host-img-border">
             <img className="host-card-img" src={img} />
           </div>
           <div className="price-container">
-            <svg height="100" width="100" className="price-circle">
+            <svg height="70" width="70" className="price-circle">
               <defs>
                 <linearGradient id="myGradient">
                   <stop offset="10%" stop-color="#437df8" />
                   <stop offset="95%" stop-color="#51c9fe" />
                 </linearGradient>
               </defs>
-              <circle cx="50" cy="50" r="40" fill="url('#myGradient')" />
+              <circle cx="35" cy="35" r="35" fill="url('#myGradient')" />
             </svg>
             <h3 className="price">$100</h3>
           </div>
         </div>
-        
+
         <div className="host-card-info">
           <h2 className="host-name">{name}</h2>
           <h3 className="host-genre">{genre}</h3>

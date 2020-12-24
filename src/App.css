@@ -19,6 +19,7 @@
 
 #root {
   background-color: black;
+  height: 100%;
 }
 
 .root-router {
@@ -107,6 +108,34 @@ h4 {
   color: white;
 }
 
+.header {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 300px auto;
+  width: 100%;
+  padding-top: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.nav-buttons {
+  justify-self: end;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.nav-buttons h3 {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 400;
+
+}
 
 .hero-section {
   height: 100vh;
@@ -138,8 +167,9 @@ h4 {
 .host-section {
   display: grid;
   grid-template-rows: 10vh 20vh auto;
-  padding: 20px;
-  padding-bottom: 40px;
+  grid-template-columns: 8vw 3fr 2fr 8vw;
+  /* padding: 20px;
+  padding-bottom: 40px; */
   justify-content: center;
   height: 100vh;
   background: rgb(41, 43, 121);
@@ -148,7 +178,9 @@ h4 {
 }
 
 .host-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-left: 20px;
   margin-right: 20px;
   height: 30vh;
@@ -162,8 +194,8 @@ h4 {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 300px;
   overflow: hidden;
 }
 
@@ -171,6 +203,7 @@ h4 {
 .host-name {
   font-weight: 700;
   letter-spacing: -.1rem;
+  font-size: 2.3rem;
 }
 
 .host-genre {
@@ -181,9 +214,9 @@ h4 {
 }
 
 .host-card-img {
-  width: 250px;
-  height: 250px;
-  border-radius: 125px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
   align-self: center;
 
 }
@@ -206,8 +239,8 @@ h4 {
 }
 
 .host-img-border {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   background: rgb(67, 125, 248);
   background: linear-gradient(288deg, rgba(67, 125, 248, 1) 69%, rgba(81, 201, 254, 1) 100%);
   border-radius: 125px;
@@ -216,17 +249,20 @@ h4 {
 
 .price-container {
   position: absolute;
-  top: 190px;
+  bottom: 0px;
   right: 5px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .price-circle {}
 
 .price {
   position: absolute;
-  top: 32px;
-  font-size: 1.8rem;
-  left: 19px;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 #host-name {
@@ -333,11 +369,79 @@ h4 {
 
 }
 
-.section-3 {
+.how-to-section {
   display: grid;
-  grid-template-rows: auto 300px;
-  padding: 20px;
-  padding-bottom: 40px;
+  grid-template-rows: 10vh 20vh auto 10vh;
+  grid-template-columns: 8vw 3fr 2fr 8vw;
+  background: rgb(20, 23, 54);
+  background: linear-gradient(156deg, rgba(20, 23, 54, 1) 22%, rgba(53, 34, 85, 1) 100%);
+  height: 150vh;
+}
+
+.how-to-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 8vw 3fr 2fr 8vw;
+  height: 100%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 3;
+}
+
+.step-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-row: 1 / -1;
+  grid-column: 1/ -1;
+}
+
+.step-img-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  border-width: 7px;
+  border-color: var(--pink);
+  background-color: white;
+  padding: 5px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-style: solid;
+  align-items: center;
+}
+
+
+.step-img {
+  height: 100px;
+  width: 100px;
+}
+
+.step-1 {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.step-2 {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.step-3 {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.step-4 {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  justify-items: center;
+  align-items: center;
 }
 
 .living-room {
