@@ -10,14 +10,13 @@ const App = () => {
   return (
     <>
       <div className="root-container">
-        <div style={{ overflow: 'scroll' }}>
-          <AnimatePresence>
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/host" component={HostDetailPage} />
-            </Switch>
-          </AnimatePresence>
-        </div>
+        <AnimatePresence>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/host" component={HostDetailPage} />
+          </Switch>
+        </AnimatePresence>
+
       </div>
 
     </>

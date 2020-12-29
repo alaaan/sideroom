@@ -9,6 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DateFnsUtils from '@date-io/date-fns';
 import * as yup from 'yup';
+import SRButton from './StyledButton';
 import { useFormik, Field } from 'formik';
 import MaskedInput from "react-text-mask";
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
@@ -64,7 +65,7 @@ const MyField = withStyles({
       fontSize: '1.7rem',
 
       '& fieldset': {
-        borderColor: 'grey',
+        borderColor: 'var(--fadedpink)',
       },
       '&:hover fieldset': {
         borderColor: 'white',
@@ -87,7 +88,7 @@ const SRDatePicker = withStyles({
       color: 'white'
     },
     '& fieldset': {
-      borderColor: 'grey',
+      borderColor: 'var(--fadedpink)',
     },
     '& .MuiOutlinedInput-root': {
       '&:hover fieldset': {
@@ -169,7 +170,7 @@ const FormField = withStyles({
       color: 'white',
       fontSize: '1.5rem',
       '& fieldset': {
-        borderColor: 'grey',
+        borderColor: 'var(--fadedpink)',
       },
       '&:hover fieldset': {
         borderColor: 'white',
@@ -264,7 +265,8 @@ const CheckoutForm = (props) => {
       phone: '',
       request: '',
       date: '',
-      recipientName: ''
+      recipientName: '',
+      recipientPhone: ''
     },
     validationSchema: defaultValidationSchema,
     onSubmit: (values) => {
@@ -283,7 +285,7 @@ const CheckoutForm = (props) => {
         fontSize='large' color="secondary" style={{ position: 'absolute', top: 5, right: 5 }} />
 
       <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
-        <h2 style={{ marginLeft: '10px', marginTop: '10px' }}>Your Info</h2>
+        <h2 style={{ marginTop: '10px' }}>Your Info</h2>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <MyField
             fullWidth
@@ -327,9 +329,9 @@ const CheckoutForm = (props) => {
 
           <CheckoutButton>Confirm Phone</CheckoutButton>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px', marginLeft: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
           <h2 style={{ marginTop: '10px' }}>Call Info</h2>
-          <h3 style={{ marginTop: '10px' }}>Tell the host all about your request!</h3>
+          <h3>Tell the host all about your request!</h3>
           <h4>Is it your birthday? Whats popping?</h4>
           <FormField
             multiline
@@ -343,9 +345,10 @@ const CheckoutForm = (props) => {
             helperText={formik.touched.request && formik.errors.request}
           />
 
-          <h3 style={{ marginTop: '20px' }}>What is your preferred date for a call? (no promises😜)</h3>
+          <h3 style={{ marginTop: '10px' }}>What is your preferred date for a call? (no promises😜)</h3>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <SRDatePicker
+              style={{ marginLeft: '10px' }}
               minDate={today}
               margin="normal"
               inputVariant="outlined"
@@ -362,11 +365,10 @@ const CheckoutForm = (props) => {
           </MuiPickersUtilsProvider>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'row', marginTop: '20px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', marginTop: '10px', alignItems: 'center' }}>
           <h3>Is this a gift for someone else?</h3>
           <SRFormControlLabel
             control={<Checkbox style={{ marginLeft: '20px' }} checked={giftChecked} onChange={handleGiftChecked} name="gift" />}
-            label="Yes"
           />
         </div>
 
@@ -383,27 +385,37 @@ const CheckoutForm = (props) => {
               error={formik.touched.recipientName && Boolean(formik.errors.recipientName)}
               helperText={formik.touched.recipientName && formik.errors.recipientName}
             />
-            <MyField label="Recipient Phone" variant="outlined" />
+            <MyField
+              id="recipientPhone"
+              name="recipientPhone"
+              label="Recipient Phone"
+              variant="outlined"
+              value={formik.values.recipientPhone}
+              onChange={formik.handleChange}
+              error={formik.touched.recipientPhone && Boolean(formik.errors.recipientPhone)}
+              helperText={formik.touched.recipientPhone && formik.errors.recipientPhone}
+            />
           </div>}
 
         <h2 style={{ marginTop: '10px' }}>Payment Details</h2>
-        <MyField label="Credit Card" variant="outlined" />
+        {/* <MyField label="Credit Card" variant="outlined" /> */}
 
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           <CardElement
             id="card-element"
             options={CARD_ELEMENT_OPTIONS}
             onChange={handleCardChange}
             className="card-element"
           />
-          <MyField label="Expiration" variant="outlined" />
+          {/* <MyField label="Expiration" variant="outlined" />
           <MyField label="CVV" variant="outlined" />
-          <MyField label="Zip Code" variant="outlined" /> */}
-      </div>
-        <CheckoutButton type="submit" style={{ marginTop: '40px', marginBottom: '20px' }}>PURCHASE CALL</CheckoutButton> */}
+          <MyField label="Zip Code" variant="outlined" />  */}
+          <SRButton type="submit" style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call</SRButton>
+        </div>
 
+        {/* <StyledButton  /> */}
 
-    </form >
+      </form >
 
     </div>
 
