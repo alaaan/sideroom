@@ -29,6 +29,10 @@ const HostDetailPage = () => {
   //load stripe
   const stripePromise = loadStripe("pk_test_3buay5fqqWRRQ6lsNDXiqph5");
 
+  const spring = {
+    stiffness: 100,
+    damping: 30
+  };
 
   return (
     <motion.div
@@ -39,7 +43,7 @@ const HostDetailPage = () => {
       exit={{ y: 200, opacity: 0 }}
       data-isCheckout={checkoutOn}>
 
-      <div className="host-detail-card" data-CheckoutCard={checkoutOn}>
+      <motion.div layout transition={spring} className="host-detail-card" data-CheckoutCard={checkoutOn}>
         {checkoutOn && <motion.h2>CHECKOUT</motion.h2>}
         <div className="host-header-layout" data-isCheckout={checkoutOn}>
           <motion.img
@@ -49,15 +53,15 @@ const HostDetailPage = () => {
             src="https://www.fillmurray.com/200/200" />
           <motion.h1
             animate={checkoutOn ? "checkout" : "noCheckout"}
-            variants={nameVariants}
-            layout>Dave Shaw</motion.h1>
+            variants={nameVariants}>
+            Dave Shaw</motion.h1>
         </div>
         <Elements stripe={stripePromise}>
           {checkoutOn && <CheckoutForm toggle={toggleCheckout} />}
           {!checkoutOn && <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fuga, doloremque voluptatum sed quo rerum dolorum eligendi sint et dicta.</p>}
           {!checkoutOn && <h2 onClick={() => toggleCheckout()}>Purchase</h2>}
         </Elements>
-      </div>
+      </motion.div>
 
       {/* {checkoutVisible && <div className="checkout">
         <h2 style={{ backgroundColor: "white", height: "300px" }}>THIS IS CHECKOUT</h2>

@@ -11,6 +11,7 @@
   --pink: #ef497a;
   --fadedpink: rgba(239, 73, 122, 25%);
   --light_purple: #a57dc8;
+  --dark_blue: rgb(12, 14, 33);
   --mont-font: 'Montserrat', sans-serif;
   --alt-font: 'Righteous', cursive;
   --new-font: 'Barlow', sans-serif;
@@ -303,6 +304,7 @@ h4 {
 }
 
 .host-detail-card {
+  background: rgba(12, 14, 33, .5);
   display: grid;
   position: relative;
   grid-template-rows: 100px 75px 1fr;

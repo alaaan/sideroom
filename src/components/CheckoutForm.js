@@ -9,7 +9,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DateFnsUtils from '@date-io/date-fns';
 import * as yup from 'yup';
-import SRButton from './StyledButton';
+import SRButton from './SRButton';
+import SRButtonOutlined from './SRButtonOutlined';
 import { useFormik, Field } from 'formik';
 import MaskedInput from "react-text-mask";
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
@@ -327,7 +328,7 @@ const CheckoutForm = (props) => {
             helperText={formik.touched.phone && formik.errors.phone}
           />
 
-          <CheckoutButton>Confirm Phone</CheckoutButton>
+          <SRButtonOutlined>Confirm Phone</SRButtonOutlined>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
           <h2 style={{ marginTop: '10px' }}>Call Info</h2>
