@@ -304,7 +304,7 @@ h4 {
 }
 
 .host-detail-card {
-  background: rgba(12, 14, 33, .5);
+  background: rgba(12, 14, 33, .4);
   display: grid;
   position: relative;
   grid-template-rows: 100px 75px 1fr;

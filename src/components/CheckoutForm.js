@@ -12,6 +12,8 @@ import * as yup from 'yup';
 import SRButton from './SRButton';
 import SRButtonOutlined from './SRButtonOutlined';
 import { useFormik, Field } from 'formik';
+import PhoneInput from 'react-phone-number-input/input';
+import InputMask from 'react-input-mask';
 import MaskedInput from "react-text-mask";
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 import {
@@ -19,6 +21,9 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+import { DatePicker } from "@material-ui/pickers";
 import 'yup-phone';
 
 const defaultValidationSchema = yup.object({
@@ -105,10 +110,82 @@ const SRDatePicker = withStyles({
     },
     '& .MuiButton-label': {
       color: 'black'
+    },
+
+    '& .MuiToolbar-root': {
+      backgroundColor: 'salmon'
     }
 
   },
 })(KeyboardDatePicker);
+
+const materialTheme = createMuiTheme({
+  overrides: {
+    MuiOutlinedInput: {
+      root: {
+        color: 'white',
+        fontSize: '1.2rem',
+        '&:hover $notchedOutline': {
+          borderColor: 'white'
+        },
+        '&:active $notchedOutline': {
+          borderColor: 'white'
+        }
+      },
+
+
+    },
+    MuiTextField: {
+      root: {
+        width: '300px',
+        color: 'white',
+        '& fieldset': {
+          borderColor: 'var(--fadedpink)',
+        },
+        '&:hover fieldset': {
+          borderColor: 'white',
+        },
+      },
+
+    },
+    MuiPickersToolbar: {
+      toolbar: {
+        backgroundColor: 'var(--pink)',
+      },
+    },
+    MuiPickersCalendarHeader: {
+      switchHeader: {
+        // backgroundColor: lightBlue.A200,
+        // color: "white",
+      },
+    },
+    MuiPickersDay: {
+      day: {
+        color: 'black'
+      },
+      daySelected: {
+        color: 'var(--pink)',
+        backgroundColor: 'var(--dark_blue)',
+        '&:hover': {
+          backgroundColor: 'black'
+        }
+      },
+      dayDisabled: {
+        color: 'grey',
+      },
+      current: {
+        color: 'black',
+      },
+    },
+    MuiPickersModal: {
+      dialogAction: {
+        color: 'var(--dark_blue)',
+      },
+
+
+    },
+  },
+});
 
 const SRFormControlLabel = withStyles({
   root: {
@@ -117,41 +194,12 @@ const SRFormControlLabel = withStyles({
       fontSize: '1.25rem'
     },
     '& .MuiCheckbox-root': {
-      color: '#E2E1B9'
+      color: 'var(--light_purple)'
     }
   },
 
 })(FormControlLabel);
 
-// const MyField = withStyles({
-//   root: {
-//     margin: '10px',
-//     '& label.Mui-focused': {
-//       color: 'white',
-//       fontSize: '1.7rem',
-//     },
-//     '& label.MuiInputLabel-root': {
-//       color: 'white',
-//     },
-//     '& .MuiInput-underline:after': {
-//       borderBottomColor: 'green',
-//     },
-//     '& .MuiOutlinedInput-root': {
-//       color: 'white',
-//       fontSize: '1.7rem',
-
-//       '& fieldset': {
-//         borderColor: 'grey',
-//       },
-//       '&:hover fieldset': {
-//         borderColor: 'white',
-//       },
-//       '&.Mui-focused fieldset': {
-//         borderColor: 'white',
-//       },
-//     },
-//   },
-// })(TextField);
 
 const FormField = withStyles({
   root: {
@@ -328,6 +376,7 @@ const CheckoutForm = (props) => {
             helperText={formik.touched.phone && formik.errors.phone}
           />
 
+
           <SRButtonOutlined>Confirm Phone</SRButtonOutlined>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
@@ -348,21 +397,23 @@ const CheckoutForm = (props) => {
 
           <h3 style={{ marginTop: '10px' }}>What is your preferred date for a call? (no promises😜)</h3>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <SRDatePicker
-              style={{ marginLeft: '10px' }}
-              minDate={today}
-              margin="normal"
-              inputVariant="outlined"
-              id="date-picker-dialog"
-              format="MM/dd/yyyy"
-              value={formik.values.date}
-              onChange={handleDateChange}
-              error={formik.touched.date && Boolean(formik.errors.date)}
-              helperText={formik.touched.date && formik.errors.date}
-              KeyboardButtonProps={{
-                'aria-label': 'change date',
-              }}
-            />
+            <ThemeProvider theme={materialTheme}>
+              <DatePicker
+                style={{ marginLeft: '10px' }}
+                minDate={today}
+                margin="normal"
+                inputVariant="outlined"
+                id="date-picker-dialog"
+                format="MM/dd/yyyy"
+                value={formik.values.date}
+                onChange={handleDateChange}
+                error={formik.touched.date && Boolean(formik.errors.date)}
+                helperText={formik.touched.date && formik.errors.date}
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+              />
+            </ThemeProvider>
           </MuiPickersUtilsProvider>
         </div>
 
