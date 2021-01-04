@@ -10,8 +10,9 @@
   --green: #5A7D7C;
   --pink: #ef497a;
   --fadedpink: rgba(239, 73, 122, 25%);
-  --light_purple: #a57dc8;
-  --dark_blue: rgb(12, 14, 33);
+  --lightpurple: #a57dc8;
+  --bluepurple: #5643cc;
+  --darkblue: rgb(12, 14, 33);
   --mont-font: 'Montserrat', sans-serif;
   --alt-font: 'Righteous', cursive;
   --new-font: 'Barlow', sans-serif;
@@ -166,7 +167,7 @@ h4 {
 }
 
 .host-secondary-text {
-  color: var(--light_purple);
+  color: var(--bluepurple);
   font-weight: 300;
 }
 

@@ -83,42 +83,7 @@ const MyField = withStyles({
   },
 })(TextField);
 
-const SRDatePicker = withStyles({
-  root: {
-    width: '300px',
-    '& .MuiInputBase-root': {
-      color: 'white',
-      fontSize: '1.5rem'
-    },
-    '& .MuiIconButton-root': {
-      color: 'white'
-    },
-    '& fieldset': {
-      borderColor: 'var(--fadedpink)',
-    },
-    '& .MuiOutlinedInput-root': {
-      '&:hover fieldset': {
-        borderColor: 'white',
-      },
-      '&:active fieldset': {
-        borderColor: 'white',
-      },
-    },
-    '& .MuiPickersToolbarText': {
-      color: 'black',
-      fontFamily: 'Barlow'
-    },
-    '& .MuiButton-label': {
-      color: 'black'
-    },
-
-    '& .MuiToolbar-root': {
-      backgroundColor: 'salmon'
-    }
-
-  },
-})(KeyboardDatePicker);
-
+//theming for date picker 
 const materialTheme = createMuiTheme({
   overrides: {
     MuiOutlinedInput: {
@@ -132,8 +97,6 @@ const materialTheme = createMuiTheme({
           borderColor: 'white'
         }
       },
-
-
     },
     MuiTextField: {
       root: {
@@ -165,7 +128,7 @@ const materialTheme = createMuiTheme({
       },
       daySelected: {
         color: 'var(--pink)',
-        backgroundColor: 'var(--dark_blue)',
+        backgroundColor: 'var(--darkblue)',
         '&:hover': {
           backgroundColor: 'black'
         }
@@ -179,11 +142,15 @@ const materialTheme = createMuiTheme({
     },
     MuiPickersModal: {
       dialogAction: {
-        color: 'var(--dark_blue)',
+        color: 'var(--darkblue)',
       },
-
-
     },
+    MuiButton: {
+      label: {
+        color: 'black'
+      }
+
+    }
   },
 });
 
@@ -194,7 +161,7 @@ const SRFormControlLabel = withStyles({
       fontSize: '1.25rem'
     },
     '& .MuiCheckbox-root': {
-      color: 'var(--light_purple)'
+      color: 'var(--bluepurple)'
     }
   },
 
@@ -230,25 +197,6 @@ const FormField = withStyles({
     },
   },
 })(TextField);
-
-const CheckoutButton = withStyles({
-  root: {
-    background: '#E2E1B9',
-    borderRadius: 3,
-    borderStyle: 'solid',
-    borderWidth: '.5px',
-    borderColor: 'white',
-    color: 'black',
-    height: 48,
-
-    '&:hover': {
-      background: 'white'
-    }
-  },
-  label: {
-    textTransform: 'capitalize',
-  },
-})(Button);
 
 
 
@@ -377,7 +325,7 @@ const CheckoutForm = (props) => {
           />
 
 
-          <SRButtonOutlined>Confirm Phone</SRButtonOutlined>
+          <SRButtonOutlined>Verify Phone</SRButtonOutlined>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
           <h2 style={{ marginTop: '10px' }}>Call Info</h2>

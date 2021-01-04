@@ -7,14 +7,18 @@ const SRButtonOutlined = withStyles({
     background: 'transparent',
     borderRadius: 3,
     border: '2px',
-    borderColor: '#a57dc8',
+    borderColor: '#5643cc',
     borderStyle: 'solid',
     color: 'white',
     height: 50,
     padding: '0 30px',
     alignSelf: 'center',
     justifySelf: 'center',
-    margin: '10px'
+    margin: '10px',
+
+    '&:hover': {
+
+    }
 
   },
   label: {
