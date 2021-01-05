@@ -24,6 +24,8 @@ import {
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import { DatePicker } from "@material-ui/pickers";
+import Modal from '../components/Modal';
+
 import 'yup-phone';
 
 const defaultValidationSchema = yup.object({
@@ -200,7 +202,7 @@ const FormField = withStyles({
 
 
 
-const CheckoutForm = (props) => {
+const CheckoutForm = ({toggle}) => {
 
   const [giftChecked, toggleGiftCheked] = useCycle(false, true);
   const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -212,6 +214,7 @@ const CheckoutForm = (props) => {
   const stripe = useStripe();
   const elements = useElements();
   const cardElement = elements.getElement(CardElement);
+  const [showSuccessModal,setShowSuccessModal] = useState(false);
 
   //stripe stuff
   const CARD_ELEMENT_OPTIONS = {
@@ -267,7 +270,8 @@ const CheckoutForm = (props) => {
     },
     validationSchema: defaultValidationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      setShowSuccessModal(true);
     },
   });
 
@@ -278,7 +282,7 @@ const CheckoutForm = (props) => {
   return (
     <div>
       <CloseIcon
-        onClick={props.toggle}
+        onClick={toggle}
         fontSize='large' color="secondary" style={{ position: 'absolute', top: 5, right: 5 }} />
 
       <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
@@ -416,6 +420,15 @@ const CheckoutForm = (props) => {
         {/* <StyledButton  /> */}
 
       </form >
+
+      {showSuccessModal ? (
+          <Modal>
+            <div>
+              <h2>Super Sexy Order Confirmation Modal</h2>
+            </div>
+          </Modal>
+        ) : null
+      }
 
     </div>
 

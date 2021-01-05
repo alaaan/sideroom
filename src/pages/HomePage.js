@@ -129,8 +129,6 @@ function App() {
 
   ];
 
-
-
   return (
     <motion.div className="App"
       initial={{ opacity: 0 }}

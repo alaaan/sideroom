@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import CheckoutForm from '../components/CheckoutForm'
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Modal from '../components/Modal'
 
 
 const HostDetailPage = () => {
@@ -15,6 +16,8 @@ const HostDetailPage = () => {
   }
 
   const [checkoutOn, toggleCheckout] = useCycle(false, true);
+  
+  
 
   const imgVariants = {
     checkout: { scale: .85 },
@@ -33,6 +36,8 @@ const HostDetailPage = () => {
     stiffness: 100,
     damping: 30
   };
+
+  // function toggleModal() {setShowModal(true)};
 
   return (
     <motion.div
@@ -60,12 +65,11 @@ const HostDetailPage = () => {
           {checkoutOn && <CheckoutForm toggle={toggleCheckout} />}
           {!checkoutOn && <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fuga, doloremque voluptatum sed quo rerum dolorum eligendi sint et dicta.</p>}
           {!checkoutOn && <h2 onClick={() => toggleCheckout()}>Purchase</h2>}
+
         </Elements>
       </motion.div>
 
-      {/* {checkoutVisible && <div className="checkout">
-        <h2 style={{ backgroundColor: "white", height: "300px" }}>THIS IS CHECKOUT</h2>
-      </div>} */}
+
 
     </motion.div>
   );
