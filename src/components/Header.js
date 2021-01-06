@@ -1,7 +1,25 @@
-import React from 'react'
+import React, {useContext,useState} from 'react';
 import { motion } from 'framer-motion'
 import door from '../img/door.png'
+import { UserContext } from "../context/user-context"
+import SRButtonOutlined from '../components/SRButtonOutlined'
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import Modal from '../components/Modal';
+import LoginForm from '../components/LoginForm'
+import SRTextField from '../components/SRTextField';
+
 const Header = () => {
+
+  const {isAuthenticated,loggedInUser,clearLoggedInUser} = useContext(UserContext);
+  const [showLogin,setShowLogin] = useState(false);
+  console.log(isAuthenticated);
+  console.log(loggedInUser);
+
+  const toggleLogin = ()=>{
+    console.log("toggle")
+    setShowLogin(!showLogin);
+  }
+
   return (
     <div className="header">
       <div style={{ display: 'flex' }}>
@@ -9,9 +27,28 @@ const Header = () => {
         <h2 style={{ padding: '10px', fontSize: '1.7rem', display: 'inline' }}>SideRoom</h2>
       </div>
       <div className="nav-buttons">
-        <h3>How does this work?</h3>
-        <h3>Contact Us</h3>
+        {/* <h3>How does this work?</h3> */}
+        {!isAuthenticated ?
+        <SRButtonOutlined onClick={toggleLogin}>Login</SRButtonOutlined> :
+        <>
+          <img className="user-img" src={loggedInUser.ProfileImageSmall} alt="profile"/> }
+          <div style={{display:'flex',flexDirection:'column'}}>
+            <h3>{loggedInUser.Name}</h3>
+            <h3 
+            style={{color:'var(--pink)',fontSize:'.8rem'}}
+            onClick={()=>(clearLoggedInUser())}
+            >Logout</h3>
+          </div>
+        </>}
       </div>
+
+      {showLogin? (
+      <Modal>
+        <div>
+          <LoginForm close={toggleLogin} />
+        </div>
+      </Modal>): null}
+
     </div>
   )
 }
