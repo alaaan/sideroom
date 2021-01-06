@@ -173,8 +173,7 @@ h4 {
 
 .host-section {
   display: grid;
-  grid-template-rows: 10vh 20vh auto;
-  grid-template-columns: 8vw 3fr 2fr 8vw;
+  grid-template-rows: 5vh 20vh auto;
   /* padding: 20px;
   padding-bottom: 40px; */
   justify-content: center;
@@ -199,18 +198,25 @@ h4 {
 
 .host-card {
   display: flex;
-  justify-content: space-evenly;
   flex-direction: column;
-  width: 350px;
-  height: 300px;
+  flex-basis: 20%; 
   overflow: hidden;
+  justify-content:center; 
+}
+
+.get-call-headline{
+  font-size:7vw; 
+}
+
+.host-secondary-text{
+  font-size:4vw; 
 }
 
 /* host name */
 .host-name {
   font-weight: 700;
   letter-spacing: -.1rem;
-  font-size: 2.3rem;
+  font-size: 1.5rem;
 }
 
 .host-genre {
@@ -221,10 +227,11 @@ h4 {
 }
 
 .host-card-img {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   align-self: center;
+  display:block;
 
 }
 
@@ -238,19 +245,21 @@ h4 {
   align-items: center;
   justify-content: center;
   position: relative;
+  margin:10px;
 }
 
 .host-img-container {
   align-self: center;
   position: relative;
+  width:90%;
+  margin-top:10px;
+
 }
 
 .host-img-border {
-  width: 200px;
-  height: 200px;
   background: rgb(67, 125, 248);
   background: linear-gradient(288deg, rgba(67, 125, 248, 1) 69%, rgba(81, 201, 254, 1) 100%);
-  border-radius: 125px;
+  border-radius: 50%;
   padding: 7px;
 }
 
@@ -262,13 +271,18 @@ h4 {
   justify-content: center;
   align-content: center;
   align-items: center;
+  width:5vh; 
+  height:5vh;
+  border-radius:50%;
+  background: rgb(67, 125, 248);
+  background: linear-gradient(288deg, rgba(67, 125, 248, 1) 69%, rgba(81, 201, 254, 1) 100%);
 }
 
 .price-circle {}
 
 .price {
   position: absolute;
-  font-size: 1.5rem;
+  font-size: 1.75vh; 
   font-weight: 400;
 }
 

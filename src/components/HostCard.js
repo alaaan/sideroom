@@ -19,15 +19,6 @@ const HostCard = (props) => {
             <img className="host-card-img" src={img} />
           </div>
           <div className="price-container">
-            <svg height="70" width="70" className="price-circle">
-              <defs>
-                <linearGradient id="myGradient">
-                  <stop offset="10%" stop-color="#437df8" />
-                  <stop offset="95%" stop-color="#51c9fe" />
-                </linearGradient>
-              </defs>
-              <circle cx="35" cy="35" r="35" fill="url('#myGradient')" />
-            </svg>
             <h3 className="price">$100</h3>
           </div>
         </div>
