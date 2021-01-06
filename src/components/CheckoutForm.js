@@ -25,6 +25,7 @@ import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import { DatePicker } from "@material-ui/pickers";
 import Modal from '../components/Modal';
+import SRTextField from '../components/SRTextField'
 
 import 'yup-phone';
 
@@ -53,37 +54,6 @@ const defaultValidationSchema = yup.object({
     .required('Please select a date'),
 });
 
-
-
-const MyField = withStyles({
-  root: {
-    margin: '10px',
-    '& label.Mui-focused': {
-      color: 'white',
-      fontSize: '1.7rem',
-    },
-    '& label.MuiInputLabel-root': {
-      color: 'white',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'green',
-    },
-    '& .MuiOutlinedInput-root': {
-      color: 'white',
-      fontSize: '1.7rem',
-
-      '& fieldset': {
-        borderColor: 'var(--fadedpink)',
-      },
-      '&:hover fieldset': {
-        borderColor: 'white',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'white',
-      },
-    },
-  },
-})(TextField);
 
 //theming for date picker 
 const materialTheme = createMuiTheme({
@@ -277,8 +247,6 @@ const CheckoutForm = ({toggle}) => {
 
   const today = new Date();
 
-
-
   return (
     <div>
       <CloseIcon
@@ -288,7 +256,7 @@ const CheckoutForm = ({toggle}) => {
       <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
         <h2 style={{ marginTop: '10px' }}>Your Info</h2>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <MyField
+          <SRTextField
             fullWidth
             id="name"
             name="name"
@@ -301,7 +269,7 @@ const CheckoutForm = ({toggle}) => {
           />
           {/* <MyField label="Name" key="name-input" value={name} variant="outlined" onChange={handleName} error={nameError} /> */}
           {/* <MyField label="Email" variant="outlined" /> */}
-          <MyField
+          <SRTextField
             fullWidth
             id="email"
             name="email"
@@ -317,7 +285,7 @@ const CheckoutForm = ({toggle}) => {
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
           {/* <MyField label="Phone" variant="outlined" /> */}
-          <MyField
+          <SRTextField
             id="phone"
             name="phone"
             label="Phone"
@@ -379,7 +347,7 @@ const CheckoutForm = ({toggle}) => {
         {giftChecked &&
           <div>
             <h2 style={{ marginTop: '10px' }}>Gift Info</h2>
-            <MyField
+            <SRTextField
               id="recipientName"
               name="recipientName"
               label="Recipient Name"
@@ -389,7 +357,7 @@ const CheckoutForm = ({toggle}) => {
               error={formik.touched.recipientName && Boolean(formik.errors.recipientName)}
               helperText={formik.touched.recipientName && formik.errors.recipientName}
             />
-            <MyField
+            <SRTextField
               id="recipientPhone"
               name="recipientPhone"
               label="Recipient Phone"

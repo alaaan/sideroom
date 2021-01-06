@@ -7,6 +7,8 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Modal from '../components/Modal';
 import LoginForm from '../components/LoginForm'
 import SRTextField from '../components/SRTextField';
+import SRLoader from '../components/SRLoader';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const Header = () => {
 
@@ -16,12 +18,13 @@ const Header = () => {
   console.log(loggedInUser);
 
   const toggleLogin = ()=>{
-    console.log("toggle")
     setShowLogin(!showLogin);
   }
 
   return (
+    
     <div className="header">
+
       <div style={{ display: 'flex' }}>
         <img src={door} style={{ objectFit: 'none' }} />
         <h2 style={{ padding: '10px', fontSize: '1.7rem', display: 'inline' }}>SideRoom</h2>
@@ -44,9 +47,7 @@ const Header = () => {
 
       {showLogin? (
       <Modal>
-        <div>
           <LoginForm close={toggleLogin} />
-        </div>
       </Modal>): null}
 
     </div>
