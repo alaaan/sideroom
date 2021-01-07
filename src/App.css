@@ -342,7 +342,7 @@ h4 {
   background: linear-gradient(288deg, rgba(67, 125, 248, 1) 69%, rgba(81, 201, 254, 1) 100%);
 }
 
-.price-circle {}
+
 
 .price {
   position: absolute;
@@ -352,6 +352,16 @@ h4 {
 
 #host-name {
   font-size: 1.4rem;
+}
+
+.host-profile-name{
+  font-size:2.3rem;
+}
+
+.host-profile-genre{
+  font-size:1.3rem;
+  font-weight: 400;
+  margin-top: -3%;
 }
 
 #host-price {
@@ -380,12 +390,13 @@ h4 {
   height: 70vh;
   grid-template-rows: auto;
   margin-top: 0;
+  
 }
 
 .host-detail-card {
   background: rgba(12, 14, 33, .4);
-  display: grid;
   position: relative;
+  display:grid;
   grid-template-rows: 100px 75px 1fr;
   justify-content: space-between;
   width: 60vw;
@@ -393,7 +404,7 @@ h4 {
   justify-items: center;
   justify-content: center;
   border-width: 1px;
-  border-color: var(--fadedpink);
+  border-color: rgba(165, 125, 200,.2); 
   border-style: solid;
   padding-left: 20px;
   padding-right: 20px;
@@ -408,8 +419,7 @@ h4 {
 }
 
 .host-detail-card img {
-  width: 250px;
-  border-radius: 125px;
+  border-radius: 50%;
 }
 
 /* .host-detail-card img[data-isCheckout="true"] {
@@ -444,6 +454,7 @@ h4 {
   font-size: 20px;
 }
 
+
 .checkout-button {
   width: 100%;
   height: 50px;
@@ -456,6 +467,55 @@ h4 {
   font-size: 1.5rem;
 
 }
+
+
+
+/* Host Profile Styling */
+.host-profile-container{
+  width:30%;
+  margin-top:10px;
+  position:absolute; 
+  top:-15%;
+}
+
+.host-detail-card > div:nth-of-type(2) {
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  width: auto;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+}
+
+.host-profile-border{
+  background: rgb(67, 125, 248);
+  background: linear-gradient(288deg, rgba(67, 125, 248, 1) 69%, rgba(81, 201, 254, 1) 100%);
+  border-radius: 50%;
+  padding: 5px;
+}
+.host-profile-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  align-self: center;
+  display:block;
+
+}
+.host-profile-info{
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin:10px;
+}
+
+
 
 .how-to-section {
   display: grid;
