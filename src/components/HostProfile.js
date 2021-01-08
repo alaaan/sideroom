@@ -12,10 +12,6 @@ const HostProfile = ({name,genre,price,img}) => {
           <div className="host-profile-info">
             <h2 className="host-profile-name">{name}</h2>
             <h3 className="host-profile-genre">{genre}</h3>
-            <div className="host-profile-info-container">
-              <p>Super excited to meet you guys, im goign to be playing you personal song.</p>
-            </div>
-            
           </div>
         </div>
        
