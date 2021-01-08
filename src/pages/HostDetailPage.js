@@ -73,7 +73,7 @@ const HostDetailPage = () => {
         </div>
         <Elements stripe={stripePromise}>
           {checkoutOn && <CheckoutForm toggle={toggleCheckout} />}
-          {!checkoutOn && <SRButton>Let's do it!</SRButton>}
+          {/* {!checkoutOn && <SRButton>Let's do it!</SRButton>} */}
           {/* {!checkoutOn && <h2 onClick={() => toggleCheckout()}>Purchase</h2>} */}
         </Elements>
       </motion.div>
