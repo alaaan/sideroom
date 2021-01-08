@@ -361,7 +361,6 @@ h4 {
 .host-profile-genre{
   font-size:1.3rem;
   font-weight: 400;
-  margin-top: -3%;
 }
 
 #host-price {
@@ -446,6 +445,7 @@ h4 {
   font-family: var(--new-font);
   font-size: 20px;
   color: white;
+  font-weight: 400;
 }
 
 .host-detail-card a {
@@ -472,10 +472,22 @@ h4 {
 
 /* Host Profile Styling */
 .host-profile-container{
-  width:30%;
-  margin-top:10px;
-  position:absolute; 
-  top:-15%;
+  width: 100%;
+  margin-top: 10px;
+  position: absolute;
+  top: -15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.host-profile-info-container{
+  border-radius: 7px;
+  width: 40%;
+  padding: 20px;
+  /* margin-top: 10%; */
+  /* margin-left: 25%; */
+  box-shadow: rgba(80, 63, 205, 0.5) 0px 1px 5px;
 }
 
 .host-detail-card > div:nth-of-type(2) {
@@ -484,8 +496,9 @@ h4 {
   overflow: hidden;
   width: auto;
   position: absolute;
-  left: 5%;
-  bottom: 5%;
+  left: 15%;
+  bottom: -10%;
+  box-shadow: rgba(80, 63, 205, 0.5) 0px 1px 40px;
 }
 
 .host-profile-border{
@@ -493,6 +506,7 @@ h4 {
   background: linear-gradient(288deg, rgba(67, 125, 248, 1) 69%, rgba(81, 201, 254, 1) 100%);
   border-radius: 50%;
   padding: 5px;
+  width:25%;
 }
 .host-profile-img{
   width: 100%;
@@ -504,15 +518,15 @@ h4 {
 }
 .host-profile-info{
   width: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin:10px;
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    align-items: center;
+    /* justify-content: center; */
+    /* position: relative; */
+    /* margin: 10px;*/
 }
 
 
