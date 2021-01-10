@@ -7,7 +7,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import Modal from '../components/Modal';
 import HostProfile from '../components/HostProfile';
 import ReactPlayer from 'react-player'
-import SRButton from '../components/SRButton'
+import SRPriceButton from '../components/SRPriceButton'
+import FooterCard from '../components/FooterCard'
 
 
 const HostDetailPage = () => {
@@ -56,11 +57,21 @@ const HostDetailPage = () => {
         {checkoutOn && <motion.h2>CHECKOUT</motion.h2>}
         
         <HostProfile img="http://placecorgi.com/150/150" genre='Athlete' price='$100' name='David Shaw' />
-        
-        <div className="host-profile-info-container">
+        <div className="host-profile-content-container">
           <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
-          <p>Super excited to meet you guys, im goign to be playing you personal song.</p>
+          <div className="host-profile-info-container">
+            <p>Super excited to meet you guys, im goign to be playing you personal song.</p>
+             <SRPriceButton>Let's do it!</SRPriceButton> 
+          </div>
         </div>
+
+        <div className="host-profile-footer-container">
+          <FooterCard title="Guaranteed Call.">Test</FooterCard>
+          <FooterCard title="Fulfilled in 15 days.">Test</FooterCard>
+          <FooterCard title="3 chances to answer.">Test</FooterCard>
+        </div>
+        <p className="footer-p">You dont pay if you dont get a call.</p>
+
         <div className="host-header-layout" data-isCheckout={checkoutOn}>
           
           {/* <motion.img
