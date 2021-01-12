@@ -1,4 +1,5 @@
-import { React, useState } from 'react'
+import { React, useState,useContext } from 'react'
+import { UserContext } from "../context/user-context"
 import { styled, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
@@ -26,6 +27,9 @@ import { ThemeProvider } from "@material-ui/styles";
 import { DatePicker } from "@material-ui/pickers";
 import Modal from '../components/Modal';
 import SRTextField from '../components/SRTextField'
+import verified from '../img/verified.png'
+import LoginForm from '../components/LoginForm'
+import {formatPhone} from '../helpers/functions'
 
 import 'yup-phone';
 
@@ -174,6 +178,8 @@ const FormField = withStyles({
 
 const CheckoutForm = ({toggle}) => {
 
+  const {isAuthenticated,loggedInUser,clearLoggedInUser} = useContext(UserContext);
+  const [showLogin,setShowLogin] = useState(false);
   const [giftChecked, toggleGiftCheked] = useCycle(false, true);
   const [selectedDate, setSelectedDate] = useState(Date.now());
   const handleDateChange = (date) => {
@@ -185,6 +191,11 @@ const CheckoutForm = ({toggle}) => {
   const elements = useElements();
   const cardElement = elements.getElement(CardElement);
   const [showSuccessModal,setShowSuccessModal] = useState(false);
+
+  const toggleLogin = ()=>{
+    setShowLogin(!showLogin);
+    console.log("trying to toggle login");
+  }
 
   //stripe stuff
   const CARD_ELEMENT_OPTIONS = {
@@ -255,6 +266,24 @@ const CheckoutForm = ({toggle}) => {
 
       <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
         <h2 style={{ marginTop: '10px' }}>Your Info</h2>
+        {!isAuthenticated && <h3>You must verify your phone number</h3>}
+
+        {isAuthenticated ? 
+          <>
+          <div style={{display:'flex', alignItems:'center'}}>
+            <h3 style={{marginTop:'1%'}}>Phone Verified</h3>
+            <img src={verified} alt="verified" style={{height:'30px',marginTop:'7px'}} />
+          </div>
+            <div style={{display:'flex',flexDirection:'column',marginBottom:'10px'}}>
+              <h3>{formatPhone(loggedInUser.Username)}</h3>
+              <h3 
+              style={{color:'var(--pink)',fontSize:'.8rem'}}
+              onClick={()=>(clearLoggedInUser())}
+              >Change Phone Number</h3>
+            </div></>:
+
+            <SRButtonOutlined onClick={toggleLogin}>Verify Phone</SRButtonOutlined>}
+
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <SRTextField
             fullWidth
@@ -285,7 +314,7 @@ const CheckoutForm = ({toggle}) => {
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
           {/* <MyField label="Phone" variant="outlined" /> */}
-          <SRTextField
+          {/* <SRTextField
             id="phone"
             name="phone"
             label="Phone"
@@ -294,10 +323,10 @@ const CheckoutForm = ({toggle}) => {
             onChange={formik.handleChange}
             error={formik.touched.phone && Boolean(formik.errors.phone)}
             helperText={formik.touched.phone && formik.errors.phone}
-          />
+          /> */}
 
-
-          <SRButtonOutlined>Verify Phone</SRButtonOutlined>
+        
+          
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
           <h2 style={{ marginTop: '10px' }}>Call Info</h2>
@@ -397,6 +426,11 @@ const CheckoutForm = ({toggle}) => {
           </Modal>
         ) : null
       }
+      
+      {showLogin? (
+      <Modal>
+          <LoginForm close={toggleLogin} />
+      </Modal>): null}
 
     </div>
 

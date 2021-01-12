@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import HostDetailPage from './pages/HostDetailPage'
 import Header from './components/Header'
 import { AnimatePresence } from "framer-motion";
-import { useUser, UserContext } from "./context/user-context"
+import { useUser, UserContext } from "./context/user-context";
 
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
     <>
       <div className="root-container">
         <AnimatePresence>
+          <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/host" component={HostDetailPage} />

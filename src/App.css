@@ -393,7 +393,6 @@ font-weight: 400;
 }
 
 .host-detail-page [data-CheckoutCard="false"] {
-  height: 80vh;
   grid-template-rows: auto;
   margin-top: 0;
   
@@ -418,6 +417,7 @@ font-weight: 400;
   padding-top: 10px;
   border-radius: 10px;
   flex-direction:column;
+  max-width: 700px;
 }
 
 .footer-p{
@@ -569,8 +569,8 @@ font-weight: 400;
 .price-button-price{ 
   border: 4px solid white;
   background:var(--darkblue);
-  width:9vw;
-  height:9vw;
+  width:75px;
+  height:75px;
   display:flex; 
   flex-direction:column; 
   justify-content:center; 
@@ -585,7 +585,7 @@ font-weight: 400;
 } 
 
 .price-button-price h2{
-  font-size: 2.7vw 
+  font-size: 1.5rem;
 }
 
 .host-profile-footer-container{
@@ -610,6 +610,24 @@ font-weight: 400;
 
 .footer-subtitle{
   width:200px; 
+}
+
+/* footer elements */
+.gauranteed-call-container{
+  display:flex; 
+  flex-direction:column; 
+  width:100%;
+  height:100%;
+  justify-content:center; 
+  align-items:center; 
+}
+
+.gauranteed-call-container h1{
+  font-size:4rem; 
+}
+
+.gauranteed-call-container h2{
+  margin-top: -10%;
 }
 
 

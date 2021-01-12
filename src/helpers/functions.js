@@ -57,3 +57,8 @@ export function useDidUpdateEffect(fn , inputs) {
       didMountRef.current = true;
   }, inputs);
 }
+
+export const formatPhone = (phoneNumber)=>{
+  // loggedInUser.Username.charAt(3)+loggedInUser.Username.charAt(4)})
+  return (`(${phoneNumber.charAt(2)+phoneNumber.charAt(3)+phoneNumber.charAt(4)}) ${phoneNumber.charAt(5)+phoneNumber.charAt(6)+phoneNumber.charAt(7)}-${phoneNumber.charAt(8)+phoneNumber.charAt(9)+phoneNumber.charAt(10)+phoneNumber.charAt(11)}`);
+}

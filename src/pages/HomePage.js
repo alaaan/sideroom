@@ -135,7 +135,7 @@ function App() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}>
-      <Header />
+      {/* <Header /> */}
       <div className="section-wrapper">
         {/* <section className="loading-section">
           <img className="sofa" src={Sofa} />
