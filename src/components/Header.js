@@ -25,7 +25,7 @@ const Header = () => {
     
     <div className="header">
 
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex',paddingTop:'10px' }}>
         <img src={door} style={{ objectFit: 'none' }} />
         <h2 style={{ padding: '10px', fontSize: '1.7rem', display: 'inline' }}>SideRoom</h2>
       </div>

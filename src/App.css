@@ -12,6 +12,7 @@
   --fadedpink: rgba(239, 73, 122, 25%);
   --lightpurple: #a57dc8;
   --bluepurple: #5643cc;
+  --mainblue:#2b2b7d;
   --darkblue: rgb(12, 14, 33);
   --mont-font: 'Montserrat', sans-serif;
   --alt-font: 'Righteous', cursive;
@@ -66,6 +67,25 @@ font-family: var(--new-font);
 font-size: 20px;
 color: white;
 font-weight: 400;
+}
+
+/* Components  */
+
+.glowy-box{
+  display: flex;
+  flex-direction:column; 
+  justify-content:center; 
+  align-items:center;
+  border-radius: 7px;
+  box-shadow: rgba(80, 63, 205, 0.5) 0px 1px 5px;
+  padding-top: -50px;
+  margin-top: 30p;
+  min-width: 10px;
+  min-height: 10px;
+  padding: 10px;
+  background:rgba(12, 14, 33, .4);
+  color:white; 
+  font-size:1.6rem; 
 }
 
 /* Modal  */
@@ -241,7 +261,8 @@ font-weight: 400;
 
 .hero-secondary-text {
   color: var(--pink);
-  font-weight: 300;
+  font-weight: 500;
+  font-size:1.5rem; 
 }
 
 .host-secondary-text {
@@ -756,6 +777,77 @@ font-weight: 400;
   height: 90vh;
   background: var(--green);
 }
+
+/* talent page */
+
+.talent-header{
+  height: 20vh;
+  background: rgb(32,27,67);
+  background: linear-gradient(180deg, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
+  padding: 10vw;
+  padding-bottom: 0;
+}
+
+.talent-calculator{
+  height: 40vh;
+  background-color: rgba(66,36,105,1);
+  display: grid;
+  /* flex-direction: row; */
+  /* flex-wrap: nowrap; */
+  grid-template-columns: 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  justify-items: center;
+}
+
+.calculator-input{
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  color: var(--pink);
+  font-weight: 700;
+  font-family: var(--new-font);
+  margin: 2px;
+  width: 75px;
+  text-align: center;
+  border-bottom: solid 2px var(--pink);
+}
+
+.talent-calc-banner{
+  height: 10vh;
+  width: 100%;
+  background: rgb(206,65,164);
+  background: linear-gradient(297deg, rgba(206,65,164,1) 44%, rgba(214,67,115,1) 100%);
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  margin-left: -10px;
+  padding:5px; 
+  text-align:center; 
+}
+
+
+.talent-how-it-works{
+  height:50vh; 
+  background: rgb(20,23,54);
+  background: linear-gradient(180deg, rgba(20,23,54,1) 0%, rgba(66,36,105,1) 100%);
+  border-top:1px solid var(--fadedpink);
+}
+
+.talent-cta{
+  height:60vh; 
+  background-color: rgba(66,36,105,1);
+}
+
+
+
+
+
+
+
+
 
 /* 
 media queries  */

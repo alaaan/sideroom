@@ -5,6 +5,7 @@ import HostDetailPage from './pages/HostDetailPage'
 import Header from './components/Header'
 import { AnimatePresence } from "framer-motion";
 import { useUser, UserContext } from "./context/user-context";
+import TalentPage from './pages/TalentPage';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/host" component={HostDetailPage} />
+            <Route exact path="/talent" component={TalentPage} />
           </Switch>
         </AnimatePresence>
       </div>
