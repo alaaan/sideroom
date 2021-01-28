@@ -24,6 +24,8 @@ const TalentCalculator = () =>{
   const handlePriceChange = (e)=>{
     setPrice(e.target.value)
     setEarnings(qty*e.target.value*4);
+    
+    
   }
 
   const handleQtyChange = (e)=>{

@@ -834,6 +834,33 @@ font-weight: 400;
   background: rgb(20,23,54);
   background: linear-gradient(180deg, rgba(20,23,54,1) 0%, rgba(66,36,105,1) 100%);
   border-top:1px solid var(--fadedpink);
+  display:flex; 
+  flex-direction:column; 
+}
+
+.talent-how-it-works-content{
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap:1vw;
+  row-gap:2vw;
+  justify-items:center; 
+  margin-top:3vh;
+
+}
+.talent-step-container{
+  height:30vh; 
+  display:grid; 
+  grid-template-rows:1fr 1fr; 
+  justify-items: center;
+}
+
+.talent-step-content{
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  align-items:center; 
+  padding:10px; 
+ 
 }
 
 .talent-cta{
