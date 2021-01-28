@@ -836,11 +836,13 @@ font-weight: 400;
   border-top:1px solid var(--fadedpink);
   display:flex; 
   flex-direction:column; 
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .talent-how-it-works-content{
   display:grid; 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   column-gap:1vw;
   row-gap:2vw;
   justify-items:center; 
@@ -864,8 +866,14 @@ font-weight: 400;
 }
 
 .talent-cta{
-  height:60vh; 
+  height:40vh; 
   background-color: rgba(66,36,105,1);
+  padding-left: 5%;
+  padding-right: 5%;
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  padding-top: 5vh;
 }
 
 
