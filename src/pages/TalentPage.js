@@ -8,6 +8,7 @@ import {ReactComponent as Icon} from '../img/icon.svg'
 import talentBooking from '../img/talent-booking.png'
 import talentVideoCall from '../img/talent-video-call.png'
 import talentMakeMoney from '../img/talent-make-money.png'
+import MetaTags from 'react-meta-tags'
 
 const TalentPage = ()=>{
 
@@ -33,6 +34,13 @@ const TalentPage = ()=>{
 
   return(
     <>
+    <MetaTags>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@flickr" />
+      <meta name="twitter:title" content="Small Island Developing States Photo Submission" />
+      <meta name="twitter:description" content="View the album on Flickr." />
+      <meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
+    </MetaTags>
     <section className="talent-header">
         <h1 className='talent-headline' style={{fontSize:'3rem',visibility:'hidden'}}>A platform to safely and securely video call your fans</h1>
         <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>Meet them in the SideRoom.</h3>
@@ -73,6 +81,22 @@ const TalentPage = ()=>{
       <div>
         <h1 className='talent-footer-headline' style={{fontSize:'3.2rem', marginTop:'5vh'}}>Adjust your pricing and availability easily from the app.</h1>
       </div>
+
+      
+
+      {/* <div class="scene">
+        <div class="box">
+          <div class="box__face box__face--front">
+            <ReactPlayer width='100%' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
+        
+        </div>
+          <div class="box__face box__face--back"></div>
+          <div class="box__face box__face--right"></div>
+          <div class="box__face box__face--left"></div>
+          <div class="box__face box__face--top"></div>
+          <div class="box__face box__face--bottom"></div>
+        </div>
+      </div> */}
 
     </section>
     </>
