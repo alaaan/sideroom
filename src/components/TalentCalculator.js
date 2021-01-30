@@ -34,7 +34,7 @@ const TalentCalculator = () =>{
   }
 
   return(
-  <GlowyBox boxWidth='60%' boxHeight='40%'>
+  <GlowyBox boxWidth='400px' boxHeight='200px'>
     <div className="talent-calc-banner">
       <h2 style={{fontSize:'2rem'}}>Earn <span className="earnings" style={{display:'inline-block',fontSize:'2.5rem',color:'var(--mainblue)'}}>{formatCurrency(earnings)}</span> per month video calling your fans</h2>
     </div>

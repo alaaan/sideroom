@@ -41,6 +41,7 @@ const TalentPage = ()=>{
       <meta name="twitter:description" content="View the album on Flickr." />
       <meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
     </MetaTags>
+    
     <section className="talent-header">
         <h1 className='talent-headline' style={{fontSize:'3rem',visibility:'hidden'}}>A platform to safely and securely video call your fans</h1>
         <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>Meet them in the SideRoom.</h3>

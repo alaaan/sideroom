@@ -77,15 +77,22 @@ font-weight: 400;
   justify-content:center; 
   align-items:center;
   border-radius: 7px;
-  box-shadow: rgba(80, 63, 205, 0.5) 0px 1px 5px;
+  /* box-shadow: rgba(80, 63, 205, 0.5) 0px 1px 5px; */
   padding-top: -50px;
   margin-top: 30p;
   min-width: 10px;
   min-height: 10px;
   padding: 10px;
-  background:rgba(12, 14, 33, .4);
+  /* background:rgba(12, 14, 33, .4); */
   color:white; 
   font-size:1.6rem; 
+  /* background: rgba(66,36,105,1); */
+  border-radius: 15px;
+  /* box-shadow:  20px 20px 60px #63389c,
+             -20px -20px 60px #874cd4; */
+background: #422469;
+box-shadow:  30px 30px 60px #3b205d,
+             -30px -30px 60px #492875;
 }
 
 /* Modal  */
@@ -249,8 +256,9 @@ font-weight: 400;
   background: radial-gradient(circle, rgba(97, 45, 140, 1) 0%, rgba(33, 26, 68, 1) 93%);
   display: grid;
   grid-template-columns: 8vw 3fr 2fr 8vw;
-  grid-template-rows: 20vh 80vh;
+  grid-template-rows: 10vh 80vh;
   align-items: center;
+  perspective:750px; 
   /* z-index: -1; */
 }
 
@@ -262,7 +270,7 @@ font-weight: 400;
 .hero-secondary-text {
   color: var(--pink);
   font-weight: 500;
-  font-size:1.5rem; 
+  font-size:1.75rem; 
 }
 
 .host-secondary-text {
@@ -647,12 +655,40 @@ font-weight: 400;
   flex-direction: column; 
   align-items:center; 
   position:relative; 
+  perspective:500px; 
 }
 
 .footer{
   height:20vh; 
 
 }
+
+.home-card {
+
+
+}
+
+/* SVG Shapes */
+
+.shape1{
+  position: absolute;
+  right: 10vw;
+  top: 40vh;
+}
+
+.shape2{
+  position: absolute;
+  left: 10vw;
+  top: 10vh;
+}
+
+.shape2{
+  position: absolute;
+  left: 50vw;
+  top: 15h;
+}
+
+
 
 .test-thing-1{
   opacity:0; 
@@ -781,7 +817,7 @@ font-weight: 400;
 /* talent page */
 
 .talent-header{
-  height: 20vh;
+  /* height: 20vh; */
   background: rgb(32,27,67);
   background: linear-gradient(180deg, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
   padding: 10vw;
@@ -790,7 +826,8 @@ font-weight: 400;
 
 .talent-calculator{
   height: 40vh;
-  background-color: rgba(66,36,105,1);
+  /* background-color: rgba(66,36,105,1); */
+  background-color:#422469;
   display: grid;
   /* flex-direction: row; */
   /* flex-wrap: nowrap; */
@@ -819,8 +856,8 @@ font-weight: 400;
 .talent-calc-banner{
   height: 10vh;
   width: 100%;
-  background: rgb(206,65,164);
-  background: linear-gradient(297deg, rgba(206,65,164,1) 44%, rgba(214,67,115,1) 100%);
+  /* background: rgb(206,65,164);
+  background: linear-gradient(297deg, rgba(206,65,164,1) 44%, rgba(214,67,115,1) 100%); */
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
   margin-left: -10px;

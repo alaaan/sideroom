@@ -22,6 +22,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ReactPlayer from 'react-player';
 
 import {ReactComponent as PhoneSvg} from '../img/phone.svg'
+import shape from '../img/shape.svg'
+import shape2 from '../img/shape2.svg'
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -53,80 +55,39 @@ function App() {
     //setup animations here
 
     let tl = gsap.timeline({
+      // yes, we can add it to an entire timeline!
       scrollTrigger: {
         trigger: ".how-to-section",
-        markers:true,
-        //pin: true,   // pin the trigger element while active
-        pinSpacing:true,
-        pin:'.how-to-section',
-        start: "top top", // when the top of the trigger hits the top of the viewport
-        end: "+=5000", // end after scrolling 5000px beyond the start
-        scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-        // snap: {
-        //   snapTo: "labels", // snap to the closest label in the timeline
-        //   duration: {min: 0.2, max: 3}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-        //   delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
-        //   ease: "power1.inOut" // the ease of the snap animation ("power3" by default)
-        // }
-        }
-
+        start: "top bottom", // when the top of the trigger hits the top of the viewport
+        end: "bottom top", // end after scrolling 500px beyond the start
+        scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar,
+        markers:true
+      }
     });
 
-      // .to(".test-thing-1", {opacity:1})
-      tl.addLabel("start")
-      .to(".test-thing-1", {opacity:1,scale:1.2})
-      .to(".test-thing-1", {scale:1,opacity:0,autoAlpha:true})
-      tl.addLabel("second step")
-      .to('.test-thing-2',{scale:1.2,opacity:1})
-      .to('.test-thing-2',{opacity:0,scale:1})
-      tl.addLabel("third step")
-      .to('.test-thing-3',{scale:1.2,opacity:1})
-      .to('.test-thing-3',{opacity:0,scale:1})
+    tl.addLabel('startbg')
+    tl.to('.shape2',{x:500,y:-100,rotate:360,rotateZ:5},'startbg')
+    tl.to('.shape1',{x:-300,y:500,rotate:270,rotateZ:100},'startbg')
+    tl.to('.shape3',{x:-120,y:100,rotate:100},'startbg')
+
+
+
+
+      let headerTl=gsap.timeline();
+      gsap.set('.hero-secondary-text',{visibility:'visible'});
+      headerTl.addLabel('start');
+      headerTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:50,rotateX:25,rotateZ:10,y:500,x:-800,z:200,duration:1,delay:.5,ease:'Power2.out'},'start'); 
+      // headerTl.from('.hero-secondary-text',{opacity:0,duration:.5},'start+=2')
+      headerTl.to('.hero-secondary-text',{text:"prepare to pickup",duration:1.5,ease:'none'},'start+=2')
+      headerTl.to('.hero-secondary-text',{text:"prepare to pickup.",duration:2,ease:'none'},'start+=4')
+
   
 
 
-    // tl.to('.test-thing-1',{
-    // scrollTrigger: {
-    //   trigger: ".how-to-section",
-    //   markers:true,
-    //   //pin: true,   // pin the trigger element while active
-    //   pinSpacing:true,
-    //   pin:'.how-to-section',
-    //   start: "top top", // when the top of the trigger hits the top of the viewport
-    //   end: "+=500", // end after scrolling 500px beyond the start
-    //   scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-    //   },opacity:1},1);
 
-      // tl.to('.test-thing-1',{
-      //   scrollTrigger: {
-      //     trigger: ".how-to-section",
-      //     markers:true,
-      //     //pin: true,   // pin the trigger element while active
-      //     pinSpacing:true,
-      //     pin:'.how-to-section',
-      //     start: "top +=500", // when the top of the trigger hits the top of the viewport
-      //     end: "+=500", // end after scrolling 500px beyond the start
-      //     scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-      //     },opacity:0},1);
-
-      // tl.to('.test-thing-2',{
-      //   scrollTrigger: {
-      //     trigger: ".test-thing-2",
-      //     markers:true,
-      //     pin: true,   // pin the trigger element while active
-      //     pinSpacing:true,
-      //     start: 2000, // when the top of the trigger hits the top of the viewport
-      //     end: "+=500", // end after scrolling 500px beyond the start
-      //     scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-      //     },opacity:1},1);
-
-      let headerTl=gsap.timeline();
-      headerTl.addLabel('start');
-      headerTl.from('.headline-h1',{transform:'skew(0deg)',repeat:3,yoyo:true,duration:.5,ease:'Power2.out'},'start'); 
-      headerTl.from('.hero-secondary-text',{opacity:0,duration:.5},'start+=1')
-      headerTl.staggerFrom('.phoneSVG path',.5,{opacity:0,stagger:.05},'start+=1'); 
-      headerTl.staggerFrom('.phoneSVG rect',.5,{opacity:0,stagger:.05},'start+=1'); 
-      headerTl.staggerFrom('.phoneSVG circle',.5,{opacity:0,stagger:.05,y:100},'start+=1'); 
+      // headerTl.staggerFrom('.phoneSVG path',.5,{opacity:0,stagger:.05},'start+=1'); 
+      // headerTl.staggerFrom('.phoneSVG rect',.5,{opacity:0,stagger:.05},'start+=1'); 
+      // headerTl.staggerFrom('.phoneSVG circle',.5,{opacity:0,stagger:.05,y:100},'start+=1'); 
 
 
       
@@ -195,16 +156,24 @@ function App() {
         </section> */}
         <section className="hero-section">
           <div className="hero-left-container" style={{ gridRow: 2, gridColumn: 2 }}>
-            <h1 className='headline-h1'>Get a call from your favorite celeb.</h1>
-            <h2 className="hero-secondary-text">Meet them in the sideroom.</h2>
+            <h1 className='headline-h1' style={{paddingBottom:'1rem'}}>Get a video call from your favorite celeb.</h1>
+            <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}></h2>
           </div>
-          <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} />
+          {/* <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} /> */}
   
         </section>
 
         
         <section className="how-to-section">
-          <div className='test-thing-1'>
+          <img src={shape} className='shape1'/>
+          <img src={shape} className='shape2'/>
+          <img src={shape2} className='shape3'/>
+
+        <section className="home-card step1"></section>
+        <section className="home-card step2"></section>
+        <section className="home-card step3"></section>
+
+          {/* <div className='test-thing-1'>
             <h1>Purchase Graphic</h1>
           </div>
           <div className='test-thing-2'>
@@ -214,8 +183,7 @@ function App() {
           <div className='test-thing-3'>
             <h2>Third step fam</h2>
             <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
-
-          </div>
+          </div> */}
           {/* <div style={{ gridRow: 2, gridColumn: 2 }}>
             <h1 className="get-call-headline">How does this work?</h1>
             <h2 className="hero-seco%;dary-text">We got you covered.</h2>
