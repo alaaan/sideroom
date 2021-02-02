@@ -24,6 +24,8 @@ import ReactPlayer from 'react-player';
 import {ReactComponent as PhoneSvg} from '../img/phone.svg'
 import shape from '../img/shape.svg'
 import shape2 from '../img/shape2.svg'
+import paymentMethod from '../img/paymentmethod.png'
+import waves from '../img/waves.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -59,27 +61,32 @@ function App() {
       scrollTrigger: {
         trigger: ".how-to-section",
         start: "top bottom", // when the top of the trigger hits the top of the viewport
-        end: "bottom top", // end after scrolling 500px beyond the start
+        end: "middle top", // end after scrolling 500px beyond the start
         scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar,
         markers:true
       }
     });
 
     tl.addLabel('startbg')
-    tl.to('.shape2',{x:500,y:-100,rotate:360,rotateZ:5},'startbg')
-    tl.to('.shape1',{x:-300,y:500,rotate:270,rotateZ:100},'startbg')
-    tl.to('.shape3',{x:-120,y:100,rotate:100},'startbg')
+    // tl.to('.shape2',{x:500,y:-100,rotate:360,rotateZ:5},'startbg')
+    // tl.to('.shape1',{x:-300,y:500,rotate:270,rotateZ:100},'startbg')
+    tl.fromTo('.video1',{rotateX:-10,opacity:0,y:100,x:-300,z:-200},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg')
+    tl.fromTo('.video2',{rotateX:-10,opacity:0,y:-100,x:300,z:-200},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg+=3')
+    tl.fromTo('.how-to-box',{rotateY:-20,opacity:0,y:-100,x:600,z:20},{rotateY:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg+=2')
+    tl.from('.how-to-title',{z:100,rotateX:10,duration:1},'startbg+=4')
 
+    // tl.to('.how-to-section',{'background':'radial-gradient(circle, rgba(97, 45, 140, 1) 0%, rgba(33, 26, 68, 1) 93%)',duration:3},'startbg')
+    // tl.to('.shape3',{scale:2,rotate:15,repeat:2},'startbg-=2');
 
 
 
       let headerTl=gsap.timeline();
       gsap.set('.hero-secondary-text',{visibility:'visible'});
       headerTl.addLabel('start');
-      headerTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:50,rotateX:25,rotateZ:10,y:500,x:-800,z:200,duration:1,delay:.5,ease:'Power2.out'},'start'); 
+      headerTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:50,rotateX:25,y:500,x:-800,duration:1,delay:.5,ease:'Power2.out'},'start'); 
       // headerTl.from('.hero-secondary-text',{opacity:0,duration:.5},'start+=2')
       headerTl.to('.hero-secondary-text',{text:"prepare to pickup",duration:1.5,ease:'none'},'start+=2')
-      headerTl.to('.hero-secondary-text',{text:"prepare to pickup.",duration:2,ease:'none'},'start+=4')
+      headerTl.to('.hero-secondary-text',{text:"prepare to pickup.",duration:4,ease:'none'},'start+=4')
 
   
 
@@ -160,54 +167,60 @@ function App() {
             <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}></h2>
           </div>
           {/* <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} /> */}
-  
+       
         </section>
 
         
         <section className="how-to-section">
-          <img src={shape} className='shape1'/>
-          <img src={shape} className='shape2'/>
-          <img src={shape2} className='shape3'/>
+          {/* <img src={shape} className='shape1'/>
+          <img src={shape} className='shape2'/> */}
+          <div className='video1' style={{overflow:'hidden',borderRadius:'7px'}}>
+            <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+          </div>
+          
+          <div className='video2' style={{overflow:'hidden',borderRadius:'7px'}}>
+            <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+          </div>
 
-        <section className="home-card step1"></section>
-        <section className="home-card step2"></section>
-        <section className="home-card step3"></section>
-
-          {/* <div className='test-thing-1'>
-            <h1>Purchase Graphic</h1>
-          </div>
-          <div className='test-thing-2'>
-          <h2>second step fam</h2>
-            <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
-          </div>
-          <div className='test-thing-3'>
-            <h2>Third step fam</h2>
-            <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
-          </div> */}
-          {/* <div style={{ gridRow: 2, gridColumn: 2 }}>
-            <h1 className="get-call-headline">How does this work?</h1>
-            <h2 className="hero-seco%;dary-text">We got you covered.</h2>
-          </div>
-          <div className="how-to-grid">
-            <div className="step-container">
-              <div className="step-1">
-                <StepImage src={step1} />
-                <h2 style={{ justifySelf: "end", marginRight: '100px' }}>Pick your favorite host</h2>
-              </div>
-              <div className="step-2">
-                <h2 style={{ justifySelf: "start", marginLeft: '100px' }}>Pick your preffered date</h2>
-                <StepImage src={calendar} />
-              </div>
-              <div className="step-3">
-                <StepImage src={waiting} />
-                <h2 style={{ justifySelf: "end", marginLeft: '100px' }}>Wait for that special moment.</h2>
-              </div>
-              <div className="step-4">
-                <h2 style={{ justifySelf: "start", marginLeft: '100px' }}>Get your call!</h2>
-                <StepImage src={step4} />
-              </div>
+          <div className="how-to-box">
+            <h1 className='how-to-title'>book it</h1>
+            <p>Securely and easily on our site.</p>
+            <div>
+              <img className="book-call-img-left" src={paymentMethod} width='200px' />
+              <img className="book-call-img-right" src={paymentMethod} width='200px' />
             </div>
-          </div> */}
+            
+            {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
+              <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
+            </div> */}
+            <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
+
+
+          </div>
+
+          <div className="how-to-box">
+            <h1 className='how-to-title'>download the app</h1> 
+            <p>we got you covered on iOS and Android.</p>
+            {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
+              <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
+            </div> */}
+            <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
+          </div>
+
+          <div className="how-to-box">
+            <h1 className='how-to-title'>wait for your call</h1> 
+            <p>get ready for the magic.</p>
+
+            {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
+              <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
+            </div> */}
+            <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
+          </div>
+
+
+
+
+       
         </section>
 
         <section className="host-section">
@@ -223,7 +236,7 @@ function App() {
         <section className="footer">
         </section>
 
-
+        {/* https://conectrmedia.blob.core.windows.net/files/reaction.mp4 */}
 
       </div>
     </motion.div>

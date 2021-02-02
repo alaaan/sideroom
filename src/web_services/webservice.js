@@ -10,7 +10,11 @@ export class JsonPayload {
 
 export default class WebService {
 
-  apiUrl = 'https://dudewheresmyapi.conectr.io';
+  // apiUrl = 'https://dudewheresmyapi.conectr.io';
+
+  apiUrl = ' http://conectr-api-dev.azurewebsites.net';
+
+ 
 
   async makeGetRequest(
       path,

@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
 
 * {
   margin: 0;
@@ -18,6 +20,9 @@
   --alt-font: 'Righteous', cursive;
   --new-font: 'Barlow', sans-serif;
   --raleway: 'Raleway', sans-serif;
+  --squada: 'Squada One', cursive;
+  --serif-font: 'DM Serif Text', serif;
+
 
 }
 
@@ -649,7 +654,7 @@ box-shadow:  30px 30px 60px #3b205d,
   grid-template-columns: 8vw 3fr 2fr 8vw; */
   background: rgb(20, 23, 54);
   background: linear-gradient(156deg, rgba(20, 23, 54, 1) 22%, rgba(53, 34, 85, 1) 100%);
-  height: 100vh;
+  height: 2000px;
   width:100%; 
   display:flex; 
   flex-direction: column; 
@@ -682,10 +687,83 @@ box-shadow:  30px 30px 60px #3b205d,
   top: 10vh;
 }
 
-.shape2{
+.video1{
   position: absolute;
-  left: 50vw;
-  top: 15h;
+  left: 5vw;
+  top: 15vh;
+  box-shadow: 30px 30px 60px #3b205d, -30px -30px 60px #492875;
+}
+
+.video2{
+  position: absolute;
+  right: 5vw;
+  top: 50vh;
+  box-shadow: 30px 30px 60px #3b205d, -30px -30px 60px #492875;
+}
+
+.video1 > div:nth-of-type(1) {
+  width:100px !important;
+  height:175px !important; 
+}
+
+.video2 > div:nth-of-type(1) {
+  width:100px !important;
+  height:175px !important; 
+}
+
+.how-to-box{
+  width: 500px;
+  border-radius: 10px;
+  background: rgb(43,43,125);
+  position: relative;
+  height: 500px;
+  display: flex;
+  margin-top: 100px;
+  flex-direction: column;
+  align-items: center;
+  overflow:hidden;
+  padding-top:1vh; 
+}
+
+.how-to-box h1{
+  color:white; 
+  text-align: center;
+  font-family:var(--squada);
+  text-shadow: var(--mainblue) 1px 1px, var(--mainblue) 2px 2px;
+  font-size:4rem; 
+}
+
+.how-to-box p{
+  color:white; 
+  text-align: center;
+  font-family:var(--serif-font);
+  font-size:1.4rem; 
+}
+
+.book-call-img-left{
+  position:absolute;
+  left:-16px;   
+}
+
+.book-call-img-right{
+  position:absolute;
+  right:-16px;   
+}
+
+.checkoutVideo > div:nth-of-type(1) {
+  
+  width:100% !important;
+  height:100% !important; 
+
+}
+
+.checkoutVideo{
+  overflow: hidden;
+  border-radius: 7px;
+  position: absolute;
+  bottom: 50px;
+  width: 275px;
+  height: 175px;
 }
 
 
@@ -915,6 +993,8 @@ box-shadow:  30px 30px 60px #3b205d,
 
 
 /* 3d Testing */
+
+
 
 .scene {
   width: 300px;

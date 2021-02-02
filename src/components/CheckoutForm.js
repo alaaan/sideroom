@@ -16,7 +16,9 @@ import { useFormik, Field } from 'formik';
 import PhoneInput from 'react-phone-number-input/input';
 import InputMask from 'react-input-mask';
 import MaskedInput from "react-text-mask";
-import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -30,6 +32,7 @@ import SRTextField from '../components/SRTextField'
 import verified from '../img/verified.png'
 import LoginForm from '../components/LoginForm'
 import {formatPhone} from '../helpers/functions'
+import PurchaseWebService from '../web_services/PurchaseWebService'
 
 import 'yup-phone';
 
@@ -258,12 +261,52 @@ const CheckoutForm = ({toggle}) => {
 
   const today = new Date();
 
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // if (!isSubmittingPayment) {
+    //   if (!stripe || !elements) {
+    //     // Stripe.js has not yet loaded.
+    //     // disable form submission until Stripe.js has loaded.
+    //     return;
+    //   }
+      // setIsSubmittingPayment(true);
+      let paymentMethodId = "";
+    
+        const cardElement = elements.getElement(CardElement);
+        // Use your card Element with other Stripe.js APIs
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+          type:"card",
+          card:cardElement
+        });
+
+        if (error) {
+          console.log("[error]", error);
+        } else {
+          console.log("[PaymentMethod]", paymentMethod);
+          paymentMethodId = paymentMethod.id;
+        }
+  
+      const webService = new PurchaseWebService();
+      const result = await webService.makePurchase(
+        1,formik.values.request,true,loggedInUser.Username,paymentMethodId,formik.values.date
+      );
+      if (result.Errored) {
+        console.log("There was an error processing your payment - " + result.Message)
+    ;
+      } else {
+        console.log('purchase success')
+      }
+    }
+
+
   return (
     <div>
       <CloseIcon
         onClick={toggle}
         fontSize='large' color="secondary" style={{ position: 'absolute', top: 5, right: 5 }} />
-
       <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
         <h2 style={{ marginTop: '10px' }}>Your Info</h2>
         {!isAuthenticated && <h3>You must verify your phone number</h3>}
@@ -411,7 +454,7 @@ const CheckoutForm = ({toggle}) => {
           {/* <MyField label="Expiration" variant="outlined" />
           <MyField label="CVV" variant="outlined" />
           <MyField label="Zip Code" variant="outlined" />  */}
-          <SRButton type="submit" style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call</SRButton>
+          <SRButton type="submit" onClick={handleSubmit} style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call</SRButton>
         </div>
 
         {/* <StyledButton  /> */}
