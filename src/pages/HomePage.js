@@ -1,5 +1,6 @@
 
 import '../App.css';
+import '../styles/HomePage.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import hero from '../img/header-illustration.png';
 import step1 from '../img/step1.png'
@@ -9,7 +10,7 @@ import step4 from '../img/step4.png';
 import Header from '../components/Header';
 import door from '../img/door.png';
 import {
-  useRef,
+  useState,
   useEffect
 } from 'react';
 import gsap from 'gsap';
@@ -26,6 +27,13 @@ import shape from '../img/shape.svg'
 import shape2 from '../img/shape2.svg'
 import paymentMethod from '../img/paymentmethod.png'
 import waves from '../img/waves.svg';
+import calendarSVG from '../img/booking.svg';
+import downloadSVG from '../img/download.svg';
+import videochatSVG from '../img/videochat.svg';
+import {ReactComponent as WaveSVG} from '../img/waves.svg';
+import {ReactComponent as WaveTop} from '../img/wave-top.svg';
+import {ReactComponent as LogoSpinner} from '../img/logo-spinner.svg'
+import {ReactComponent as Blob} from '../img/blob.svg'
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -52,28 +60,49 @@ function StepImage(props) {
 
 function App() {
 
+  const [hostText,setHostText] = useState('celeb');
+
   useEffect(() => {
 
     //setup animations here
 
+    gsap.to('#logo-spinner-text',{delay:5,rotate:360,duration:8,repeat:-1,ease: 'none',transformOrigin:'center'});
+
+
+    let headerTextTl = gsap.timeline();
+    headerTextTl.set('#host-type-celeb',{display:'inline-block'})
+    headerTextTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:20,rotateX:25,y:500,x:-800,duration:.5,ease:'power1'}) ;
+    headerTextTl.to('#host-type-celeb',{delay:1,duration:.25,opacity:0,display:"none"});
+
+    headerTextTl.set('#host-type-athlete',{display:'inline-block'})
+    headerTextTl.from('#host-type-athlete',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
+    headerTextTl.to('#host-type-athlete',{duration:.25,opacity:0,display:"none"},'<2');
+
+    headerTextTl.set('#host-type-artist',{display:'inline-block'})
+    headerTextTl.from('#host-type-artist',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
+    headerTextTl.to('.hero-secondary-text',{text:"prepare to pickup.",duration:3,ease:'back'})
+
+
     let tl = gsap.timeline({
-      // yes, we can add it to an entire timeline!
-      scrollTrigger: {
-        trigger: ".how-to-section",
-        start: "top bottom", // when the top of the trigger hits the top of the viewport
-        end: "middle top", // end after scrolling 500px beyond the start
-        scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar,
-        markers:true
-      }
+
+      delay:10
+      // scrollTrigger: {
+      //   trigger: ".how-to-section",
+      //   start: "top middle", // when the top of the trigger hits the top of the viewport
+      //   end: "bottom top", // end after scrolling 500px beyond the start
+      //   scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar,
+      //   markers:true
+      // }
     });
 
-    tl.addLabel('startbg')
-    // tl.to('.shape2',{x:500,y:-100,rotate:360,rotateZ:5},'startbg')
+
+    tl.to('#blob',{rotate:720,scale:1.2,x:-1200,y:400,repeat:-1,yoyo:true,duration:10,ease:'linear'})
     // tl.to('.shape1',{x:-300,y:500,rotate:270,rotateZ:100},'startbg')
-    tl.fromTo('.video1',{rotateX:-10,opacity:0,y:100,x:-300,z:-200},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg')
-    tl.fromTo('.video2',{rotateX:-10,opacity:0,y:-100,x:300,z:-200},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg+=3')
-    tl.fromTo('.how-to-box',{rotateY:-20,opacity:0,y:-100,x:600,z:20},{rotateY:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg+=2')
-    tl.from('.how-to-title',{z:100,rotateX:10,duration:1},'startbg+=4')
+    // tl.to('#logo-spinner-text',{rotate:360,duration:10,repeat:-1,ease: 'Linear.easeNone',transformOrigin:'center'},0);
+    tl.from('.testimonial-video',{duration:2,stagger:.5,opacity:0,x:-100},'<')
+    // tl.fromTo('.video1',{rotateX:-10,opacity:0,y:100,x:-300,z:-20},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg')
+    // tl.fromTo('.video2',{rotateX:-10,opacity:0,y:-100,x:300,z:-20},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg+=3')
+    tl.fromTo('.how-to-box',{rotateY:-20,opacity:0,y:-100,x:600,z:20},{duration:3,stagger:1,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'},'<')
 
     // tl.to('.how-to-section',{'background':'radial-gradient(circle, rgba(97, 45, 140, 1) 0%, rgba(33, 26, 68, 1) 93%)',duration:3},'startbg')
     // tl.to('.shape3',{scale:2,rotate:15,repeat:2},'startbg-=2');
@@ -82,23 +111,15 @@ function App() {
 
       let headerTl=gsap.timeline();
       gsap.set('.hero-secondary-text',{visibility:'visible'});
-      headerTl.addLabel('start');
-      headerTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:50,rotateX:25,y:500,x:-800,duration:1,delay:.5,ease:'Power2.out'},'start'); 
-      // headerTl.from('.hero-secondary-text',{opacity:0,duration:.5},'start+=2')
-      headerTl.to('.hero-secondary-text',{text:"prepare to pickup",duration:1.5,ease:'none'},'start+=2')
-      headerTl.to('.hero-secondary-text',{text:"prepare to pickup.",duration:4,ease:'none'},'start+=4')
-
-  
-
-
-
-      // headerTl.staggerFrom('.phoneSVG path',.5,{opacity:0,stagger:.05},'start+=1'); 
-      // headerTl.staggerFrom('.phoneSVG rect',.5,{opacity:0,stagger:.05},'start+=1'); 
-      // headerTl.staggerFrom('.phoneSVG circle',.5,{opacity:0,stagger:.05,y:100},'start+=1'); 
+      headerTl.from('.header-video',{x:100,duration:1,opacity:0},'<1');
 
 
       
   }, []);
+
+  const cycleHostText = ()=>{
+    setHostText("athlete");
+  }
 
   const dummyHosts = [
     {
@@ -163,32 +184,130 @@ function App() {
         </section> */}
         <section className="hero-section">
           <div className="hero-left-container" style={{ gridRow: 2, gridColumn: 2 }}>
-            <h1 className='headline-h1' style={{paddingBottom:'1rem'}}>Get a video call from your favorite celeb.</h1>
+      <h1 className='headline-h1' style={{paddingBottom:'1rem'}}>Get a video call from your favorite <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span>
+      </h1>
+      
+
             <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}></h2>
           </div>
+          <div className='header-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+            <h3>Animated Content</h3>
+          </div>
           {/* <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} /> */}
-       
+          <div className="wave-top">
+          <WaveTop />
+          </div>
+        </section>
+        
+        <section className="testimonial-section">
+
+          
+         
+        
+               <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+                  <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+              </div>
+              <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+                  <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+              </div>
+              <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+                  <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+              </div> 
+       <div className="waves">
+    <svg width="100%" height="200px" fill="none" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00B4DB" />
+        <stop offset="50%" stop-color="#224488" />
+        <stop offset="100%" stop-color="#0083B0" />
+      </linearGradient>
+      <path 
+        fill="rgb(20, 23, 54)" 
+        d="
+          M0 67
+          C 273,183
+            822,-40
+            1920.00,106 
+          
+          V 359 
+          H 0 
+          V 67
+          Z">
+        <animate 
+          repeatCount="indefinite" 
+          fill="url(#grad1)" 
+          attributeName="d" 
+          dur="15s"
+          attributeType="XML"
+          values="
+            M0 77 
+            C 473,283
+              822,-40
+              1920,116 
+            
+            V 359 
+            H 0 
+            V 67 
+            Z; 
+
+            M0 77 
+            C 473,-40
+              1222,283
+              1920,136 
+            
+            V 359 
+            H 0 
+            V 67 
+            Z; 
+
+            M0 77 
+            C 973,260
+              1722,-53
+              1920,120 
+            
+            V 359 
+            H 0 
+            V 67 
+            Z; 
+
+            M0 77 
+            C 473,283
+              822,-40
+              1920,116 
+            
+            V 359 
+            H 0 
+            V 67 
+            Z
+            ">
+        </animate>
+      </path>
+    </svg>
+  </div>
         </section>
 
         
         <section className="how-to-section">
+          <LogoSpinner />
+          <Blob />
           {/* <img src={shape} className='shape1'/>
           <img src={shape} className='shape2'/> */}
-          <div className='video1' style={{overflow:'hidden',borderRadius:'7px'}}>
+          {/* <div className='video1' style={{overflow:'hidden',borderRadius:'7px'}}>
             <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-          </div>
+          </div> */}
           
-          <div className='video2' style={{overflow:'hidden',borderRadius:'7px'}}>
+          {/* <div className='video2' style={{overflow:'hidden',borderRadius:'7px'}}>
             <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-          </div>
+          </div> */}
 
           <div className="how-to-box">
             <h1 className='how-to-title'>book it</h1>
             <p>Securely and easily on our site.</p>
-            <div>
-              <img className="book-call-img-left" src={paymentMethod} width='200px' />
-              <img className="book-call-img-right" src={paymentMethod} width='200px' />
-            </div>
+    
+              <img src={calendarSVG } style={{width:'75%',marginTop:'20px'}} />
+              {/* <img className="book-call-img-left" src={paymentMethod} width='200px' />
+              <img className="book-call-img-right" src={paymentMethod} width='200px' /> */}
+        
             
             {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
               <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
@@ -201,6 +320,8 @@ function App() {
           <div className="how-to-box">
             <h1 className='how-to-title'>download the app</h1> 
             <p>we got you covered on iOS and Android.</p>
+            <img src={downloadSVG } style={{width:'75%',marginTop:'30px'}} />
+
             {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
               <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
             </div> */}
@@ -210,6 +331,8 @@ function App() {
           <div className="how-to-box">
             <h1 className='how-to-title'>wait for your call</h1> 
             <p>get ready for the magic.</p>
+            <img src={videochatSVG } style={{width:'75%',marginTop:'20px'}} />
+
 
             {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
               <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
@@ -219,11 +342,11 @@ function App() {
 
 
 
-
        
         </section>
 
-        <section className="host-section">
+            {/* Host Section Code  */}
+        {/* <section className="host-section">
           <div style={{ gridRow: 2, gridColumn: 2 }}>
             <h1 className="get-call-headline">Ready for a call?</h1>
             <h2 className="host-secondary-text">Pick your host to get started.</h2>
@@ -232,7 +355,7 @@ function App() {
             <HostCards hosts={dummyHosts} />
           </div>
 
-        </section>
+        </section> */}
         <section className="footer">
         </section>
 

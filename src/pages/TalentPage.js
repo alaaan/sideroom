@@ -9,6 +9,7 @@ import talentBooking from '../img/talent-booking.png'
 import talentVideoCall from '../img/talent-video-call.png'
 import talentMakeMoney from '../img/talent-make-money.png'
 import MetaTags from 'react-meta-tags'
+import scheduleSVG from '../img/schedule.svg'
 
 const TalentPage = ()=>{
 
@@ -48,15 +49,16 @@ const TalentPage = ()=>{
     </section>
     <section className="talent-calculator">
       <TalentCalculator />
-      <div style={{overflow:'hidden',borderRadius:'7px'}}>
-        <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
+      <div style={{overflow:'hidden',borderRadius:'7px',border:'white solid 2px',height:'400px'}}>
+        <h3>host view video from app</h3>
+        {/* <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' /> */}
       </div>
     </section>
     <section className="talent-how-it-works">
       <h1 style={{fontSize:'3.5rem', marginTop:'5vh'}}>How it works</h1>
       <div className="talent-how-it-works-content">
         <TalentStep title="Open Up Bookings" 
-        image={talentBooking}
+        image={scheduleSVG}
         info="Fans will book a call request with you on our website.
         They can purchase for themselves or as a gift. 
         You will be notified of new requests, 

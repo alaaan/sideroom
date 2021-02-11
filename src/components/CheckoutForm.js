@@ -291,7 +291,7 @@ const CheckoutForm = ({toggle}) => {
   
       const webService = new PurchaseWebService();
       const result = await webService.makePurchase(
-        1,formik.values.request,true,loggedInUser.Username,paymentMethodId,formik.values.date
+        1,formik.values.request,true,loggedInUser.Username,paymentMethodId,Date.now()
       );
       if (result.Errored) {
         console.log("There was an error processing your payment - " + result.Message)

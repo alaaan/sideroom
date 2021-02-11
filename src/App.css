@@ -22,8 +22,12 @@
   --raleway: 'Raleway', sans-serif;
   --squada: 'Squada One', cursive;
   --serif-font: 'DM Serif Text', serif;
-
-
+  --new-blue: #5680E9;
+  --new-aqua: #84CEEB;
+  --new-blue2: #5AB9EA;
+  --new-grey: #C1C8E4;
+  --new-purple: #8860D0;
+  --main-purple:#612d8c;
 }
 
 #root {
@@ -44,7 +48,13 @@ body {
   /* width: 100%;
   height: 100%; */
   overflow-x: hidden;
+  box-sizing: border-box;
 }
+  
+  *,*::before,*::after {
+    box-sizing: inherit;
+  }
+
 
 .App {
   height: 100%;
@@ -75,6 +85,14 @@ font-weight: 400;
 }
 
 /* Components  */
+
+.logo-spinner{
+  width:250px; 
+  height:250px; 
+  position:absolute;
+  left:1vw; 
+  top:10vh;
+}
 
 .glowy-box{
   display: flex;
@@ -145,6 +163,8 @@ box-shadow:  30px 30px 60px #3b205d,
   margin-right: 15px;
 }
 
+
+
 /* Header and Login Components */
 .user-img{
   width: 20%;
@@ -179,11 +199,7 @@ box-shadow:  30px 30px 60px #3b205d,
   border-color: white;
 }
 
-.section-wrapper {
-  width: 100%;
-  height: 100%;
-  /* position: relative; */
-}
+
 
 .loading-section {
   height: 100vh;
@@ -232,10 +248,11 @@ box-shadow:  30px 30px 60px #3b205d,
   align-items: center;
 }
 
-.headline-h1{
-  transform: skew(-1deg);
-  text-shadow: #ef497a 1px 1px, #ef497a 2px 2px;
+.header svg{
+  width:250px; 
 }
+
+
 
 .nav-buttons {
   justify-self: end;
@@ -254,29 +271,9 @@ box-shadow:  30px 30px 60px #3b205d,
 
 }
 
-.hero-section {
-  height: 100vh;
-  width: 100%;
-  background: rgb(97, 45, 140);
-  background: radial-gradient(circle, rgba(97, 45, 140, 1) 0%, rgba(33, 26, 68, 1) 93%);
-  display: grid;
-  grid-template-columns: 8vw 3fr 2fr 8vw;
-  grid-template-rows: 10vh 80vh;
-  align-items: center;
-  perspective:750px; 
-  /* z-index: -1; */
-}
 
-.hero-left-container {
-  display: flex;
-  flex-direction: column;
-}
 
-.hero-secondary-text {
-  color: var(--pink);
-  font-weight: 500;
-  font-size:1.75rem; 
-}
+
 
 .host-secondary-text {
   color: var(--bluepurple);
@@ -526,6 +523,7 @@ box-shadow:  30px 30px 60px #3b205d,
 
 
 
+
 /* Host Profile Styling */
 .host-profile-container{
   width: 100%;
@@ -648,30 +646,14 @@ box-shadow:  30px 30px 60px #3b205d,
 
 
 
-.how-to-section {
-  /* display: grid;
-  grid-template-rows: 10vh 20vh auto 10vh;
-  grid-template-columns: 8vw 3fr 2fr 8vw; */
-  background: rgb(20, 23, 54);
-  background: linear-gradient(156deg, rgba(20, 23, 54, 1) 22%, rgba(53, 34, 85, 1) 100%);
-  height: 2000px;
-  width:100%; 
-  display:flex; 
-  flex-direction: column; 
-  align-items:center; 
-  position:relative; 
-  perspective:500px; 
-}
+
 
 .footer{
   height:20vh; 
 
 }
 
-.home-card {
 
-
-}
 
 /* SVG Shapes */
 
@@ -701,6 +683,8 @@ box-shadow:  30px 30px 60px #3b205d,
   box-shadow: 30px 30px 60px #3b205d, -30px -30px 60px #492875;
 }
 
+
+
 .video1 > div:nth-of-type(1) {
   width:100px !important;
   height:175px !important; 
@@ -711,34 +695,12 @@ box-shadow:  30px 30px 60px #3b205d,
   height:175px !important; 
 }
 
-.how-to-box{
-  width: 500px;
-  border-radius: 10px;
-  background: rgb(43,43,125);
-  position: relative;
-  height: 500px;
-  display: flex;
-  margin-top: 100px;
-  flex-direction: column;
-  align-items: center;
-  overflow:hidden;
-  padding-top:1vh; 
+.header-video > div:nth-of-type(1) {
+  width:100% !important;
+  height:100% !important; 
 }
 
-.how-to-box h1{
-  color:white; 
-  text-align: center;
-  font-family:var(--squada);
-  text-shadow: var(--mainblue) 1px 1px, var(--mainblue) 2px 2px;
-  font-size:4rem; 
-}
 
-.how-to-box p{
-  color:white; 
-  text-align: center;
-  font-family:var(--serif-font);
-  font-size:1.4rem; 
-}
 
 .book-call-img-left{
   position:absolute;
@@ -751,10 +713,8 @@ box-shadow:  30px 30px 60px #3b205d,
 }
 
 .checkoutVideo > div:nth-of-type(1) {
-  
   width:100% !important;
   height:100% !important; 
-
 }
 
 .checkoutVideo{

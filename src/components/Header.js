@@ -1,4 +1,4 @@
-import React, {useContext,useState} from 'react';
+import React, {useContext,useState,useEffect} from 'react';
 import { motion } from 'framer-motion'
 import door from '../img/door.png'
 import { UserContext } from "../context/user-context"
@@ -9,8 +9,16 @@ import LoginForm from '../components/LoginForm'
 import SRTextField from '../components/SRTextField';
 import SRLoader from '../components/SRLoader';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import {ReactComponent as Logo} from '../img/icon.svg'
+import gsap from 'gsap';
 
 const Header = () => {
+
+  useEffect(() => {
+
+    //setup animations here
+    gsap.to('#center-circles',{fill:'white',rotate:360,duration:.5,repeat:-1,repeatDelay:5,ease: 'bounce',transformOrigin:'center'});
+    });
 
   const {isAuthenticated,loggedInUser,clearLoggedInUser} = useContext(UserContext);
   const [showLogin,setShowLogin] = useState(false);
@@ -26,8 +34,7 @@ const Header = () => {
     <div className="header">
 
       <div style={{ display: 'flex',paddingTop:'10px' }}>
-        <img src={door} style={{ objectFit: 'none' }} />
-        <h2 style={{ padding: '10px', fontSize: '1.7rem', display: 'inline' }}>SideRoom</h2>
+        <Logo />
       </div>
       <div className="nav-buttons">
         {/* <h3>How does this work?</h3> */}
