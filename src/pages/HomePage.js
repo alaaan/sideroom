@@ -33,7 +33,7 @@ import videochatSVG from '../img/videochat.svg';
 import {ReactComponent as WaveSVG} from '../img/waves.svg';
 import {ReactComponent as WaveTop} from '../img/wave-top.svg';
 import {ReactComponent as LogoSpinner} from '../img/logo-spinner.svg'
-import {ReactComponent as Blob} from '../img/blob.svg'
+import webscreenbuy from '../img/web_screen_buy.png'
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -96,13 +96,20 @@ function App() {
     });
 
 
-    tl.to('#blob',{rotate:720,scale:1.2,x:-1200,y:400,repeat:-1,yoyo:true,duration:10,ease:'linear'})
-    // tl.to('.shape1',{x:-300,y:500,rotate:270,rotateZ:100},'startbg')
-    // tl.to('#logo-spinner-text',{rotate:360,duration:10,repeat:-1,ease: 'Linear.easeNone',transformOrigin:'center'},0);
-    tl.from('.testimonial-video',{duration:2,stagger:.5,opacity:0,x:-100},'<')
-    // tl.fromTo('.video1',{rotateX:-10,opacity:0,y:100,x:-300,z:-20},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg')
-    // tl.fromTo('.video2',{rotateX:-10,opacity:0,y:-100,x:300,z:-20},{rotateX:0,duration:2,opacity:1,z:0, y:0,x:0,ease:'Power2.out'},'startbg+=3')
-    tl.fromTo('.how-to-box',{rotateY:-20,opacity:0,y:-100,x:600,z:20},{duration:3,stagger:1,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'},'<')
+
+    gsap.from('.testimonial-video',{duration:.5,stagger:.5,opacity:0,y:50,
+      scrollTrigger:{trigger:'.testimonial-video',markers:true,start:'top 75%',end:'bottom 75%'}})
+
+    let box1Tl = gsap.timeline({
+      scrollTrigger:{trigger:'.how-to-box',start:'top 50%',end:'bottom 50%',markers:true}
+    });
+
+    box1Tl.fromTo('#box-1',{rotateY:-5,opacity:0,y:50,z:5},{duration:1,stagger:.5,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
+    box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.2},'<.5');
+    box1Tl.from('#box-1-p',{opacity:0,y:20,duration:.2},'<.5');
+    box1Tl.from('#box-1-img',{opacity:0,xPercent:50,y:20,duration:.75,ease:'back'},'<.25');
+
+
 
     // tl.to('.how-to-section',{'background':'radial-gradient(circle, rgba(97, 45, 140, 1) 0%, rgba(33, 26, 68, 1) 93%)',duration:3},'startbg')
     // tl.to('.shape3',{scale:2,rotate:15,repeat:2},'startbg-=2');
@@ -111,7 +118,7 @@ function App() {
 
       let headerTl=gsap.timeline();
       gsap.set('.hero-secondary-text',{visibility:'visible'});
-      headerTl.from('.header-video',{x:100,duration:1,opacity:0},'<1');
+      headerTl.from('.header-video',{x:100,duration:1,opacity:0});
 
 
       
@@ -288,31 +295,14 @@ function App() {
 
         
         <section className="how-to-section">
-          <LogoSpinner />
-          <Blob />
-          {/* <img src={shape} className='shape1'/>
-          <img src={shape} className='shape2'/> */}
-          {/* <div className='video1' style={{overflow:'hidden',borderRadius:'7px'}}>
-            <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-          </div> */}
-          
-          {/* <div className='video2' style={{overflow:'hidden',borderRadius:'7px'}}>
-            <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-          </div> */}
+          {/* <LogoSpinner /> */}
 
-          <div className="how-to-box">
-            <h1 className='how-to-title'>book it</h1>
-            <p>Securely and easily on our site.</p>
-    
-              <img src={calendarSVG } style={{width:'75%',marginTop:'20px'}} />
-              {/* <img className="book-call-img-left" src={paymentMethod} width='200px' />
-              <img className="book-call-img-right" src={paymentMethod} width='200px' /> */}
-        
-            
-            {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
-              <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
-            </div> */}
-            <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
+          <div id="box-1" className="how-to-box" style={{opacity:0}}>
+            <h1 id='box-1-title'className='how-to-title'>book it</h1>
+            <p id='box-1-p'>Securely and easily on our site.</p>
+            {/* <img id='box-1-img' alt="calendar" src={calendarSVG } style={{width:'40%',marginTop:'20px',opacity:0}} /> */}
+            <img id='box-1-img' alt="book" src={webscreenbuy} style={{width:'75%',marginTop:'20px'}} /> 
+            <img id='box-1-waves' alt="waves" style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
 
 
           </div>
@@ -320,7 +310,7 @@ function App() {
           <div className="how-to-box">
             <h1 className='how-to-title'>download the app</h1> 
             <p>we got you covered on iOS and Android.</p>
-            <img src={downloadSVG } style={{width:'75%',marginTop:'30px'}} />
+            <img src={downloadSVG } style={{width:'40%',marginTop:'30px'}} />
 
             {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
               <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
@@ -331,7 +321,7 @@ function App() {
           <div className="how-to-box">
             <h1 className='how-to-title'>wait for your call</h1> 
             <p>get ready for the magic.</p>
-            <img src={videochatSVG } style={{width:'75%',marginTop:'20px'}} />
+            <img src={videochatSVG } style={{width:'40%',marginTop:'20px'}} />
 
 
             {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>

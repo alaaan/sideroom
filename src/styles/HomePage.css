@@ -149,11 +149,11 @@
 }
 
 .how-to-box{
-  width: 500px;
+  width: 75%;
   border-radius: 10px;
   background: rgb(43,43,125);
   position: relative;
-  height: 500px;
+  height: 100vh;
   display: flex;
   margin-top: 100px;
   flex-direction: column;
