@@ -97,8 +97,9 @@ function App() {
 
     let wave1Tl = gsap.timeline(
       {scrollTrigger:{trigger:'.how-to-box',scrub:1,start:'top 50%',end:'bottom 50%',markers:true}});
-    wave1Tl.from('#top-wave',{y:25})
-    wave1Tl.from('#middle-wave',{y:200},'<')
+    wave1Tl.from('#top-wave',{y:200},0)
+    wave1Tl.from('#middle-wave',{y:100},'<')
+    wave1Tl.from('#bottom-wave',{x:10,y:50},'<')
 
     box1Tl.fromTo('#box-1',{rotateY:-5,opacity:0,y:50,z:5},{duration:1,stagger:.5,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
     box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.05},'<.5');
@@ -239,7 +240,7 @@ function App() {
 
           </div>
 
-          <div className="how-to-box">
+          <div id="box-2" className="how-to-box">
             <h1 className='how-to-title'>download the app</h1> 
             <p>we got you covered on iOS and Android.</p>
             <img src={downloadSVG } style={{width:'40%',marginTop:'30px'}} />
@@ -250,7 +251,7 @@ function App() {
             <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
           </div>
 
-          <div className="how-to-box">
+          <div id="box-3" className="how-to-box">
             <h1 className='how-to-title'>wait for your call</h1> 
             <p>get ready for the magic.</p>
             <img src={videochatSVG } style={{width:'40%',marginTop:'20px'}} />

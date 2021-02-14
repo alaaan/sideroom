@@ -139,11 +139,12 @@
   grid-template-columns: 8vw 3fr 2fr 8vw; */
   background: rgb(20, 23, 54);
   background: linear-gradient(156deg, rgba(20, 23, 54, 1) 22%, rgba(53, 34, 85, 1) 100%);
-  height: 2000px;
+  height: 100vh;
   width:100%; 
   display:flex; 
   flex-direction: column; 
   align-items:center; 
+  justify-content: center;
   position:relative; 
   perspective:1000px; 
 }
@@ -152,14 +153,21 @@
   width: 75%;
   border-radius: 10px;
   background: rgb(43,43,125);
-  position: relative;
-  height: 100vh;
+  position: absolute;
+  height: 70vh;
   display: flex;
-  margin-top: 100px;
   flex-direction: column;
   align-items: center;
   overflow:hidden;
   padding-top:1vh; 
+}
+
+#box-2{
+  display:none; 
+}
+
+#box-3{
+  display:none;
 }
 
 .how-to-box h1{
