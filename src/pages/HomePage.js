@@ -2,13 +2,6 @@
 import '../App.css';
 import '../styles/HomePage.css';
 import { motion, AnimatePresence } from 'framer-motion';
-import hero from '../img/header-illustration.png';
-import step1 from '../img/step1.png'
-import calendar from '../img/calendar.png';
-import waiting from '../img/waiting.png'
-import step4 from '../img/step4.png';
-import Header from '../components/Header';
-import door from '../img/door.png';
 import {
   useState,
   useEffect
@@ -16,8 +9,6 @@ import {
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { TextPlugin } from "gsap/TextPlugin";
-import Phone from '../components/phone'
-import Sofa from '../img/sofa.png';
 import HostCard from '../components/HostCard'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ReactPlayer from 'react-player';
@@ -98,16 +89,22 @@ function App() {
 
 
     gsap.from('.testimonial-video',{duration:.5,stagger:.5,opacity:0,y:50,
-      scrollTrigger:{trigger:'.testimonial-video',markers:true,start:'top 75%',end:'bottom 75%'}})
+      scrollTrigger:{trigger:'.testimonial-video',scrub:.5,start:'top 75%',end:'bottom 75%'}})
 
     let box1Tl = gsap.timeline({
-      scrollTrigger:{trigger:'.how-to-box',start:'top 50%',end:'bottom 50%',markers:true}
+      scrollTrigger:{trigger:'.how-to-box',start:'top 50%',end:'50% 50%'}
     });
 
+    let wave1Tl = gsap.timeline(
+      {scrollTrigger:{trigger:'.how-to-box',scrub:1,start:'top 50%',end:'bottom 50%',markers:true}});
+    wave1Tl.from('#top-wave',{y:25})
+    wave1Tl.from('#middle-wave',{y:200},'<')
+
     box1Tl.fromTo('#box-1',{rotateY:-5,opacity:0,y:50,z:5},{duration:1,stagger:.5,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
-    box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.2},'<.5');
-    box1Tl.from('#box-1-p',{opacity:0,y:20,duration:.2},'<.5');
-    box1Tl.from('#box-1-img',{opacity:0,xPercent:50,y:20,duration:.75,ease:'back'},'<.25');
+    box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.05},'<.5');
+    box1Tl.from('#box-1-p',{opacity:0,y:20,duration:.05},'<.5');
+    
+    box1Tl.from('#box-1-img',{opacity:0,xPercent:5,y:5,duration:1,ease:'back'},'<.25');
 
 
 
@@ -208,10 +205,14 @@ function App() {
         
         <section className="testimonial-section">
 
+        {/* <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+          <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testvideo.mp4' />
+        </div> */}
+
           
          
         
-               <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+                <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
                   <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
               </div>
               <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
@@ -219,78 +220,8 @@ function App() {
               </div>
               <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
                   <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-              </div> 
-       <div className="waves">
-    <svg width="100%" height="200px" fill="none" version="1.1"
-     xmlns="http://www.w3.org/2000/svg">
-      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#00B4DB" />
-        <stop offset="50%" stop-color="#224488" />
-        <stop offset="100%" stop-color="#0083B0" />
-      </linearGradient>
-      <path 
-        fill="rgb(20, 23, 54)" 
-        d="
-          M0 67
-          C 273,183
-            822,-40
-            1920.00,106 
-          
-          V 359 
-          H 0 
-          V 67
-          Z">
-        <animate 
-          repeatCount="indefinite" 
-          fill="url(#grad1)" 
-          attributeName="d" 
-          dur="15s"
-          attributeType="XML"
-          values="
-            M0 77 
-            C 473,283
-              822,-40
-              1920,116 
-            
-            V 359 
-            H 0 
-            V 67 
-            Z; 
+              </div>  
 
-            M0 77 
-            C 473,-40
-              1222,283
-              1920,136 
-            
-            V 359 
-            H 0 
-            V 67 
-            Z; 
-
-            M0 77 
-            C 973,260
-              1722,-53
-              1920,120 
-            
-            V 359 
-            H 0 
-            V 67 
-            Z; 
-
-            M0 77 
-            C 473,283
-              822,-40
-              1920,116 
-            
-            V 359 
-            H 0 
-            V 67 
-            Z
-            ">
-        </animate>
-      </path>
-    </svg>
-  </div>
         </section>
 
         
@@ -302,7 +233,8 @@ function App() {
             <p id='box-1-p'>Securely and easily on our site.</p>
             {/* <img id='box-1-img' alt="calendar" src={calendarSVG } style={{width:'40%',marginTop:'20px',opacity:0}} /> */}
             <img id='box-1-img' alt="book" src={webscreenbuy} style={{width:'75%',marginTop:'20px'}} /> 
-            <img id='box-1-waves' alt="waves" style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
+            <WaveSVG />
+            {/* <img id='box-1-waves' alt="waves" style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
 
 
           </div>

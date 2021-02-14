@@ -83,12 +83,12 @@
 
 }
 
-.waves {
+#bg-svg {
   width: 100%;
   bottom: 0;
   /*height: 100%;*/
   position: absolute;
-  z-index: 99;
+  z-index: -1;
 }
 
 .waves svg{
