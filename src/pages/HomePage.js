@@ -92,20 +92,39 @@ function App() {
       scrollTrigger:{trigger:'.testimonial-video',scrub:.5,start:'top 75%',end:'bottom 75%'}})
 
     let box1Tl = gsap.timeline({
-      scrollTrigger:{trigger:'.how-to-box',start:'top 50%',end:'50% 50%'}
+      scrollTrigger:{trigger:'.how-to-box',start:'top 70%',end:'50% 50%'}
     });
 
     let wave1Tl = gsap.timeline(
-      {scrollTrigger:{trigger:'.how-to-box',scrub:1,start:'top 50%',end:'bottom 50%',markers:true}});
+      {scrollTrigger:{trigger:'.how-to-box',scrub:1,yoyo:true,start:'top 60%',end:'+=8000',markers:true}});
     wave1Tl.from('#top-wave',{y:200},0)
     wave1Tl.from('#middle-wave',{y:100},'<')
     wave1Tl.from('#bottom-wave',{x:10,y:50},'<')
 
+    // let wave2Tl = gsap.timeline(
+    //   {scrollTrigger:{trigger:'#box-2',scrub:1,start:'top 60%',end:'bottom 50%',markers:true}});
+    // wave2Tl.from('#top-wave',{y:200},0)
+    // wave2Tl.from('#middle-wave',{y:100},'<')
+    // wave2Tl.from('#bottom-wave',{x:10,y:50},'<')
+
     box1Tl.fromTo('#box-1',{rotateY:-5,opacity:0,y:50,z:5},{duration:1,stagger:.5,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
     box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.05},'<.5');
     box1Tl.from('#box-1-p',{opacity:0,y:20,duration:.05},'<.5');
-    
     box1Tl.from('#box-1-img',{opacity:0,xPercent:5,y:5,duration:1,ease:'back'},'<.25');
+
+    let boxRotationTl = gsap.timeline({
+      scrollTrigger:{trigger:'.how-to-section',pinSpacing:false,scrub:true,pin:true,start:'top top',end:"+=8000"}
+    });
+
+    boxRotationTl.to('#box-1',{xPercent:-120},0); 
+    boxRotationTl.set('#box-2',{display:'block'},'<');
+    boxRotationTl.from('#box-2',{opacity:0,xPercent:100},'<');
+    // wave1Tl.from('#top-wave',{y:200},'<')
+    // wave1Tl.from('#middle-wave',{y:100},'<')
+    // wave1Tl.from('#bottom-wave',{x:10,y:50},'<')
+    boxRotationTl.to('#box-2',{xPercent:-120}); 
+    boxRotationTl.set('#box-3',{display:'block'},'<');
+    boxRotationTl.from('#box-3',{opacity:0,xPercent:100},'<'); 
 
 
 
@@ -248,7 +267,8 @@ function App() {
             {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
               <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
             </div> */}
-            <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
+            {/* <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
+            <WaveSVG />
           </div>
 
           <div id="box-3" className="how-to-box">
@@ -260,7 +280,8 @@ function App() {
             {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
               <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
             </div> */}
-            <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} />
+            {/* <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
+            <WaveSVG />
           </div>
 
 

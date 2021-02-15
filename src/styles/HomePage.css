@@ -86,7 +86,8 @@
 #bg-svg {
   width: 100%;
   bottom: 0;
-  /*height: 100%;*/
+  left:0;
+  height: 100%;
   position: absolute;
   z-index: -1;
 }
@@ -155,6 +156,7 @@
   background: rgb(43,43,125);
   position: absolute;
   height: 70vh;
+  max-height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
