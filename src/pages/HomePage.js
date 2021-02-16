@@ -25,6 +25,7 @@ import {ReactComponent as WaveSVG} from '../img/waves.svg';
 import {ReactComponent as WaveTop} from '../img/wave-top.svg';
 import {ReactComponent as LogoSpinner} from '../img/logo-spinner.svg'
 import webscreenbuy from '../img/web_screen_buy.png'
+import TitleSection from '../components/TitleSection';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -92,11 +93,11 @@ function App() {
       scrollTrigger:{trigger:'.testimonial-video',scrub:.5,start:'top 75%',end:'bottom 75%'}})
 
     let box1Tl = gsap.timeline({
-      scrollTrigger:{trigger:'.how-to-box',start:'top 70%',end:'50% 50%'}
+      scrollTrigger:{trigger:'#block-wrapper-1',start:'top 70%',end:'50% 50%',markers:true}
     });
 
     let wave1Tl = gsap.timeline(
-      {scrollTrigger:{trigger:'.how-to-box',scrub:1,yoyo:true,start:'top 60%',end:'+=8000',markers:true}});
+      {scrollTrigger:{trigger:'.how-to-box',scrub:1,yoyo:true,start:'top 60%',end:'+=8000'}});
     wave1Tl.from('#top-wave',{y:200},0)
     wave1Tl.from('#middle-wave',{y:100},'<')
     wave1Tl.from('#bottom-wave',{x:10,y:50},'<')
@@ -107,18 +108,25 @@ function App() {
     // wave2Tl.from('#middle-wave',{y:100},'<')
     // wave2Tl.from('#bottom-wave',{x:10,y:50},'<')
 
-    box1Tl.fromTo('#box-1',{rotateY:-5,opacity:0,y:50,z:5},{duration:1,stagger:.5,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
-    box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.05},'<.5');
-    box1Tl.from('#box-1-p',{opacity:0,y:20,duration:.05},'<.5');
+
+    // box1Tl.to('.line',{duration:.75,scaleX:5,x:-200,repeat:1,yoyo:true,ease:'none'})
+    // box1Tl.to('#title-1',{duration:.75,opacity:0,xPercent:-150,ease:'none'},'<')
+    // box1Tl.to('#subtitle-1',{duration:.75,opacity:0,xPercent:-150,ease:'none'},'<+.1')
+
+    box1Tl.fromTo('#block-wrapper-1',{rotateY:-5,opacity:0,y:50,z:5},{duration:1,stagger:.5,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
+    box1Tl.from('#box-1',{opacity:0,y:20,duration:.05},'<.5');
+
+    // box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.05},'<.5');
+    // box1Tl.from('#box-1-p',{opacity:0,y:20,duration:.05},'<.5');
     box1Tl.from('#box-1-img',{opacity:0,xPercent:5,y:5,duration:1,ease:'back'},'<.25');
 
     let boxRotationTl = gsap.timeline({
       scrollTrigger:{trigger:'.how-to-section',pinSpacing:false,scrub:true,pin:true,start:'top top',end:"+=8000"}
     });
 
-    boxRotationTl.to('#box-1',{xPercent:-120},0); 
-    boxRotationTl.set('#box-2',{display:'block'},'<');
-    boxRotationTl.from('#box-2',{opacity:0,xPercent:100},'<');
+    boxRotationTl.to('#block-wrapper-1',{xPercent:-120},0); 
+    // boxRotationTl.set('#block-wrapper-2',{display:'flex'},'<');
+    boxRotationTl.from('#block-wrapper-2',{opacity:0,xPercent:100},'<');
     // wave1Tl.from('#top-wave',{y:200},'<')
     // wave1Tl.from('#middle-wave',{y:100},'<')
     // wave1Tl.from('#bottom-wave',{x:10,y:50},'<')
@@ -248,27 +256,39 @@ function App() {
         <section className="how-to-section">
           {/* <LogoSpinner /> */}
 
-          <div id="box-1" className="how-to-box" style={{opacity:0}}>
-            <h1 id='box-1-title'className='how-to-title'>book it</h1>
-            <p id='box-1-p'>Securely and easily on our site.</p>
-            {/* <img id='box-1-img' alt="calendar" src={calendarSVG } style={{width:'40%',marginTop:'20px',opacity:0}} /> */}
-            <img id='box-1-img' alt="book" src={webscreenbuy} style={{width:'75%',marginTop:'20px'}} /> 
-            <WaveSVG />
-            {/* <img id='box-1-waves' alt="waves" style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
+          <div id='block-wrapper-1' style={{display:'flex',height:'100%'}}>
+            <TitleSection 
+              title="Book It" 
+              titleId='title-1' 
+              subtitle='Book your call securely through our website.'
+              subtitleId='subtitle-1' />
+      
+              <div id="box-1" className="how-to-box">
+                {/* <h1 id='box-1-title'className='how-to-title'>book it</h1>
+                <p id='box-1-p'>Securely and easily on our site.</p> */}
+                {/* <img id='box-1-img' alt="calendar" src={calendarSVG } style={{width:'40%',marginTop:'20px',opacity:0}} /> */}
+                <img id='box-1-img' alt="book" src={webscreenbuy} style={{width:'75%',marginTop:'20px'}} /> 
+                <WaveSVG />
+                {/* <img id='box-1-waves' alt="waves" style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
+              </div>
+            </div>
+       
+          <div id='block-wrapper-2' style={{height:'100%'}}>
+            <TitleSection 
+              title="Download the App" 
+              titleId='title-2' 
+              subtitle='We got you covered on iOS and Android.'
+              subtitleId='subtitle-2' />
 
+            <div id="box-2" className="how-to-box">
+              <img src={downloadSVG } style={{width:'40%',marginTop:'30px'}} />
 
-          </div>
-
-          <div id="box-2" className="how-to-box">
-            <h1 className='how-to-title'>download the app</h1> 
-            <p>we got you covered on iOS and Android.</p>
-            <img src={downloadSVG } style={{width:'40%',marginTop:'30px'}} />
-
-            {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
-              <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
-            </div> */}
-            {/* <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
-            <WaveSVG />
+              {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
+                <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
+              </div> */}
+              {/* <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
+              <WaveSVG />
+            </div>
           </div>
 
           <div id="box-3" className="how-to-box">

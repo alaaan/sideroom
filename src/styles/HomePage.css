@@ -135,37 +135,75 @@
 /* How To Section */
 
 .how-to-section {
-  /* display: grid;
-  grid-template-rows: 10vh 20vh auto 10vh;
-  grid-template-columns: 8vw 3fr 2fr 8vw; */
-  background: rgb(20, 23, 54);
-  background: linear-gradient(156deg, rgba(20, 23, 54, 1) 22%, rgba(53, 34, 85, 1) 100%);
-  height: 100vh;
-  width:100%; 
-  display:flex; 
-  flex-direction: column; 
-  align-items:center; 
-  justify-content: center;
-  position:relative; 
-  perspective:1000px; 
-}
+    background: rgb(20, 23, 54);
+    background: linear-gradient(
+156deg
+, rgba(20, 23, 54, 1) 22%, rgba(53, 34, 85, 1) 100%);
+    height: 100vh;
+    width: 100%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* position: relative; */
+    perspective: 1000px;}
 
 .how-to-box{
-  width: 75%;
+  width: 80%;
   border-radius: 10px;
   background: rgb(43,43,125);
   position: absolute;
+  left: 10%;
+  top: 20%;
   height: 70vh;
   max-height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow:hidden;
-  padding-top:1vh; 
+  justify-content: center;
+  overflow: hidden;
 }
 
-#box-2{
+.title-section{
+  margin-left:10%;
+}
+
+.line{
+  height: 15px;
+  width: 80px;
+  background-color: #ff00c7;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.title-section h1{
+  font-size: 5rem;
+  margin-right: 5px;
+
+}
+
+.title-section p{
+  font-size:30px; 
+  font-weight:300; 
+  margin-bottom:2vh;
+}
+
+.title-wrapper {
+  display: flex; 
+  align-items: center;
+
+}
+
+/* #box-2{
   display:none; 
+} */
+
+#block-wrapper-1{
+  width:100%;
+}
+#block-wrapper-2{
+  display:none; 
+  width:100%;
 }
 
 #box-3{
