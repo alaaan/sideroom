@@ -1,6 +1,7 @@
 
 import '../App.css';
 import '../styles/HomePage.css';
+import '../styles/ConfirmationModal.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   useState,

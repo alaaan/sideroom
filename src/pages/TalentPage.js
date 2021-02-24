@@ -102,6 +102,12 @@ const TalentPage = ()=>{
       </div> */}
 
     </section>
+    <section className="talent-partners">
+      <h1 style={{fontSize:'3.5rem'}}>Who we've worked with</h1>
+
+
+
+    </section>
     </>
 
 

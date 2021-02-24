@@ -1,0 +1,77 @@
+
+
+#modal > div > div > div> .confirmation-img-wrapper{
+  width:200px;
+  height:200px; 
+  border-radius:50%; 
+  border: solid #5643CC 10px;
+}
+
+#modal > div > div > .headline-container{
+  display:flex;
+  flex-direction:column; 
+  margin-bottom: 20px;
+}
+
+#modal > div > div > .confirmation-container {
+  display:flex; 
+  flex-direction:column; 
+  height: 80vh;
+  width: 60vw;
+  background: white;
+  padding:5%;
+  border-radius:10px; 
+  border:#5643CC 5px solid; 
+  align-items: center;
+  justify-content: space-between;
+}
+
+#modal > div > div >  .confirmation-container h3 {
+  font-family:'Barlow', sans-serif;
+  font-size: 4rem;
+  color:#5643CC;
+}
+
+#modal > div > div >  .confirmation-container p{
+  font-family: Raleway;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: black;
+}
+
+
+#modal > div > div > div>  .redemption-box{
+  height: 15%;
+  width:80%;
+  background: white;
+  border: solid #5643cc 1px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#modal > div > div > div >  .redemption-box h3{
+  color:black;
+  font-size: 2rem;
+}
+
+#modal img{
+  height:70px;
+  margin-left:2%;
+  margin-right:2%;
+ 
+}
+
+#modal .store-logos{
+  display:flex; 
+}
+
+#modal .emoji{
+  position:absolute; 
+  top:5%;
+  left:10%;
+  transform: scale(4);
+}
+
+

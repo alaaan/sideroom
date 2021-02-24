@@ -33,6 +33,7 @@ import verified from '../img/verified.png'
 import LoginForm from '../components/LoginForm'
 import {formatPhone} from '../helpers/functions'
 import PurchaseWebService from '../web_services/PurchaseWebService'
+import ConfirmationModal from '../components/ConfirmationModal'
 
 import 'yup-phone';
 
@@ -194,6 +195,8 @@ const CheckoutForm = ({toggle}) => {
   const elements = useElements();
   const cardElement = elements.getElement(CardElement);
   const [showSuccessModal,setShowSuccessModal] = useState(false);
+  const [redemptionCode,setRedemptionCode]= useState(null);
+
 
   const toggleLogin = ()=>{
     setShowLogin(!showLogin);
@@ -298,6 +301,8 @@ const CheckoutForm = ({toggle}) => {
     ;
       } else {
         console.log('purchase success')
+        setRedemptionCode(result.Payload.RedemptionCode)
+        setShowSuccessModal(true); 
       }
     }
 
@@ -463,9 +468,11 @@ const CheckoutForm = ({toggle}) => {
 
       {showSuccessModal ? (
           <Modal>
-            <div>
-              <h2>Super Sexy Order Confirmation Modal</h2>
-            </div>
+            <ConfirmationModal 
+            hostName="David Shaw" 
+            hostImg="http://www.fillmurray.com/300/300"
+            redemptionCode={redemptionCode}
+            userNumber="(404) 234-1314" />
           </Modal>
         ) : null
       }
