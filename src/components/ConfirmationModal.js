@@ -20,9 +20,10 @@ const ConfirmationModal = ({hostName,hostImg,redemptionCode,userNumber})=>{
        <img src={googlePlay} alt='google play' />
       </div>
       <div className="redemption-box">
-        <h3 style={{fontSize:'3rem',color:'black'}}>Your Redemption Code: {redemptionCode}</h3>
+        <h3>Your Redemption Code: {redemptionCode}</h3>
         <p>We’ve also texted you this code to {userNumber}</p>
-      </div>=
+      </div>
+
     </div>
 
 
