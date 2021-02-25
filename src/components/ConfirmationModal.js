@@ -13,16 +13,22 @@ const ConfirmationModal = ({hostName,hostImg,redemptionCode,userNumber})=>{
         <h3>You're locked in.</h3>
         <p>We’ve got your order to connect with <span style={{fontWeight:'700'}}>{hostName}</span>.<br></br>
           We’ve started lining things up on our end to make the magic happen.</p>
+
+        <div className="redemption-box">
+          <h3 className="redemption-code-top">Your Redemption Code</h3>
+          <h3 className="redemption-code">{redemptionCode}</h3>
+        </div>
+
       </div>
-      <p>Head to the App Store and download CONNECTR, and standby for that call.</p>
+      <div>
+        <p>We’ve also texted you this code to {userNumber}</p>
+        <p>Head to the App Store and download CONNECTR, and standby for that call.</p>
+      </div>
       <div className="store-logos">
       <img src={appStore} alt='google play' />
        <img src={googlePlay} alt='google play' />
       </div>
-      <div className="redemption-box">
-        <h3>Your Redemption Code: {redemptionCode}</h3>
-        <p>We’ve also texted you this code to {userNumber}</p>
-      </div>
+     
 
     </div>
 

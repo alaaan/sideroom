@@ -1,4 +1,4 @@
-
+@media all and (min-width: 688px){ 
 
 #modal > div > div > div> .confirmation-img-wrapper{
   width:200px;
@@ -17,13 +17,15 @@
   display:flex; 
   flex-direction:column; 
   height: 80vh;
-  width: 60vw;
+  width: 80vw;
   background: white;
   border-radius:12px; 
   border:#5643CC 5px solid; 
   align-items: center;
   justify-content: space-between;
-  padding-top:5%;
+  padding-top:5%;  
+  min-height: 500px;
+
 }
 
 #modal > div > div >  .confirmation-container h3 {
@@ -67,6 +69,7 @@
 
 #modal .store-logos{
   display:flex; 
+  margin-bottom:2%;
 }
 
 #modal .emoji{
@@ -79,12 +82,7 @@
 #modal svg{
   border-bottom-right-radius: 5px;
 }
-
-
-
-
-
-
+}
 
 
 
@@ -106,7 +104,7 @@
   #modal > div > div > .confirmation-container {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 70vh;
     width: 95vw;
     background: white;
     border-radius: 12px;
@@ -114,6 +112,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 5%;
+    min-height: 500px;
   }
   
   #modal > div > div >  .confirmation-container h3 {
@@ -151,12 +150,13 @@
     height:50px;
     margin-left:2%;
     margin-right:2%;
-   
   }
   
   #modal .store-logos{
-    display:flex; 
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5%;
   }
   
   #modal .emoji{
@@ -170,11 +170,44 @@
     border-bottom-right-radius: 5px;
   }
 
+  #modal .redemption-code{
+    color: black;
+    font-size: 4rem;
+    line-height: 45px;
+  }
 
-
-
-
-
+  #modal .redemption-code-top{
+    font-size: 1.5rem;
+    color: black;
+  }
 
 }
 
+
+
+@media all and (min-width: 200px) and (max-width: 320px) { 
+#modal > div > div > div> .confirmation-img-wrapper{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: solid #5643CC 5px;
+
+}
+#modal .redemption-code{
+  color: black;
+  font-size: 3rem;
+  line-height: 45px;
+}
+
+#modal .redemption-code-top{
+  font-size: 1rem;
+  color: black;
+}
+
+#modal img{
+  height:40px;
+  margin-left:2%;
+  margin-right:2%;
+}
+
+}
