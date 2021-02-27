@@ -28,6 +28,15 @@
   --new-grey: #C1C8E4;
   --new-purple: #8860D0;
   --main-purple:#612d8c;
+
+
+
+  --ocean-blue: #5643ccff;
+--isabelline: #f2efeaff;
+--raisin-black: #1a1b25ff;
+--cerise: #da4167ff;
+--pine-green: #0b7a75ff;
+
 }
 
 #root {
@@ -539,7 +548,6 @@ font-weight: 400;
   box-shadow: rgba(80, 63, 205, 0.5) 0px 1px 5px;
   margin-top: 25%;
   grid-template-columns: auto 1fr;
-  margin-left:-15%;
 }
 
 .host-profile-info-container{
