@@ -34,6 +34,7 @@ import LoginForm from '../components/LoginForm'
 import {formatPhone} from '../helpers/functions'
 import PurchaseWebService from '../web_services/PurchaseWebService'
 import ConfirmationModal from '../components/ConfirmationModal'
+import CheckoutItem from '../components/CheckoutItem'
 
 import 'yup-phone';
 
@@ -93,7 +94,7 @@ const materialTheme = createMuiTheme({
     },
     MuiPickersToolbar: {
       toolbar: {
-        backgroundColor: 'var(--pink)',
+        backgroundColor: 'var(--cerise)',
       },
     },
     MuiPickersCalendarHeader: {
@@ -107,7 +108,7 @@ const materialTheme = createMuiTheme({
         color: 'black'
       },
       daySelected: {
-        color: 'var(--pink)',
+        color: 'var(--cerise)',
         backgroundColor: 'var(--darkblue)',
         '&:hover': {
           backgroundColor: 'black'
@@ -193,7 +194,6 @@ const CheckoutForm = ({toggle}) => {
 
   const stripe = useStripe();
   const elements = useElements();
-  const cardElement = elements.getElement(CardElement);
   const [showSuccessModal,setShowSuccessModal] = useState(false);
   const [redemptionCode,setRedemptionCode]= useState(null);
 
@@ -308,11 +308,12 @@ const CheckoutForm = ({toggle}) => {
 
 
   return (
-    <div>
+    <div className="host-detail-checkout">
+      <CheckoutItem />
+      <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
       <CloseIcon
         onClick={toggle}
         fontSize='large' color="secondary" style={{ position: 'absolute', top: 5, right: 5 }} />
-      <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
         <h2 style={{ marginTop: '10px' }}>Your Info</h2>
         {!isAuthenticated && <h3>You must verify your phone number</h3>}
 
@@ -325,7 +326,7 @@ const CheckoutForm = ({toggle}) => {
             <div style={{display:'flex',flexDirection:'column',marginBottom:'10px'}}>
               <h3>{formatPhone(loggedInUser.Username)}</h3>
               <h3 
-              style={{color:'var(--pink)',fontSize:'.8rem'}}
+              style={{color:'var(--cerise)',fontSize:'.8rem', marginTop:'1%'}}
               onClick={()=>(clearLoggedInUser())}
               >Change Phone Number</h3>
             </div></>:
@@ -459,7 +460,7 @@ const CheckoutForm = ({toggle}) => {
           {/* <MyField label="Expiration" variant="outlined" />
           <MyField label="CVV" variant="outlined" />
           <MyField label="Zip Code" variant="outlined" />  */}
-          <SRButton type="submit" onClick={handleSubmit} style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call</SRButton>
+          <SRButton type="submit" onClick={handleSubmit} style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call - $200</SRButton>
         </div>
 
         {/* <StyledButton  /> */}
