@@ -23,8 +23,7 @@ const SRButton = withStyles({
 
   },
   label: {
-    fontFamily: 'Barlow',
-    fontWeight: 500,
+    fontFamily: 'Exo, sans-serif',
     fontSize: '1.2rem',
     textTransform: 'none',
     letterSpacing: '.5px'

@@ -9,8 +9,7 @@
 }
 
 .headline-h1{
-  transform: skew(-1deg);
-  text-shadow: rgba(239,73,122,.5) 1px 1px, rgba(239,73,122,.5) 2px 2px
+  line-height: 75px;
 }
 
 
@@ -25,14 +24,14 @@
 .hero-section {
   height: 100vh;
   width: 100%;
-  background: rgb(97, 45, 140);
-  background: radial-gradient(circle, rgba(97, 45, 140, 1) 0%, rgba(33, 26, 68, 1) 93%);
+  background:  #5643cc;
   display: grid;
-  grid-template-columns: 8vw 3fr 2fr 8vw;
+  grid-template-columns: 4fr 2fr;
   grid-template-rows: 10vh 80vh;
   align-items: center;
-  perspective:750px; 
-  /* z-index: -1; */
+  perspective: 750px;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 .hero-left-container {
@@ -41,7 +40,7 @@
 }
 
 .hero-secondary-text {
-  color: #ff00c7;
+  color: #DA4167;
   font-weight: 500;
   font-size:1.75rem; 
 }
@@ -49,11 +48,12 @@
 
 .header-video{
   overflow: hidden;
-    /* width: 300px; */
-    border-radius: 7px;
-    grid-area: 2 / 3;
-    /* align-self: center; */
-    justify-self: center;
+  /* width: 300px; */
+  border-radius: 7px;
+  /* align-self: center; */
+  justify-self: center;
+  max-width: 300px;
+  grid-row:2;
 }
 
 .wave-top {
@@ -72,7 +72,7 @@
 /* Testimonial Section */
 
 .testimonial-section{
-  background: black;
+  background: #1A1B25;
   position: relative;
   color: #FFF;
   text-align: center;
@@ -182,9 +182,8 @@
 
 }
 
-.title-section p{
+.title-section h3{
   font-size:30px; 
-  font-weight:300; 
   margin-bottom:2vh;
 }
 

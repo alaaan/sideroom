@@ -2,6 +2,8 @@
 import '../App.css';
 import '../styles/HomePage.css';
 import '../styles/ConfirmationModal.css';
+import '../styles/HostDetailPagev2.css'
+
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   useState,
@@ -27,6 +29,7 @@ import {ReactComponent as WaveTop} from '../img/wave-top.svg';
 import {ReactComponent as LogoSpinner} from '../img/logo-spinner.svg'
 import webscreenbuy from '../img/web_screen_buy.png'
 import TitleSection from '../components/TitleSection';
+import phoneStockPhoto from '../img/phone-stock-photo.jpg'
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -243,7 +246,7 @@ function App() {
           <h1 className="loading-text"></h1>
         </section> */}
         <section className="hero-section">
-          <div className="hero-left-container" style={{ gridRow: 2, gridColumn: 2 }}>
+          <div className="hero-left-container" style={{ gridRow: 2}}>
       <h1 className='headline-h1' style={{paddingBottom:'1rem'}}>Get a video call from your favorite <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span>
       </h1>
       
@@ -251,8 +254,8 @@ function App() {
             <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}></h2>
           </div>
           <div className='header-video' style={{overflow:'hidden',borderRadius:'7px'}}>
-            <h3>Animated Content</h3>
-          </div>
+            <img src={phoneStockPhoto} alt='phone' style={{maxWidth:'300px'}} />
+           </div>
           {/* <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} /> */}
           <div className="wave-top">
           <WaveTop />

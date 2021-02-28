@@ -4,6 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nobile&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@800&family=Martel:wght@200&family=Nobile&display=swap');
+
 
 * {
   margin: 0;
@@ -22,6 +27,7 @@
   --raleway: 'Raleway', sans-serif;
   --squada: 'Squada One', cursive;
   --serif-font: 'DM Serif Text', serif;
+  
   --new-blue: #5643cc;
   --new-aqua: #84CEEB;
   --new-blue2: #5AB9EA;
@@ -29,9 +35,13 @@
   --new-purple: #8860D0;
   --main-purple:#612d8c;
 
+  --headline-font:'Exo', sans-serif;
+  --subheadline-font: 'Nobile', sans-serif;
+  --body-font:'Martel', serif;
 
 
-  --ocean-blue: #5643ccff;
+/* CSS HEX */
+--ocean-blue: #5643ccff;
 --isabelline: #f2efeaff;
 --raisin-black: #1a1b25ff;
 --cerise: #da4167ff;
@@ -77,18 +87,22 @@ h2 {
   font-size: 3rem;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1,h2
+ {
 
-  font-family: var(--new-font);
+  font-family: var(--headline-font);
   color: white;
 }
 
+h3,h4 {
+  font-family: var(--subheadline-font);
+  color: white;
+
+}
+
 p{
-font-family: var(--new-font);
-font-size: 20px;
+font-family: var(--body-font);
+font-size: 1rem;
 color: white;
 font-weight: 400;
 }

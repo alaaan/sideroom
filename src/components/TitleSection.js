@@ -8,7 +8,7 @@ const TitleSection = ({title,titleId,subtitleId,subtitle,lineId}) =>{
   <h1 id={titleId}>{title}</h1>
     <div className="line" id={lineId}></div>
     </div>
-  <p id={subtitleId}>{subtitle}</p>
+  <h3 id={subtitleId}>{subtitle}</h3>
   </div>
 
   )
