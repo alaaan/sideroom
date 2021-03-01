@@ -73,8 +73,6 @@
   align-items: center;
   justify-content: space-around;
   height: 50%;
-  border: 1px solid var(--isabelline);
-  border-radius:5px;
   padding:1%;
 }
 

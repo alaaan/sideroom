@@ -45,7 +45,7 @@ const Header = () => {
           <div style={{display:'flex',flexDirection:'column'}}>
             <h3>{loggedInUser.Name}</h3>
             <h3 
-            style={{color:'var(--pink)',fontSize:'.8rem'}}
+            style={{color:'var(--cerise)',fontSize:'.8rem'}}
             onClick={()=>(clearLoggedInUser())}
             >Logout</h3>
           </div>

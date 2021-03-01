@@ -1,4 +1,4 @@
-import { React, useState,useContext } from 'react'
+import { React, useState,useEffect,useContext } from 'react'
 import { UserContext } from "../context/user-context"
 import { styled, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -35,6 +35,7 @@ import {formatPhone} from '../helpers/functions'
 import PurchaseWebService from '../web_services/PurchaseWebService'
 import ConfirmationModal from '../components/ConfirmationModal'
 import CheckoutItem from '../components/CheckoutItem'
+import gsap from 'gsap'
 
 import 'yup-phone';
 
@@ -196,6 +197,13 @@ const CheckoutForm = ({toggle}) => {
   const elements = useElements();
   const [showSuccessModal,setShowSuccessModal] = useState(false);
   const [redemptionCode,setRedemptionCode]= useState(null);
+
+  useEffect(()=>{
+
+    let tl = gsap.timeline(); 
+    tl.from('#checkout-form',{xPercent:100,duration:.5,delay:.5});
+
+  },[])
 
 
   const toggleLogin = ()=>{
