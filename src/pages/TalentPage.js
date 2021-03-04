@@ -10,6 +10,10 @@ import talentVideoCall from '../img/talent-video-call.png'
 import talentMakeMoney from '../img/talent-make-money.png'
 import MetaTags from 'react-meta-tags'
 import scheduleSVG from '../img/schedule.svg'
+import calendar from '../img/calendar.svg'
+import talentcall from '../img/talentcall.svg'
+import earnings from '../img/earnings.svg'
+import HostBox from '../components/HostBox'
 
 const TalentPage = ()=>{
 
@@ -49,7 +53,7 @@ const TalentPage = ()=>{
     </section>
     <section className="talent-calculator">
       <TalentCalculator />
-      <div style={{overflow:'hidden',borderRadius:'7px',border:'white solid 2px',height:'400px'}}>
+      <div style={{overflow:'hidden',borderRadius:'7px',height:'400px'}}>
         <h3>host view video from app</h3>
         {/* <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' /> */}
       </div>
@@ -58,19 +62,19 @@ const TalentPage = ()=>{
       <h1 style={{fontSize:'3.5rem', marginTop:'5vh'}}>How it works</h1>
       <div className="talent-how-it-works-content">
         <TalentStep title="Open Up Bookings" 
-        image={scheduleSVG}
+        image={calendar}
         info="Fans will book a call request with you on our website.
         They can purchase for themselves or as a gift. 
         You will be notified of new requests, 
         and you can check pending requests at any time in the app. " />
         <TalentStep title="Call Your Fans"
-        image={talentVideoCall}
+        image={talentcall}
         info="Open up the app to see your bookings, 
         and begin fulfilling them. You can do them all 
         in a row or pick and choose. Users have three 
         opportunities to answer your calls." />
         <TalentStep title="Collect Your Earnings"
-        image={talentMakeMoney}
+        image={earnings}
         info="You retain 80% of your earnings, and payments are made 
         directly into your account. Payments are securely handled 
         entirely by our third-party provider, Stripe." />
@@ -104,6 +108,15 @@ const TalentPage = ()=>{
     </section>
     <section className="talent-partners">
       <h1 style={{fontSize:'3.5rem'}}>Who we've worked with</h1>
+      <h3>We're just getting started, but here are our beta release partners.</h3>
+      <div className="host-box-container">
+        <HostBox img="http://www.fillmurray.com/300/300" genre="musician" name="David Shaw" />
+        <HostBox img="http://www.fillmurray.com/300/300" genre="musician" name="David Shaw" />
+        <HostBox img="http://www.fillmurray.com/300/300" genre="musician" name="David Shaw" />
+      </div>
+
+      
+
 
 
 

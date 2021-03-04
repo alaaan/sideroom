@@ -135,18 +135,17 @@
 /* How To Section */
 
 .how-to-section {
-    background: rgb(20, 23, 54);
-    background: linear-gradient(
-156deg
-, rgba(20, 23, 54, 1) 22%, rgba(53, 34, 85, 1) 100%);
     height: 100vh;
     width: 100%;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* position: relative; */
-    perspective: 1000px;}
+    perspective: 1000px;
+    background:var(--bluepurple);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    align-items: center;
+  
+  }
 
 .how-to-box{
   width: 80%;

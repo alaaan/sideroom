@@ -30,6 +30,7 @@ import {ReactComponent as LogoSpinner} from '../img/logo-spinner.svg'
 import webscreenbuy from '../img/web_screen_buy.png'
 import TitleSection from '../components/TitleSection';
 import phoneStockPhoto from '../img/phone-stock-photo.jpg'
+import ActionBox from '../components/ActionBox'
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -79,102 +80,23 @@ function App() {
     headerTextTl.to('.hero-secondary-text',{text:"prepare to pickup.",duration:3,ease:'back'})
 
 
-    let tl = gsap.timeline({
+    let howToTl = gsap.timeline({scrollTrigger:{trigger:'.how-to-section',start:'top 75%', end: '+000'}});
+    howToTl.from('#action-1',{opacity:0,xPercent:100,z:10});
+    howToTl.from('#action-2',{opacity:0});
+    howToTl.from('#action-3',{opacity:0});
 
-      delay:10
-      // scrollTrigger: {
-      //   trigger: ".how-to-section",
-      //   start: "top middle", // when the top of the trigger hits the top of the viewport
-      //   end: "bottom top", // end after scrolling 500px beyond the start
-      //   scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar,
-      //   markers:true
-      // }
-    });
 
 
 
     gsap.from('.testimonial-video',{duration:.5,stagger:.5,opacity:0,y:50,
       scrollTrigger:{trigger:'.testimonial-video',scrub:.5,start:'top 75%',end:'bottom 75%'}})
 
-    let box1Tl = gsap.timeline({
-      scrollTrigger:{trigger:'#block-wrapper-1',start:'top 70%',end:'50% 50%'}
-    });
-
-    box1Tl.fromTo('#block-wrapper-1',{rotateY:-5,opacity:0,y:50,z:5},{duration:1,stagger:.5,rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
-    box1Tl.from('#box-1',{opacity:0,y:20,duration:.05},'<.5');
-    box1Tl.from('#box-1-img',{opacity:0,xPercent:5,y:5,duration:1,ease:'back'},'<.25');
-
-
-
-    let wave1Tl = gsap.timeline(
-      {scrollTrigger:{trigger:'.how-to-box',scrub:1,yoyo:true,start:'top 60%',end:'+=4000'}});
-    wave1Tl.from('#top-wave',{y:200},0)
-    wave1Tl.from('#middle-wave',{y:100},'<')
-    wave1Tl.from('#bottom-wave',{x:10,y:50},'<')
-
-
-  
-
-    
-
-    // box1Tl.from('#box-1-title',{opacity:0,y:20,duration:.05},'<.5');
-    // box1Tl.from('#box-1-p',{opacity:0,y:20,duration:.05},'<.5');
-
-
-    // snap: {
-    //   snapTo: "labels", // snap to the closest label in the timeline
-    //   duration: {min: 0.2, max: 3}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-    //   delay: 0.1, // wait 0.2 seconds from the last scroll event before doing the snapping
-    //   ease: "power1.inOut" // the ease of the snap animation ("power3" by default)
-    // },
-
-
-    let boxRotationTl = gsap.timeline({
-      scrollTrigger:{
-        toggleActions:'play none reverse reset',
-        markers:true,trigger:'.how-to-section',scrub:1,pinSpacing:"200",pin:true,start:'top top',end:"+=5000"}
-    });
-    // boxRotationTl.addLabel('1st');
-    boxRotationTl.to('#block-wrapper-1',{xPercent:-120}); 
-    boxRotationTl.from('#block-wrapper-2',{xPercent:100},'<');
-    // boxRotationTl.fromTo('#title-2',{rotateY:-5,opacity:0,y:50,z:5},{rotateY:0,opacity:1,z:0, y:0,x:0,ease:'back'})
-
-    // boxRotationTl.addLabel('2nd');
-    boxRotationTl.to('#block-wrapper-2',{xPercent:-120}); 
-    // boxRotationTl.addLabel('3rd');
-    boxRotationTl.from('#block-wrapper-3',{xPercent:100},'<');
-
-
-    // boxRotationTl.set('#block-wrapper-2',{display:'flex'},'<');
-    //  boxRotationTl.from('#block-wrapper-2',{opacity:0,xPercent:100},'<');
-    // boxRotationTl.to('#line-1',{scaleX:1,x:-600,ease:'none'});
-    // boxRotationTl.to('#subtitle-1',{opacity:0},'<');
-    // boxRotationTl.to('#title-1',{xPercent:-200,ease:'none'},'<.01');
-    // boxRotationTl.to('#box-1',{xPercent:-200,ease:'none'},'<.5');
-
-    // boxRotationTl.from('#box-2',{xPercent:250,ease:'none'},'<');
-    // boxRotationTl.to('#box-2',{xPercent:-200,ease:'none'});
-    // boxRotationTl.from('#box-3',{xPercent:250,ease:'none'},'<');
-
-    // boxRotationTl.from('#title-2',{duration:.75,opacity:0,xPercent:-150,ease:'none'});
-    // boxRotationTl.from('#line-2',{opacity:0,ease:'none'});
-
-    // box1Tl.to('#subtitle-1',{duration:.75,opacity:0,xPercent:-150,ease:'none'},'<+.1')
-
-    // boxRotationTl.to('#box-2',{xPercent:-120}); 
-    // boxRotationTl.set('#box-3',{display:'block'},'<');
-    // boxRotationTl.from('#box-3',{opacity:0,xPercent:100},'<'); 
-
-
-
-    // tl.to('.how-to-section',{'background':'radial-gradient(circle, rgba(97, 45, 140, 1) 0%, rgba(33, 26, 68, 1) 93%)',duration:3},'startbg')
-    // tl.to('.shape3',{scale:2,rotate:15,repeat:2},'startbg-=2');
-
-
 
       let headerTl=gsap.timeline();
       gsap.set('.hero-secondary-text',{visibility:'visible'});
       headerTl.from('.header-video',{x:100,duration:1,opacity:0});
+
+     
 
 
       
@@ -287,57 +209,15 @@ function App() {
         <section className="how-to-section">
           {/* <LogoSpinner /> */}
 
-          <div id='block-wrapper-1' style={{display:'flex',height:'100%'}}>
-            <TitleSection 
-              title="Book It" 
-              titleId='title-1' 
-              subtitle='Book your call securely through our website.'
-              subtitleId='subtitle-1'
-              lineId='line-1'  />
+          <ActionBox id='action-1' title="book it." subtitle="book it securely on our website." />
+          <ActionBox id='action-2' title="download the app." subtitle="available on iOS and Android." />
+          <ActionBox id='action-3' title="wait for that moment." subtitle="get your call within 14 days." />
+
+
+
+
+    
       
-              <div id="box-1" className="how-to-box">
-                {/* <h1 id='box-1-title'className='how-to-title'>book it</h1>
-                <p id='box-1-p'>Securely and easily on our site.</p> */}
-                {/* <img id='box-1-img' alt="calendar" src={calendarSVG } style={{width:'40%',marginTop:'20px',opacity:0}} /> */}
-                <img id='box-1-img' alt="book" src={webscreenbuy} style={{zIndex:2,width:'75%',marginTop:'20px'}} /> 
-                <WaveSVG />
-                {/* <img id='box-1-waves' alt="waves" style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
-              </div>
-            </div>
-       
-          <div id='block-wrapper-2' style={{height:'100%'}}>
-            <TitleSection 
-              title="Download the App" 
-              titleId='title-2' 
-              subtitle='We got you covered on iOS and Android.'
-              subtitleId='subtitle-2'
-              lineId='line-2' />
-              
-
-            <div id="box-2" className="how-to-box">
-              <img src={downloadSVG } style={{zIndex:2,width:'40%',marginTop:'30px'}} />
-
-              {/* <div className='checkoutVideo' style={{overflow:'hidden',borderRadius:'7px'}}>
-                <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/fancheckout.mov' />
-              </div> */}
-              {/* <img style={{position:'absolute',bottom:'0px',zIndex:'-1'}} src={waves} /> */}
-              <WaveSVG />
-            </div>
-          </div>
-
-          <div id='block-wrapper-3' style={{height:'100%'}}>
-          <TitleSection 
-              title="Wait for your call" 
-              titleId='title-3' 
-              subtitle='Get ready to pickup.'
-              subtitleId='subtitle-3'
-              lineId='line-3'  />
-
-          <div id="box-3" className="how-to-box">
-              <img src={videochatSVG } style={{zIndex:2,width:'40%',marginTop:'20px'}} />
-            <WaveSVG />
-          </div>
-          </div>
 
 
 

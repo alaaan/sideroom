@@ -34,9 +34,9 @@ const TalentCalculator = () =>{
   }
 
   return(
-  <GlowyBox boxWidth='400px' boxHeight='200px'>
+  <GlowyBox boxWidth='400px' boxHeight='65%'>
     <div className="talent-calc-banner">
-      <h2 style={{fontSize:'2rem'}}>Earn <span className="earnings" style={{display:'inline-block',fontSize:'2.5rem',color:'var(--pink)'}}>{formatCurrency(earnings)}</span> per month video calling your fans</h2>
+      <h2 style={{fontSize:'2rem'}}>Earn <span className="earnings" style={{display:'inline-block',fontSize:'2.5rem',color:'var(--cerise)'}}>{formatCurrency(earnings)}</span> per month video calling your fans</h2>
     </div>
 
     <div>
@@ -45,7 +45,7 @@ const TalentCalculator = () =>{
       <input className="calculator-input" type='text' onChange={handlePriceChange} value={price}></input>
       for a 2 minute call
     </div>
-    <div>
+    <div style={{marginBottom:'10px'}}>
       Call 
       {/* <h2 style={{color:'var(--pink)',display:'inline',fontSize:'2.3rem'}}>10</h2>  */}
       <input className="calculator-input" type='text' onChange={handleQtyChange} value={qty}></input>

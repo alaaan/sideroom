@@ -50,12 +50,12 @@
 }
 
 #root {
-  background-color: black;
+  background-color: var(--raisin-black);
   height: 100%;
 }
 
 .root-router {
-  background-color: black;
+  background-color: var(--raisin-black);
 }
 
 .root-container {
@@ -68,6 +68,8 @@ body {
   height: 100%; */
   overflow-x: hidden;
   box-sizing: border-box;
+  background: var(--raisin-black);
+  padding-bottom: 5%;
 }
   
   *,*::before,*::after {
@@ -109,6 +111,23 @@ font-weight: 400;
 
 /* Components  */
 
+
+
+
+.action-box{
+  width: 50%;
+  min-width: 300px;
+  height: 25%;
+  padding: 2%;
+  border: solid 2px var(--cerise);
+  border-radius: 7px;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
 .logo-spinner{
   width:250px; 
   height:250px; 
@@ -132,7 +151,7 @@ font-weight: 400;
   font-size: 1.6rem;
   border-radius: 10px;
   /* background: #5643cc; */
-  border: solid 1px;
+  box-shadow:rgb(80 63 205 / 50%) 0px 1px 5px;
 
 }
 
@@ -873,19 +892,21 @@ font-weight: 400;
 
 /* talent page */
 
+earnings{
+  color:var(--cerise)
+}
+
 .talent-header{
   /* height: 20vh; */
   background: rgb(32,27,67);
   background: linear-gradient(180deg, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
   padding: 10vw;
   padding-bottom: 0;
-  background:black; 
+  background:var(--raisin-black); 
 }
 
 .talent-calculator{
   height: 40vh;
-  /* background-color: rgba(66,36,105,1); */
-  background-color:#422469;
   display: grid;
   /* flex-direction: row; */
   /* flex-wrap: nowrap; */
@@ -895,7 +916,7 @@ font-weight: 400;
   padding-left: 5vw;
   padding-right: 5vw;
   justify-items: center;
-  background:black; 
+  background:var(--raisin-black);
 }
 
 .calculator-input{
@@ -903,13 +924,13 @@ font-weight: 400;
   border: none;
   outline: none;
   font-size: 2rem;
-  color: var(--pink);
+  color: var(--cerise);
   font-weight: 700;
   font-family: var(--new-font);
   margin: 2px;
   width: 75px;
   text-align: center;
-  border-bottom: solid 2px var(--pink);
+  border-bottom: solid 2px var(--cerise);
 }
 
 .talent-calc-banner{
@@ -927,14 +948,12 @@ font-weight: 400;
 
 .talent-how-it-works{
   height:50vh; 
-  background: rgb(20,23,54);
-  background: linear-gradient(180deg, rgba(20,23,54,1) 0%, rgba(66,36,105,1) 100%);
-  border-top:1px solid var(--fadedpink);
+  border-top:1px solid var(--cerise);
   display:flex; 
   flex-direction:column; 
   padding-left: 5%;
   padding-right: 5%;
-  background:black; 
+  background:var(--raisin-black);
 }
 
 .talent-how-it-works-content{
@@ -971,20 +990,48 @@ font-weight: 400;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-items: center;
   padding-top: 5vh;
-  background:black; 
+  background:var(--raisin-black);
 }
 
 .talent-partners{
-  height:40vh;
   justify-items: center;
   padding-top: 5vh;
-  background:black; 
-  border-top:1px solid var(--fadedpink);
+  background:var(--raisin-black);
+  border-top:1px solid var(--cerise);
   padding-left: 5%;
   padding-right: 5%;
 
 }
 
+.host-box-container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top:4%;
+  
+}
+
+.host-box{
+  height:90%; 
+  max-height: 500px;
+  display:flex;
+  flex-direction: column;
+  max-width: 250px;
+}
+
+.host-box img{
+  border-radius:10px;
+  box-shadow:rgb(80 63 205 / 50%) 0px 4px 8px
+}
+
+.host-box-info{
+  display:flex; 
+  flex-direction: column;
+}
+
+.host-box-info h2{
+  font-size:2.5rem;
+}
 
 /* 3d Testing */
 
