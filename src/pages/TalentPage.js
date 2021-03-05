@@ -49,7 +49,7 @@ const TalentPage = ()=>{
     
     <section className="talent-header">
         <h1 className='talent-headline' style={{fontSize:'3rem',visibility:'hidden'}}>A platform to safely and securely video call your fans</h1>
-        <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>Meet them in the SideRoom.</h3>
+        <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>Welcome your superfans.</h3>
     </section>
     <section className="talent-calculator">
       <TalentCalculator />
@@ -110,9 +110,12 @@ const TalentPage = ()=>{
       <h1 style={{fontSize:'3.5rem'}}>Who we've worked with</h1>
       <h3>We're just getting started, but here are our beta release partners.</h3>
       <div className="host-box-container">
-        <HostBox img="http://www.fillmurray.com/300/300" genre="musician" name="David Shaw" />
-        <HostBox img="http://www.fillmurray.com/300/300" genre="musician" name="David Shaw" />
-        <HostBox img="http://www.fillmurray.com/300/300" genre="musician" name="David Shaw" />
+        <HostBox img="https://conectr-cdn.azureedge.net/mediumimages/4f6aaeb9-bd76-4535-b155-dfd1bf35a173.jpg" genre="music" name="The Revivalists" />
+        <HostBox img="https://conectr-cdn.azureedge.net/mediumimages/2daa9aa1-c93e-4a50-8cd6-d0d6e4cfc6d4.jpg" genre="athlete" name="Dansby Swanson" />
+        <HostBox img="https://conectr-cdn.azureedge.net/mediumimages/29b27034-bb9a-4c27-b816-ac5baba6d06b.jpg" genre="podcasters" name="The Lady Gang" />
+        <HostBox img="https://conectr-cdn.azureedge.net/mediumimages/062edb89-99ea-41b4-ab6e-d0c133bf92d8.jpg" genre="music" name="Kodie Shane" />
+        <HostBox img="https://conectr-cdn.azureedge.net/mediumimages/8dbae44e-f6a5-4398-97ec-bcfcb0f234b7.jpg" genre="actor" name="Michael Trevino" />
+        <HostBox img="https://conectr-cdn.azureedge.net/mediumimages/0bee4353-8a27-41fd-806d-29ea83db7220.jpg" genre="music" name="Marc Roberg (OAR)" />
       </div>
 
       
