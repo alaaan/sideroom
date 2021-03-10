@@ -182,7 +182,7 @@ const FormField = withStyles({
 
 
 
-const CheckoutForm = ({toggle}) => {
+const CheckoutForm = ({toggle,listing}) => {
 
   const {isAuthenticated,loggedInUser,clearLoggedInUser} = useContext(UserContext);
   const [showLogin,setShowLogin] = useState(false);
@@ -317,7 +317,7 @@ const CheckoutForm = ({toggle}) => {
 
   return (
     <div className="host-detail-checkout">
-      <CheckoutItem />
+      <CheckoutItem listing={listing} />
       <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
       <CloseIcon
         onClick={toggle}
@@ -468,7 +468,7 @@ const CheckoutForm = ({toggle}) => {
           {/* <MyField label="Expiration" variant="outlined" />
           <MyField label="CVV" variant="outlined" />
           <MyField label="Zip Code" variant="outlined" />  */}
-          <SRButton type="submit" onClick={handleSubmit} style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call - $200</SRButton>
+          <SRButton type="submit" onClick={handleSubmit} style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call - ${listing.price}</SRButton>
         </div>
 
         {/* <StyledButton  /> */}

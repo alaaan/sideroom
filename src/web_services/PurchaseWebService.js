@@ -4,6 +4,8 @@ export default class PurchaseWebService extends WebService {
   routePrefix = "/ondemand";
   purchasePath = `${this.routePrefix}/purchase`;
 
+  //  ondemand/listing/hostId
+
   async makePurchase(listingId,notes,forMe,toPhoneNumber,paymentMethodId,suggestedDate) {
     let result = new JsonPayload();
     try {
