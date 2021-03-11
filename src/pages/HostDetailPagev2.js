@@ -15,6 +15,7 @@ import SRButton from '../components/SRButton'
 import gsap from 'gsap';
 import { Redirect } from "react-router-dom";
 import HostWebService from '../web_services/host_webservice';
+import SRLoader from '../components/SRLoader';
 
 
 const HostDetailPagev2 = () => {
@@ -29,12 +30,6 @@ const HostDetailPagev2 = () => {
   const [soldOut,setSoldOut]=useState(null);
   const [redirect, setRedirect] = useState(false);
   const [listing,setListing]=useState({});
-
-  const listingObject = {
-    price:'$5',
-
-
-  }
 
   useEffect(() => {
 
@@ -107,8 +102,12 @@ const HostDetailPagev2 = () => {
   return (
     <>
     {redirect && <Redirect to={"/"} />}
+   
+     
+  
     <AnimatePresence>
-    {!showCheckout &&
+    {isLoading && <SRLoader label="loading event details..."/> }
+    {!showCheckout && !isLoading &&
     <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1,duration:1}}

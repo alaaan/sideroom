@@ -4,16 +4,18 @@ import { withStyles } from '@material-ui/core/styles';
 
 const Loader = withStyles({
   root: {
-    color:'var(--pink)'
+    color:'var(--cerise)'
   },
 })(CircularProgress);
 
 const SRLoader = ({label})=>{
   return(
   
-    <div>
-      <h3 style={{marginBottom:'5px'}}>{label}</h3>
-      <Loader style={{height:'25px',width:'25px'}} />
+    <div className="loader-wrapper">
+      <div className="loader">
+        <h3 style={{marginBottom:'5px'}}>{label}</h3>
+        <Loader style={{height:'25px',width:'25px'}} />
+      </div>
     </div>
   )
 }
