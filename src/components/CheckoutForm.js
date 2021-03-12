@@ -12,7 +12,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import * as yup from 'yup';
 import SRButton from './SRButton';
 import SRButtonOutlined from './SRButtonOutlined';
-import { useFormik, Field } from 'formik';
+import { Formik,useFormik, Field } from 'formik';
 import PhoneInput from 'react-phone-number-input/input';
 import InputMask from 'react-input-mask';
 import MaskedInput from "react-text-mask";
@@ -36,8 +36,11 @@ import PurchaseWebService from '../web_services/PurchaseWebService'
 import ConfirmationModal from '../components/ConfirmationModal'
 import CheckoutItem from '../components/CheckoutItem'
 import gsap from 'gsap'
+import closeSvg from '../img/close.svg';
+import Loader from '../components/SRLoader';
 
 import 'yup-phone';
+import { render } from 'react-dom';
 
 const defaultValidationSchema = yup.object({
   email: yup
@@ -48,11 +51,6 @@ const defaultValidationSchema = yup.object({
   name: yup
     .string('Enter your name')
     .required('Name is required!'),
-
-  phone: yup
-    .string()
-    .phone("US")
-    .required('Enter your phone number'),
 
   request: yup
     .string('Tell us a little bit about your request')
@@ -182,7 +180,7 @@ const FormField = withStyles({
 
 
 
-const CheckoutForm = ({toggle,listing}) => {
+const CheckoutForm = ({toggle,listing,redirect}) => {
 
   const {isAuthenticated,loggedInUser,clearLoggedInUser} = useContext(UserContext);
   const [showLogin,setShowLogin] = useState(false);
@@ -195,13 +193,15 @@ const CheckoutForm = ({toggle,listing}) => {
 
   const stripe = useStripe();
   const elements = useElements();
-  const [showSuccessModal,setShowSuccessModal] = useState(false);
+  const [showSuccess,setShowSuccess] = useState(false);
   const [redemptionCode,setRedemptionCode]= useState(null);
+  const [isSubmitting,setIsSubmitting] = useState(false);
 
   useEffect(()=>{
 
     let tl = gsap.timeline(); 
-    tl.from('#checkout-form',{xPercent:100,duration:.5,delay:.5});
+    tl.from('.checkout-item',{opacity:0,duration:1,delay:.5});
+    tl.from('#checkout-form',{xPercent:100,duration:.5},'<');
 
   },[])
 
@@ -210,6 +210,8 @@ const CheckoutForm = ({toggle,listing}) => {
     setShowLogin(!showLogin);
     console.log("trying to toggle login");
   }
+
+
 
   //stripe stuff
   const CARD_ELEMENT_OPTIONS = {
@@ -257,25 +259,27 @@ const CheckoutForm = ({toggle,listing}) => {
     initialValues: {
       email: '',
       name: '',
-      phone: '',
       request: '',
       date: '',
       recipientName: '',
       recipientPhone: ''
     },
     validationSchema: defaultValidationSchema,
-    onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      setShowSuccessModal(true);
+    onSubmit:  (values) => {
+        // alert(JSON.stringify(values, null, 2));
+        setIsSubmitting(true);
+        console.log('submitting');
+        handleCharge();
     },
+  
+    
   });
 
   const today = new Date();
 
   
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleCharge= async () => {
 
     // if (!isSubmittingPayment) {
     //   if (!stripe || !elements) {
@@ -310,18 +314,23 @@ const CheckoutForm = ({toggle,listing}) => {
       } else {
         console.log('purchase success')
         setRedemptionCode(result.Payload.RedemptionCode)
-        setShowSuccessModal(true); 
+        setShowSuccess(true); 
       }
     }
 
 
   return (
     <div className="host-detail-checkout">
+      {!showSuccess ? 
+      <>
       <CheckoutItem listing={listing} />
       <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
-      <CloseIcon
+      <img src = {closeSvg} 
+
+        alt='close'
         onClick={toggle}
-        fontSize='large' color="secondary" style={{ position: 'absolute', top: 5, right: 5 }} />
+        
+        style={{ position: 'absolute', top: 5, right: 5,width:'35px',cursor:'pointer', display: isSubmitting ? 'none' : 'visible' }} />
         <h2 style={{ marginTop: '10px' }}>Your Info</h2>
         {!isAuthenticated && <h3>You must verify your phone number</h3>}
 
@@ -468,23 +477,35 @@ const CheckoutForm = ({toggle,listing}) => {
           {/* <MyField label="Expiration" variant="outlined" />
           <MyField label="CVV" variant="outlined" />
           <MyField label="Zip Code" variant="outlined" />  */}
-          <SRButton type="submit" onClick={handleSubmit} style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call - ${listing.price}</SRButton>
+          <SRButton type="submit" disabled={isSubmitting} style={{ width:'80%', maxWidth:'500px', marginTop: '40px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - ${listing.price}`) : <Loader />}</SRButton>
         </div>
 
         {/* <StyledButton  /> */}
 
       </form >
+      </>: 
 
-      {showSuccessModal ? (
-          <Modal>
-            <ConfirmationModal 
-            hostName="David Shaw" 
-            hostImg="http://www.fillmurray.com/300/300"
-            redemptionCode={redemptionCode}
-            userNumber="(404) 234-1314" />
-          </Modal>
+      <Modal>
+      <ConfirmationModal 
+        redirect= {redirect}
+        hostName="David Shaw" 
+        hostImg="http://www.fillmurray.com/300/300"
+        redemptionCode={redemptionCode}
+        userNumber="(404) 234-1314" />
+        </Modal>
+      
+       }
+
+      {/* {!showSuccess ? (
+        <ConfirmationModal 
+        hostName="David Shaw" 
+        hostImg="http://www.fillmurray.com/300/300"
+        redemptionCode={redemptionCode}
+        userNumber="(404) 234-1314" />
         ) : null
-      }
+      } */}
+
+
       
       {showLogin? (
       <Modal>

@@ -2,11 +2,16 @@ import React from 'react';
 import appStore from '../img/app-store.png'
 import googlePlay from '../img/google-play-badge.png'
 import Emoji from '../components/Emoji'
+import closeSvg from '../img/close.svg'
 
-const ConfirmationModal = ({hostName,hostImg,redemptionCode,userNumber})=>{
+const ConfirmationModal = ({hostName,hostImg,redemptionCode,userNumber,redirect})=>{
 
   return(
     <div className="confirmation-container" style={{position:'relative'}}>
+      <img src = {closeSvg} 
+        alt='close'
+        onClick={redirect}
+        style={{ position: 'absolute', top: 5, right: 5,width:'35px',cursor:'pointer' }} />
       <Emoji symbol="🤘"/>
         <img className="confirmation-img-wrapper" src={hostImg} alt="host" />
       <div className="headline-container">

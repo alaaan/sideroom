@@ -18,6 +18,7 @@ import HostWebService from '../web_services/host_webservice';
 import SRLoader from '../components/SRLoader';
 
 
+
 const HostDetailPagev2 = () => {
 
   const [showCheckout,setShowCheckout] = useState(false);
@@ -28,7 +29,7 @@ const HostDetailPagev2 = () => {
   const [hostName,setHostName]=useState(null);
   const [description,setDescription]=useState(null);
   const [soldOut,setSoldOut]=useState(null);
-  const [redirect, setRedirect] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
   const [listing,setListing]=useState({});
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const HostDetailPagev2 = () => {
       if (!payload.Errored) {
         setStates(payload.Payload);
       } else {
-        setRedirect(true);
+        setShouldRedirect(true);
       }
     };
     loadData();
@@ -89,6 +90,12 @@ const HostDetailPagev2 = () => {
     setShowCheckout(true);
   }
 
+  const redirect = () =>{
+    console.log('should be redirecting');
+    setShouldRedirect(true);
+  }
+
+
   const closeCheckout = ()=>{
     console.log('closecheckout');
     setShowCheckout(false);
@@ -101,9 +108,8 @@ const HostDetailPagev2 = () => {
 
   return (
     <>
-    {redirect && <Redirect to={"/"} />}
-   
-     
+    {shouldRedirect && <Redirect to={"/"} />}
+  
   
     <AnimatePresence>
     {isLoading && <SRLoader label="loading event details..."/> }
@@ -148,7 +154,7 @@ const HostDetailPagev2 = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1,duration:1}}
           exit={{ opacity: 0 }}>
-          <CheckoutForm listing={listing} toggle={()=>{setShowCheckout(false)}}/>
+          <CheckoutForm redirect={redirect} listing={listing} toggle={()=>{setShowCheckout(false)}}/>
         </motion.div>
       </Elements>
     }
