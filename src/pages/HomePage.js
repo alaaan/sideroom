@@ -31,6 +31,7 @@ import webscreenbuy from '../img/web_screen_buy.png'
 import TitleSection from '../components/TitleSection';
 import phoneStockPhoto from '../img/phone-stock-photo.jpg'
 import ActionBox from '../components/ActionBox'
+import backgroundWaves from '../img/waves-bg.svg'
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -206,7 +207,7 @@ function App() {
         </section>
 
         
-        <section className="how-to-section">
+        <section className="how-to-section" style={{ backgroundImage: `url(${backgroundWaves})` }}>>
           {/* <LogoSpinner /> */}
 
           <ActionBox id='action-1' title="book it." subtitle="book it securely on our website." />

@@ -13,7 +13,7 @@ import calendar from '../img/calendar-animated-2.png'
 import videochat from '../img/video-chat-animated.png'
 import SRButton from '../components/SRButton'
 import gsap from 'gsap';
-import { Redirect } from "react-router-dom";
+import { Redirect,useParams } from "react-router-dom";
 import HostWebService from '../web_services/host_webservice';
 import SRLoader from '../components/SRLoader';
 
@@ -21,6 +21,7 @@ import SRLoader from '../components/SRLoader';
 
 const HostDetailPagev2 = () => {
 
+  let {hostParam} = useParams();
   const [showCheckout,setShowCheckout] = useState(false);
   const [isLoading,setIsLoading] = useState(false);
   const [price,setPrice]=useState(null);
@@ -35,9 +36,10 @@ const HostDetailPagev2 = () => {
   useEffect(() => {
 
     setIsLoading(true);
+    console.log('host param:' + hostParam)
     const webService = new HostWebService();
     const loadData = async () => {
-      var payload = await webService.getHostListing('revivalists');
+      var payload = await webService.getHostListing(hostParam);
       if (!payload.Errored) {
         setStates(payload.Payload);
       } else {
@@ -120,7 +122,7 @@ const HostDetailPagev2 = () => {
     exit={{ opacity: 0 }}>
     <div className="host-detail-pagev2">
       {/* <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' /> */}
-      <img src={hostImage} style={{width:'50%',borderRadius:'7px',marginBottom:'5%'}} alt='host' />
+      <img src={hostImage} alt='host' />
 
       <div className='host-detail-right'>
         <div className="host-detail-info-container">

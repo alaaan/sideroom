@@ -20,9 +20,9 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/host2" component={HostDetailPagev2} />
-            <Route exact path="/host" component={HostDetailPage} />
-            <Route exact path="/talent" component={TalentPage} />
+            <Route path="/:hostParam" component={HostDetailPagev2} />
+            <Route path="/host" component={HostDetailPage} />
+            <Route path="/talent" component={TalentPage} />
           </Switch>
         </AnimatePresence>
       </div>

@@ -31,6 +31,14 @@
   object-fit: cover;
 } */
 
+.host-detail-pagev2 img{
+  width: 50%;
+  max-width: 350px;
+  border-radius: 7px;
+  margin-bottom: 5%;
+  height: 50%;
+  max-height: 350px;
+}
 .host-detail-info-container{
   width: 90%;
   border-radius: 7px;
@@ -75,9 +83,11 @@
   justify-content: space-around;
   height: 50%;
   padding:1%;
+  
 }
 
 .checkout-item img{
   border-radius: 7px;
   overflow: hidden;
+  max-width:300px; 
 }

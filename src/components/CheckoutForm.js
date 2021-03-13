@@ -477,7 +477,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
           {/* <MyField label="Expiration" variant="outlined" />
           <MyField label="CVV" variant="outlined" />
           <MyField label="Zip Code" variant="outlined" />  */}
-          <SRButton type="submit" disabled={isSubmitting} style={{ width:'80%', maxWidth:'500px', marginTop: '40px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - ${listing.price}`) : <Loader />}</SRButton>
+          <SRButton type="submit" disabled={isSubmitting} style={{ width:'80%', maxWidth:'500px', marginTop: '40px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
         </div>
 
         {/* <StyledButton  /> */}
@@ -488,10 +488,10 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       <Modal>
       <ConfirmationModal 
         redirect= {redirect}
-        hostName="David Shaw" 
-        hostImg="http://www.fillmurray.com/300/300"
+        hostName={listing.hostName}
+        hostImg={listing.hostImg}
         redemptionCode={redemptionCode}
-        userNumber="(404) 234-1314" />
+        userNumber={loggedInUser.Username} />
         </Modal>
       
        }
