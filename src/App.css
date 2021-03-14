@@ -68,7 +68,6 @@ body {
   overflow-x: hidden;
   box-sizing: border-box;
   background: var(--raisin-black);
-  padding-bottom: 5%;
 }
   
   *,*::before,*::after {

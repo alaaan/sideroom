@@ -31,7 +31,12 @@ import webscreenbuy from '../img/web_screen_buy.png'
 import TitleSection from '../components/TitleSection';
 import phoneStockPhoto from '../img/phone-stock-photo.jpg'
 import ActionBox from '../components/ActionBox'
-import backgroundWaves from '../img/waves-bg.svg'
+import backgroundSvg from '../img/blurry-gradient.png'
+import step1 from '../img/how-to-section/step1.png'
+import step2 from '../img/how-to-section/step2.png'
+import step3 from '../img/how-to-section/step3.png'
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -176,54 +181,64 @@ function App() {
 
             <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}></h2>
           </div>
-          <div className='header-video' style={{overflow:'hidden',borderRadius:'7px'}}>
-            <img src={phoneStockPhoto} alt='phone' style={{maxWidth:'300px'}} />
-           </div>
+        
           {/* <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} /> */}
           <div className="wave-top">
           <WaveTop />
           </div>
         </section>
         
-        <section className="testimonial-section">
-
-        {/* <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
-          <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testvideo.mp4' />
-        </div> */}
-
-          
-         
-        
-                <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
-                  <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-              </div>
-              <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
-                  <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-              </div>
-              <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
-                  <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-              </div>  
-
-        </section>
-
-        
-        <section className="how-to-section" style={{ backgroundImage: `url(${backgroundWaves})` }}>>
-          {/* <LogoSpinner /> */}
-
-          <ActionBox id='action-1' title="book it." subtitle="book it securely on our website." />
-          <ActionBox id='action-2' title="download the app." subtitle="available on iOS and Android." />
-          <ActionBox id='action-3' title="wait for that moment." subtitle="get your call within 14 days." />
-
-
-
-
-    
-      
-
-
-
        
+        
+        <section className="how-to-section">
+
+          <div className='how-to-box'>
+              <h1>book your call.</h1>
+              <h3>Easily and securely buy a video call for you or buy one as a perfect gift for that special mega fan.</h3>
+          </div>
+          <div className='how-to-box' >
+              <img src={step1} alt='step1'/>
+          </div>
+          <div className='how-to-box'>
+            <img src={step2} alt='step2'/>
+          </div>
+          <div className='how-to-box'>
+              <h1>redeem your access code.</h1>
+              <h3>download the app on iOS and Android.</h3>
+          </div>
+         
+          <div className='how-to-box'>
+              <h1>wait for your call.</h1>
+              <h3>get ready for your call.</h3>
+
+          </div>
+          <div className='how-to-box'>
+            <img src={step3} alt='step3'/>
+          </div>
+     
         </section>
+
+        <section className="testimonial-section" >
+
+{/* <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+  <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testvideo.mp4' />
+</div> */}
+
+  
+ 
+
+        <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+          <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+      </div>
+      <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+          <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+      </div>
+      <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
+          <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
+      </div>  
+
+</section>
+
 
             {/* Host Section Code  */}
         {/* <section className="host-section">

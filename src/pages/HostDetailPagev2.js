@@ -122,10 +122,11 @@ const HostDetailPagev2 = () => {
     exit={{ opacity: 0 }}>
     <div className="host-detail-pagev2">
       {/* <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' /> */}
-      <img src={hostImage} alt='host' />
 
       <div className='host-detail-right'>
         <div className="host-detail-info-container">
+          <img src={hostImage} alt='host' style={{alignSelf:'center'}} />
+
           <h3 style={{color:'white'}}>A personal video call from</h3>
           <h2>{hostName}</h2>
           <div style={{height:'10px',width:'20%',background:'var(--ocean-blue'}}></div>
