@@ -1,15 +1,9 @@
 import React,{useEffect} from 'react'
-import GlowyBox from '../components/GlowyBox'
 import TalentCalculator from '../components/TalentCalculator'
 import gsap from 'gsap'
 import ReactPlayer from 'react-player'
 import TalentStep from '../components/TalentStep'
-import {ReactComponent as Icon} from '../img/icon.svg'
-import talentBooking from '../img/talent-booking.png'
-import talentVideoCall from '../img/talent-video-call.png'
-import talentMakeMoney from '../img/talent-make-money.png'
-import MetaTags from 'react-meta-tags'
-import scheduleSVG from '../img/schedule.svg'
+// import MetaTags from 'react-meta-tags'
 import calendar from '../img/calendar.svg'
 import talentcall from '../img/talentcall.svg'
 import earnings from '../img/earnings.svg'
@@ -29,7 +23,7 @@ const TalentPage = ()=>{
     tl.from('.glowy-box',{opacity:0,duration:1},'start+=1');
     tl.from('#message',{opacity:0},'start+=1.5')
     tl.staggerFrom ('.talent-step-container',2,{opacity:0,stagger:.5})
-    tl.from('.talent-footer-video',{rotationY:-80,opacity:0,duration:2}, 'start+=3')
+    tl.from('.talent-footer-video',{rotationY:-10,opacity:0,duration:2}, 'start+=3')
     tl.from('.talent-footer-headline',{x:100,opacity:0},'start+=3.5')
 
   },[])
@@ -39,14 +33,13 @@ const TalentPage = ()=>{
 
   return(
     <>
-    <MetaTags>
+    {/* <MetaTags>
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@flickr" />
       <meta name="twitter:title" content="Small Island Developing States Photo Submission" />
       <meta name="twitter:description" content="View the album on Flickr." />
       <meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
     </MetaTags>
-    
+     */}
     <section className="talent-header">
         <h1 className='talent-headline' style={{fontSize:'3rem',visibility:'hidden'}}>A platform to safely and securely video call your fans</h1>
         <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>Welcome your superfans.</h3>
@@ -83,7 +76,7 @@ const TalentPage = ()=>{
     </section>
     <section className="talent-cta">
       <div className='talent-footer-video'style={{overflow:'hidden', height: '350px', borderRadius:'7px',boxShadow:'rgba(80, 63, 205, 0.5) 0px 1px 5px'}}>
-        <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
+        <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/talentpricechange.MP4' />
       </div>
       <div>
         <h1 className='talent-footer-headline' style={{fontSize:'3.2rem', marginTop:'5vh'}}>Adjust your pricing and availability easily from the app.</h1>

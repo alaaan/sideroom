@@ -1,14 +1,8 @@
 import React, {useContext,useState,useEffect} from 'react';
-import { motion } from 'framer-motion'
-import door from '../img/door.png'
 import { UserContext } from "../context/user-context"
 import SRButtonOutlined from '../components/SRButtonOutlined'
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Modal from '../components/Modal';
 import LoginForm from '../components/LoginForm'
-import SRTextField from '../components/SRTextField';
-import SRLoader from '../components/SRLoader';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import {ReactComponent as Logo} from '../img/icon.svg'
 import gsap from 'gsap';
 
@@ -28,6 +22,8 @@ const Header = () => {
   const toggleLogin = ()=>{
     setShowLogin(!showLogin);
   }
+
+  
 
   return (
     

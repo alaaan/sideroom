@@ -1,8 +1,6 @@
-import React, { FunctionComponent, useState } from "react";
-import { BrowserRouter, Switch, Route, Link, Router } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
 import HomePage from './pages/HomePage';
-import HostDetailPage from './pages/HostDetailPage'
-
 import HostDetailPagev2 from './pages/HostDetailPagev2'
 import Header from './components/Header'
 import { AnimatePresence } from "framer-motion";
@@ -20,9 +18,8 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/:hostParam" component={HostDetailPagev2} />
-            <Route path="/host" component={HostDetailPage} />
-            <Route path="/talent" component={TalentPage} />
+            <Route exact path="/talent" component={TalentPage} />
+            <Route path="/:hostParam" component={HostDetailPagev2} />            
           </Switch>
         </AnimatePresence>
       </div>

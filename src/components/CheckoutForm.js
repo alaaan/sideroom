@@ -478,6 +478,8 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
           <MyField label="CVV" variant="outlined" />
           <MyField label="Zip Code" variant="outlined" />  */}
           <SRButton type="submit" disabled={isSubmitting} style={{ width:'80%', maxWidth:'500px', marginTop: '40px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
+          <p style={{marginTop:'2%'}}>By purchasing a call, you agree to CONNECTR's Terms of Service and Privacy Policy</p>
+        
         </div>
 
         {/* <StyledButton  /> */}

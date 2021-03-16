@@ -4,34 +4,16 @@ import '../styles/HomePage.css';
 import '../styles/ConfirmationModal.css';
 import '../styles/HostDetailPagev2.css'
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
-  useState,
   useEffect
 } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { TextPlugin } from "gsap/TextPlugin";
-import HostCard from '../components/HostCard'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import HostCard from '../components/HostCard'
 import ReactPlayer from 'react-player';
-
-import {ReactComponent as PhoneSvg} from '../img/phone.svg'
-import shape from '../img/shape.svg'
-import shape2 from '../img/shape2.svg'
-import paymentMethod from '../img/paymentmethod.png'
-import waves from '../img/waves.svg';
-import calendarSVG from '../img/booking.svg';
-import downloadSVG from '../img/download.svg';
-import videochatSVG from '../img/videochat.svg';
-import {ReactComponent as WaveSVG} from '../img/waves.svg';
 import {ReactComponent as WaveTop} from '../img/wave-top.svg';
-import {ReactComponent as LogoSpinner} from '../img/logo-spinner.svg'
-import webscreenbuy from '../img/web_screen_buy.png'
-import TitleSection from '../components/TitleSection';
-import phoneStockPhoto from '../img/phone-stock-photo.jpg'
-import ActionBox from '../components/ActionBox'
-import backgroundSvg from '../img/blurry-gradient.png'
 import step1 from '../img/how-to-section/step1.png'
 import step2 from '../img/how-to-section/step2.png'
 import step3 from '../img/how-to-section/step3.png'
@@ -41,29 +23,18 @@ import step3 from '../img/how-to-section/step3.png'
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
-function HostCards(props) {
-  const hosts = props.hosts;
-  const hostCardsList = hosts.map((host) => {
-    return (<HostCard name={host.name} img={host.img} genre={host.genre} price={host.price} slug={host.id} />);
-  })
-  return (hostCardsList);
-}
-
-function StepImage(props) {
-
-  return (
-    <div className="step-img-container">
-      <img className="step-img" src={props.src} />
-    </div>
-
-  )
-
-}
+// function HostCards(props) {
+//   const hosts = props.hosts;
+//   const hostCardsList = hosts.map((host) => {
+//     return (<HostCard name={host.name} img={host.img} genre={host.genre} price={host.price} slug={host.id} />);
+//   })
+//   return (hostCardsList);
+// }
 
 
 function App() {
 
-  const [hostText,setHostText] = useState('celeb');
+  // const [hostText,setHostText] = useState('celeb');
 
   useEffect(() => {
 
@@ -83,7 +54,7 @@ function App() {
 
     headerTextTl.set('#host-type-artist',{display:'inline-block'})
     headerTextTl.from('#host-type-artist',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
-    headerTextTl.to('.hero-secondary-text',{text:"prepare to pickup.",duration:3,ease:'back'})
+    headerTextTl.to('.hero-secondary-text',{text:"be a super fan.",duration:3,ease:'back'})
 
 
     let howToTl = gsap.timeline({scrollTrigger:{trigger:'.how-to-section',start:'top 75%', end: '+000'}});
@@ -92,10 +63,6 @@ function App() {
     howToTl.from('#action-3',{opacity:0});
 
 
-
-
-    gsap.from('.testimonial-video',{duration:.5,stagger:.5,opacity:0,y:50,
-      scrollTrigger:{trigger:'.testimonial-video',scrub:.5,start:'top 75%',end:'bottom 75%'}})
 
 
       let headerTl=gsap.timeline();
@@ -108,58 +75,9 @@ function App() {
       
   }, []);
 
-  const cycleHostText = ()=>{
-    setHostText("athlete");
-  }
-
-  const dummyHosts = [
-    {
-      name: "brad pitt",
-      img: "https://i.pravatar.cc/200",
-      genre: "actor",
-      price: "$100",
-      id: "bradpitt"
-    },
-
-    {
-      name: "Dansby Swanson",
-      img: "https://i.pravatar.cc/200",
-      genre: "athlete",
-      price: "$100",
-      id: "dansby"
-    },
-    {
-      name: "brad pitt",
-      img: "https://i.pravatar.cc/200",
-      genre: "actor",
-      price: "$100",
-      id: "bradpitt"
-    },
-
-    {
-      name: "brad pitt",
-      img: "https://i.pravatar.cc/200",
-      genre: "actor",
-      price: "$100",
-      id: "bradpitt"
-    },
-    {
-      name: "brad pitt",
-      img: "https://i.pravatar.cc/200",
-      genre: "actor",
-      price: "$100",
-      id: "bradpitt"
-    },
-
-    {
-      name: "Dansby Swanson",
-      img: "https://i.pravatar.cc/200",
-      genre: "athlete",
-      price: "$100",
-      id: "dansby"
-    }
-
-  ];
+  // const cycleHostText = ()=>{
+  //   setHostText("athlete");
+  // }
 
   return (
     <motion.div className="App"
@@ -179,7 +97,7 @@ function App() {
       </h1>
       
 
-            <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}></h2>
+            <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}> </h2>
           </div>
         
           {/* <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} /> */}
@@ -192,33 +110,33 @@ function App() {
         
         <section className="how-to-section">
 
-          <div className='how-to-box'>
+          <div className='how-to-box left text book'>
               <h1>book your call.</h1>
               <h3>Easily and securely buy a video call for you or buy one as a perfect gift for that special mega fan.</h3>
           </div>
-          <div className='how-to-box' >
+          <div className='how-to-box right book-img'  >
               <img src={step1} alt='step1'/>
           </div>
-          <div className='how-to-box'>
+          <div className='how-to-box left redeem-img'>
             <img src={step2} alt='step2'/>
           </div>
-          <div className='how-to-box'>
+          <div className='how-to-box right text redeem'>
               <h1>redeem your access code.</h1>
               <h3>download the app on iOS and Android.</h3>
           </div>
          
-          <div className='how-to-box'>
+          <div className='how-to-box left text call'>
               <h1>wait for your call.</h1>
               <h3>get ready for your call.</h3>
 
           </div>
-          <div className='how-to-box'>
+          <div className='how-to-box right call-img'>
             <img src={step3} alt='step3'/>
           </div>
      
         </section>
-
-        <section className="testimonial-section" >
+{/* 
+        <section className="testimonial-section" > */}
 
 {/* <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
   <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testvideo.mp4' />
@@ -226,7 +144,7 @@ function App() {
 
   
  
-
+{/* 
         <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
           <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
       </div>
@@ -235,9 +153,9 @@ function App() {
       </div>
       <div className='testimonial-video' style={{overflow:'hidden',borderRadius:'7px'}}>
           <ReactPlayer loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/reaction.mp4' />
-      </div>  
+      </div>   */}
 
-</section>
+      {/* </section> */}
 
 
             {/* Host Section Code  */}

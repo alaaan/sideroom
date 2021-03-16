@@ -1,16 +1,8 @@
 import { React, useState,useEffect } from 'react'
 import { motion, AnimatePresence } from "framer-motion"
-import { useHistory } from 'react-router-dom';
 import CheckoutForm from '../components/CheckoutForm'
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import Modal from '../components/Modal';
-import HostProfile from '../components/HostProfile';
-import ReactPlayer from 'react-player'
-import SRPriceButton from '../components/SRPriceButton'
-import FooterCard from '../components/FooterCard'
-import calendar from '../img/calendar-animated-2.png'
-import videochat from '../img/video-chat-animated.png'
 import SRButton from '../components/SRButton'
 import gsap from 'gsap';
 import { Redirect,useParams } from "react-router-dom";
@@ -29,7 +21,7 @@ const HostDetailPagev2 = () => {
   const [hostImage,setHostImage]=useState(null);
   const [hostName,setHostName]=useState(null);
   const [description,setDescription]=useState(null);
-  const [soldOut,setSoldOut]=useState(null);
+  // const [soldOut,setSoldOut]=useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [listing,setListing]=useState({});
 
@@ -69,24 +61,7 @@ const HostDetailPagev2 = () => {
       setIsLoading(false);
     }
   
-  },[]);
-
-
-
-    // setCharityImage(data.CharityImage);
-    // setHostName(data.HostName);
-    // setHostImage(data.HostImage);
-    // const myDate = new Date(data.StartDateTime);
-    // console.log(myDate.toString());
-    // setStartDateTime(myDate);
-    // console.log(data.StartDateTime.toString());
-    // const priceText = `$${(data.Price * data.TimeLimit).toFixed(2)} for ${
-    //   data.TimeLimit
-    // } minutes`;
-    // setPrice(priceText);
-    // setCharityName(data.CharityName);
-    // setCharityAbout(data.CharityAbout || "");
-    
+  },[hostParam]);
 
   const handleCheckout = ()=>{
     setShowCheckout(true);
@@ -95,12 +70,6 @@ const HostDetailPagev2 = () => {
   const redirect = () =>{
     console.log('should be redirecting');
     setShouldRedirect(true);
-  }
-
-
-  const closeCheckout = ()=>{
-    console.log('closecheckout');
-    setShowCheckout(false);
   }
 
   //load stripe

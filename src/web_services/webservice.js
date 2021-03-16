@@ -12,7 +12,7 @@ export default class WebService {
 
   // apiUrl = 'https://dudewheresmyapi.conectr.io';
 
-  apiUrl = ' http://conectr-api-dev.azurewebsites.net';
+  apiUrl = ' https://conectr-api-dev.azurewebsites.net';
 
  
 
