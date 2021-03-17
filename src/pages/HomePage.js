@@ -56,11 +56,16 @@ function App() {
     headerTextTl.from('#host-type-artist',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
     headerTextTl.to('.hero-secondary-text',{text:"be a super fan.",duration:3,ease:'back'})
 
+    let howToRedeem = gsap.timeline({scrollTrigger:{trigger:'.redeem',start:'top 70%',markers:true}});
+    howToRedeem.from('.redeem-headline',{opacity:0,y:10});
+    howToRedeem.from('.redeem-subheadline',{opacity:0,x:20,duration:.5},'>');
+    howToRedeem.from('.redeem-img',{opacity:0,z:-10},'<');
 
-    let howToTl = gsap.timeline({scrollTrigger:{trigger:'.how-to-section',start:'top 75%', end: '+000'}});
-    howToTl.from('#action-1',{opacity:0,xPercent:100,z:10});
-    howToTl.from('#action-2',{opacity:0});
-    howToTl.from('#action-3',{opacity:0});
+    let howToCall = gsap.timeline({scrollTrigger:{trigger:'.call',start:'top 70%',markers:true}});
+    howToCall.from('.call-headline',{opacity:0,y:10});
+    howToCall.from('.call-subheadline',{opacity:0,x:20,duration:.5},'>');
+    howToCall.from('.call-img',{opacity:0,z:-10},'<');
+
 
 
 
@@ -110,24 +115,24 @@ function App() {
         
         <section className="how-to-section">
 
-          <div className='how-to-box left text book'>
+          <div className='how-to-box text book'>
               <h1>book your call.</h1>
               <h3>Easily and securely buy a video call for you or buy one as a perfect gift for that special mega fan.</h3>
           </div>
-          <div className='how-to-box right book-img'  >
+          <div className='how-to-box book-img'  >
               <img src={step1} alt='step1'/>
           </div>
-          <div className='how-to-box left redeem-img'>
+          <div className='how-to-box redeem-img'>
             <img src={step2} alt='step2'/>
           </div>
-          <div className='how-to-box right text redeem'>
-              <h1>redeem your access code.</h1>
-              <h3>download the app on iOS and Android.</h3>
+          <div className='how-to-box text redeem'>
+              <h1 className='redeem-headline'>redeem your access code.</h1>
+              <h3 className='redeem-subheadline'>download the app on iOS and Android.</h3>
           </div>
          
-          <div className='how-to-box left text call'>
-              <h1>wait for your call.</h1>
-              <h3>get ready for your call.</h3>
+          <div className='how-to-box text call'>
+              <h1 className='call-headline'>wait for your call.</h1>
+              <h3 className='call-subheadline'>get ready for your call.</h3>
 
           </div>
           <div className='how-to-box right call-img'>
