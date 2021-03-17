@@ -89,10 +89,11 @@ const LoginForm = ({close})=>{
       <CloseIcon
         onClick={close}
         fontSize='medium' color="white" style={{ position: 'absolute', top: 5, right: 5 }} />
+       {!processingGetCode && !processingConfirmCode &&
       <div>
         <h2>Login</h2>
-        <p style={{fontSize:'1.1rem',marginTop:'20px'}}>SIDEROOM is a mobile first platform, please login with your phone below. No emails, no passwords, no mess</p>
-      </div>
+        <p style={{fontSize:'1.1rem',marginTop:'20px'}}>SIDEROOM is a mobile first platform, please login with your phone below.</p>
+      </div>}
       {showGetCodeInputs &&
         <> 
         <SRTextField

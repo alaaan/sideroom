@@ -22,6 +22,7 @@
 
 .hero-section {
   height: 50vh;
+  min-height: 500px;
   width: 100%;
   padding-top: 10%;
   background: #5643cc;
@@ -38,6 +39,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 2%;
+  max-width: 800px;
 }
 
 .hero-secondary-text {
@@ -313,7 +315,39 @@
   order:5
 }
 
+.home-footer-content{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* width: 100%; */
+  }
+
 }
+
+
+
+.home-footer-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.home-footer-content h3{
+  font-weight: 600;
+  color: rgba(86, 67, 204, 40%);
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.home-footer-content img{
+  margin-left:5px; 
+  margin-right:5px;
+}
+
 
 
 

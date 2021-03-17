@@ -17,6 +17,8 @@ import {ReactComponent as WaveTop} from '../img/wave-top.svg';
 import step1 from '../img/how-to-section/step1.png'
 import step2 from '../img/how-to-section/step2.png'
 import step3 from '../img/how-to-section/step3.png'
+import instagram from '../img/ig.svg'
+import twitter from '../img/twitter.svg'
 
 
 
@@ -46,6 +48,7 @@ function App() {
     let headerTextTl = gsap.timeline();
     headerTextTl.set('#host-type-celeb',{display:'inline-block'})
     headerTextTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:20,rotateX:25,y:500,x:-800,duration:.5,ease:'power1'}) ;
+    headerTextTl.to('.hero-secondary-text',{text:"top fan status.",duration:3,ease:'back',},'>')
     headerTextTl.to('#host-type-celeb',{delay:1,duration:.25,opacity:0,display:"none"});
 
     headerTextTl.set('#host-type-athlete',{display:'inline-block'})
@@ -54,17 +57,20 @@ function App() {
 
     headerTextTl.set('#host-type-artist',{display:'inline-block'})
     headerTextTl.from('#host-type-artist',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
-    headerTextTl.to('.hero-secondary-text',{text:"be a super fan.",duration:3,ease:'back'})
+    
 
-    let howToRedeem = gsap.timeline({scrollTrigger:{trigger:'.redeem',start:'top 70%',markers:true}});
+    let howToRedeem = gsap.timeline({scrollTrigger:{trigger:'.redeem',start:'top 70%'}});
     howToRedeem.from('.redeem-headline',{opacity:0,y:10});
     howToRedeem.from('.redeem-subheadline',{opacity:0,x:20,duration:.5},'>');
     howToRedeem.from('.redeem-img',{opacity:0,z:-10},'<');
+    howToRedeem.from('.call-headline',{opacity:0,y:10},'<');
+    howToRedeem.from('.call-subheadline',{opacity:0,x:20,duration:.5},'>');
+    howToRedeem.from('.call-img',{opacity:0,z:-10},'<');
 
-    let howToCall = gsap.timeline({scrollTrigger:{trigger:'.call',start:'top 70%',markers:true}});
-    howToCall.from('.call-headline',{opacity:0,y:10});
-    howToCall.from('.call-subheadline',{opacity:0,x:20,duration:.5},'>');
-    howToCall.from('.call-img',{opacity:0,z:-10},'<');
+    // let howToCall = gsap.timeline({scrollTrigger:{trigger:'.call',start:'top 70%'}});
+    // howToCall.from('.call-headline',{opacity:0,y:10});
+    // howToCall.from('.call-subheadline',{opacity:0,x:20,duration:.5},'>');
+    // howToCall.from('.call-img',{opacity:0,z:-10},'<');
 
 
 
@@ -140,6 +146,20 @@ function App() {
           </div>
      
         </section>
+        <section className='home-footer' style={{textAlign:'end'}}>
+          <div className="home-footer-content">
+            <div>
+              <img src={instagram} alt="ig" width='30px' />
+              <img src={twitter} alt="twitter" width='30px' />
+            </div>
+            <div>
+              <h3>Built with love in Atlanta.</h3>
+              <p style={{fontSize:'.8rem',marginRight:'5%'}}>hello@connectr.live</p>
+            </div>
+          </div>
+        </section>
+
+  
 {/* 
         <section className="testimonial-section" > */}
 
