@@ -10,7 +10,7 @@ const SRButton = withStyles({
     border: 0,
     color: 'white',
     height: 50,
-    padding: '0 30px',
+    // padding: '0 30px',
     width: '80%',
     alignSelf: 'center',
     justifySelf: 'center',

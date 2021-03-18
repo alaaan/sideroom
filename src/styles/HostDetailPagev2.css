@@ -91,3 +91,92 @@
   overflow: hidden;
   max-width:300px; 
 }
+
+
+@media all and (min-width: 300px) and (max-width: 862px) { 
+
+  .host-detail-pagev2 {
+    min-height: 100vh;
+    background: var(--raisin-black);
+    padding-top: 20%;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+    grid-template-columns: 1fr 1.5fr;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+.host-detail-pagev2 img {
+  width: 90%;
+  max-width: 350px;
+  border-radius: 7px;
+  margin-bottom: 5%;
+  height: 50%;
+  max-height: 350px;
+}
+
+.host-detail-pagev2 h2{
+  font-size: 1.7rem;
+}
+
+.host-detail-info-container h3{
+  font-size: 1rem;
+}
+
+.host-detail-info-container p{
+  font-size: .9rem;
+}
+
+.host-detail-checkout {
+  min-height: 100vh;
+  background: var(--raisin-black);
+  /* padding-left: 2%; */
+  /* padding-right: 2%; */
+  /* padding-top: 7vh; */
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  /* justify-items: center; */
+  /* grid-template-columns: 1fr 1fr; */
+  /* margin-left: 5%; */
+  /* margin-right: 5%; */
+  /* width: 90%; */
+}
+.checkout-item{
+  display:none; 
+}
+
+.host-detail-checkout #checkout-form {
+  border-radius: 7px;
+  border: 1px solid #5643cc;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5;
+  padding-bottom: 1%;
+  position: relative;
+  width: 95%;
+}
+
+.host-detail-checkout h2{
+  font-size:1.5rem; 
+}
+
+.host-detail-checkout h3{
+  font-size:1rem; 
+}
+
+.host-detail-checkout p{
+  font-size:.8rem; 
+  text-align: center;
+}
+
+.card-element {
+  width: auto;
+}
+
+
+}

@@ -350,7 +350,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
 
             <SRButtonOutlined onClick={toggleLogin}>Verify Phone</SRButtonOutlined>}
 
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div className='checkout-info'>
           <SRTextField
             fullWidth
             id="name"
@@ -477,7 +477,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
           {/* <MyField label="Expiration" variant="outlined" />
           <MyField label="CVV" variant="outlined" />
           <MyField label="Zip Code" variant="outlined" />  */}
-          <SRButton type="submit" disabled={isSubmitting} style={{ width:'80%', maxWidth:'500px', marginTop: '40px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
+          <SRButton type="submit" disabled={isSubmitting} style={{ width:'80%', maxWidth:'500px', marginTop: '20px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
           <p style={{marginTop:'2%'}}>By purchasing a call, you agree to CONNECTR's Terms of Service and Privacy Policy</p>
         
         </div>

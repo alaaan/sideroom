@@ -111,7 +111,7 @@ const HostDetailPagev2 = () => {
             <p>You’ll have three chances to answer your call. You wont be charged if David doesn’t fulfill the order within 14 days.</p>
           </div>
         </div>
-        <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '40px', marginBottom: '20px' }}>Purchase Call</SRButton>
+        <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '5%',marginBottom:'5%'}}>Purchase Call</SRButton>
       </div>
       
     </div>
