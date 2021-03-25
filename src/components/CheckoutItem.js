@@ -6,7 +6,7 @@ const CheckoutItem = ({listing}) =>{
 
     <div className="checkout-item">
       <div className="checkout-item-top">
-        <img src={listing.hostImage} alt='host' />
+        <img src={listing.hostImg} alt='host' />
         <h2>{listing.hostName}</h2>
         <h3>${listing.price} for {listing.time} minutes</h3>
       </div>

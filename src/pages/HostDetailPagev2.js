@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { Redirect,useParams } from "react-router-dom";
 import HostWebService from '../web_services/host_webservice';
 import SRLoader from '../components/SRLoader';
+import useImageLoader from '../hooks/useImageLoad';
 
 
 
@@ -24,6 +25,7 @@ const HostDetailPagev2 = () => {
   // const [soldOut,setSoldOut]=useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [listing,setListing]=useState({});
+  const [hostImg,hostImgLoaded] = useImageLoader(hostImage);
 
   useEffect(() => {
 
@@ -53,12 +55,13 @@ const HostDetailPagev2 = () => {
       setListing({
         price:data.Price,
         time:data.Time,
-        hostImage:data.HostImage, 
+        hostImg:data.HostImage, 
         hostName:data.HostName, 
         description:data.Descripton
       })
 
       setIsLoading(false);
+
     }
   
   },[hostParam]);
@@ -84,7 +87,7 @@ const HostDetailPagev2 = () => {
   
     <AnimatePresence>
     {isLoading && <SRLoader label="loading event details..."/> }
-    {!showCheckout && !isLoading &&
+    {!showCheckout && !isLoading && hostImgLoaded &&
     <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1,duration:1}}
