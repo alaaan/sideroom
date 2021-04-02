@@ -22,10 +22,11 @@ const HostDetailPagev2 = () => {
   const [hostImage,setHostImage]=useState(null);
   const [hostName,setHostName]=useState(null);
   const [description,setDescription]=useState(null);
+  const [soldOut,setSoldOut]=useState(false);
   // const [soldOut,setSoldOut]=useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [listing,setListing]=useState({});
-  const [hostImg,hostImgLoaded] = useImageLoader(hostImage);
+  const [hostImg, hostImgLoaded] = useImageLoader(hostImage);
 
   useEffect(() => {
 
@@ -51,13 +52,15 @@ const HostDetailPagev2 = () => {
       setHostName(data.HostName);
       setPrice(data.Price);
       setDescription(data.Description);
+      setSoldOut(data.SoldOut);
 
       setListing({
         price:data.Price,
         time:data.Time,
         hostImg:data.HostImage, 
         hostName:data.HostName, 
-        description:data.Descripton
+        description:data.Description,
+        soldOut:data.SoldOut
       })
 
       setIsLoading(false);
@@ -114,7 +117,9 @@ const HostDetailPagev2 = () => {
             <p>You’ll have three chances to answer your call. You wont be charged if David doesn’t fulfill the order within 14 days.</p>
           </div>
         </div>
-        <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '5%',marginBottom:'5%'}}>Purchase Call</SRButton>
+        {!soldOut && <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '5%',marginBottom:'5%'}}>Purchase Call</SRButton>}
+        {soldOut && <SRButton disabled style={{ marginTop: '5%',marginBottom:'5%'}}>Sold Out</SRButton>}
+
       </div>
       
     </div>

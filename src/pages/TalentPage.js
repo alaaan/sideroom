@@ -8,6 +8,7 @@ import calendar from '../img/calendar.svg'
 import talentcall from '../img/talentcall.svg'
 import earnings from '../img/earnings.svg'
 import HostBox from '../components/HostBox'
+import '../styles/TalentPage.css'
 
 const TalentPage = ()=>{
 
@@ -41,18 +42,18 @@ const TalentPage = ()=>{
     </MetaTags>
      */}
     <section className="talent-header">
-        <h1 className='talent-headline' style={{fontSize:'3rem',visibility:'hidden'}}>A platform to safely and securely video call your fans</h1>
+        <h1 className='talent-headline'>A platform to safely and securely video call your fans</h1>
         <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>Welcome your superfans.</h3>
     </section>
     <section className="talent-calculator">
       <TalentCalculator />
-      <div style={{overflow:'hidden',borderRadius:'7px',height:'400px'}}>
+      <div className='talent-screens' style={{overflow:'hidden',borderRadius:'7px',height:'400px'}}>
         <h3>host view video from app</h3>
         {/* <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' /> */}
       </div>
     </section>
     <section className="talent-how-it-works">
-      <h1 style={{fontSize:'3.5rem', marginTop:'5vh'}}>How it works</h1>
+      <h1 style={{marginTop:'5vh'}}>How it works</h1>
       <div className="talent-how-it-works-content">
         <TalentStep title="Open Up Bookings" 
         image={calendar}
@@ -79,7 +80,7 @@ const TalentPage = ()=>{
         <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/talentpricechange.MP4' />
       </div>
       <div>
-        <h1 className='talent-footer-headline' style={{fontSize:'3.2rem', marginTop:'5vh'}}>Adjust your pricing and availability easily from the app.</h1>
+        <h1 className='talent-footer-headline' style={{marginTop:'5vh'}}>Adjust your pricing and availability easily from the app.</h1>
       </div>
 
       
@@ -100,7 +101,7 @@ const TalentPage = ()=>{
 
     </section>
     <section className="talent-partners">
-      <h1 style={{fontSize:'3.5rem'}}>Who we've worked with</h1>
+      <h1>Who we've worked with</h1>
       <h3>We're just getting started, but here are our beta release partners.</h3>
       <div className="host-box-container">
         <HostBox img="https://conectr-cdn.azureedge.net/mediumimages/4f6aaeb9-bd76-4535-b155-dfd1bf35a173.jpg" genre="music" name="The Revivalists" />

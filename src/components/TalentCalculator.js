@@ -43,13 +43,13 @@ const TalentCalculator = () =>{
       {/* <h2 style={{color:'var(--pink)',display:'inline',fontSize:'2.3rem'}}>$100</h2>  */}
       
       <input className="calculator-input" type='text' onChange={handlePriceChange} value={price}></input>
-      for a 2 minute call
+      <p>for a 2 minute call</p>
     </div>
     <div style={{marginBottom:'10px'}}>
-      Call 
+    
       {/* <h2 style={{color:'var(--pink)',display:'inline',fontSize:'2.3rem'}}>10</h2>  */}
       <input className="calculator-input" type='text' onChange={handleQtyChange} value={qty}></input>
-      fans a week
+      <p>fans a week</p>
     </div>
 
   </GlowyBox>

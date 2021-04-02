@@ -92,7 +92,7 @@ const LoginForm = ({close})=>{
        {!processingGetCode && !processingConfirmCode &&
       <div>
         <h2>Login</h2>
-        <p style={{fontSize:'1.1rem',marginTop:'20px'}}>SIDEROOM is a mobile first platform, please login with your phone below.</p>
+        <p style={{fontSize:'1.1rem',marginTop:'20px'}}>CONNECTR is a mobile first platform, please login with your phone number below. This will allow for a quick checkout. </p>
       </div>}
       {showGetCodeInputs &&
         <> 

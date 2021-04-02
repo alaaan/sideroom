@@ -6,6 +6,8 @@ import Header from './components/Header'
 import { AnimatePresence } from "framer-motion";
 import { useUser, UserContext } from "./context/user-context";
 import TalentPage from './pages/TalentPage';
+import JoinPage from './pages/JoinPage';
+import PartnerPage from './pages/PartnerPage';
 
 
 const App = () => {
@@ -19,7 +21,10 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/talent" component={TalentPage} />
-            <Route path="/:hostParam" component={HostDetailPagev2} />            
+            <Route exact path="/join" component={JoinPage} />     
+            <Route exact path="/partner" component={PartnerPage} />           
+            <Route path="/:hostParam" component={HostDetailPagev2} />    
+        
           </Switch>
         </AnimatePresence>
       </div>

@@ -109,8 +109,27 @@ font-weight: 400;
 
 /* Components  */
 
+.stat-wrapper{
+  width:200px; 
+  height:200px; 
+  display:flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+
+.border-box{
+  padding:10px; 
+  border: solid 2px var(--ocean-blue);
+  border-radius: 7px;
+  width:min-content; 
+  min-width:300px; 
+  margin:20px; 
+}
+
 .loader-wrapper{
   height: 100vh;
+  max-height: 300px;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -225,6 +244,7 @@ font-weight: 400;
 .login-form-container{
   background: black;
   width: 100%;
+  max-width:600px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -233,7 +253,7 @@ font-weight: 400;
   color: white;
   position: relative;
   padding: 5%;
-  border: var(--cerise) solid 1px;
+  border: var(--ocean-blue) solid 2px;
   border-radius: 7px;
 }
 
@@ -904,151 +924,6 @@ font-weight: 400;
   background: var(--green);
 }
 
-/* talent page */
-
-earnings{
-  color:var(--cerise)
-}
-
-.talent-header{
-  /* height: 20vh; */
-  background: rgb(32,27,67);
-  background: linear-gradient(180deg, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
-  padding: 10vw;
-  padding-bottom: 0;
-  background:var(--raisin-black); 
-}
-
-.talent-calculator{
-  height: 40vh;
-  display: grid;
-  /* flex-direction: row; */
-  /* flex-wrap: nowrap; */
-  grid-template-columns: 2fr 1fr;
-  justify-content: center;
-  align-items: center;
-  padding-left: 5vw;
-  padding-right: 5vw;
-  justify-items: center;
-  background:var(--raisin-black);
-}
-
-.calculator-input{
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 2rem;
-  color: var(--cerise);
-  font-weight: 700;
-  font-family: var(--new-font);
-  margin: 2px;
-  width: 75px;
-  text-align: center;
-  border-bottom: solid 2px var(--cerise);
-}
-
-.talent-calc-banner{
-  height: 10vh;
-  width: 100%;
-  /* background: rgb(206,65,164);
-  background: linear-gradient(297deg, rgba(206,65,164,1) 44%, rgba(214,67,115,1) 100%); */
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
-  margin-left: -10px;
-  padding:5px; 
-  text-align:center; 
-}
-
-
-.talent-how-it-works{
-  border-top:1px solid var(--cerise);
-  display:flex; 
-  flex-direction:column; 
-  padding-left: 5%;
-  padding-right: 5%;
-  background:var(--raisin-black);
-}
-
-.talent-how-it-works-content{
-  display:grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  column-gap:1vw;
-  row-gap:2vw;
-  justify-items:center; 
-  margin-top:3vh;
-
-}
-.talent-step-container{
-  display:grid; 
-  grid-template-rows:1fr 1fr; 
-  justify-items: center;
-}
-
-.talent-step-content{
-  display:flex; 
-  flex-direction:column; 
-  justify-content:center; 
-  align-items:center; 
-  padding:10px; 
- 
-}
-
-.talent-cta{
-  height:40vh; 
-  background-color: rgba(66,36,105,1);
-  padding-left: 5%;
-  padding-right: 5%;
-  display:grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  justify-items: center;
-  padding-top: 3%;
-  background:var(--raisin-black);
-}
-
-.talent-partners{
-  justify-items: center;
-  padding-top: 5vh;
-  background:var(--raisin-black);
-  border-top:1px solid var(--cerise);
-  padding-left: 5%;
-  padding-right: 5%;
-
-}
-
-.host-box-container{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  
-}
-
-.host-box{
-  height:90%; 
-  max-height: 500px;
-  display:flex;
-  flex-direction: column;
-  max-width: 300px;
-  margin-top: 4%;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.host-box img{
-  border-radius:10px;
-  width: 300px;
-  box-shadow: rgb(80 63 205 / 50%) 0px 4px 8px;
-  height: 300px;
-  object-fit: cover;
-}
-
-.host-box-info{
-  display:flex; 
-  flex-direction: column;
-}
-
-.host-box-info h2{
-  font-size:2rem;
-}
 
 /* 3d Testing */
 
