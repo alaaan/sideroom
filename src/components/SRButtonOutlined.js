@@ -5,8 +5,8 @@ import Button from '@material-ui/core/Button';
 const SRButtonOutlined = withStyles({
   root: {
     background: 'transparent',
-    borderRadius: 3,
-    border: '2px',
+    borderRadius: 20,
+    border: '.75px',
     borderColor: '#da4167',
     borderStyle: 'solid',
     color: 'white',
@@ -14,6 +14,7 @@ const SRButtonOutlined = withStyles({
     alignSelf: 'center',
     justifySelf: 'center',
     margin: '10px',
+    minHeight: '40px',
 
     '&:hover': {
 
@@ -21,9 +22,8 @@ const SRButtonOutlined = withStyles({
 
   },
   label: {
-    fontFamily: 'Barlow',
-    fontWeight: 500,
-    fontSize: '1.2rem',
+    fontFamily: 'var(--body-font)',
+    fontSize: '1rem',
     textTransform: 'none',
     letterSpacing: '.5px'
   },

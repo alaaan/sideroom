@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const SRTextField = withStyles({
   root: {
-    margin: '10px',
     '& label.Mui-focused': {
       color: 'white',
       fontSize: '1.7rem',

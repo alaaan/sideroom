@@ -116,6 +116,14 @@ font-weight: 400;
 
 /* Components  */
 
+.divider{
+  background: rgba(0, 0, 0, 0) linear-gradient(
+92.88deg
+, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%) repeat scroll 0% 0%;
+  margin-top:1%;
+  margin-bottom:20px; 
+}
+
 .stat-wrapper{
   width:200px; 
   height:200px; 

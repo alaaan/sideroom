@@ -1,4 +1,4 @@
-import { React, useState,useEffect } from 'react'
+import { React, useState,useEffect,useContext } from 'react'
 import { motion, AnimatePresence } from "framer-motion"
 import CheckoutForm from '../components/CheckoutForm'
 import { Elements } from "@stripe/react-stripe-js";
@@ -10,6 +10,8 @@ import HostWebService from '../web_services/host_webservice';
 import SRLoader from '../components/SRLoader';
 import useImageLoader from '../hooks/useImageLoad';
 import {Helmet} from "react-helmet";
+import {ThemeContext} from '../context/theme-context';
+
 
 
 
@@ -28,9 +30,11 @@ const HostDetailPagev2 = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [listing,setListing]=useState({});
   const [hostImg, hostImgLoaded] = useImageLoader(hostImage);
+  const {setHasHeader} = useContext(ThemeContext);
+
 
   useEffect(() => {
-
+    setHasHeader(false);
     setIsLoading(true);
     console.log('host param:' + hostParam)
     const webService = new HostWebService();
