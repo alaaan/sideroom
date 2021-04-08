@@ -11,7 +11,7 @@ const SRButton = withStyles({
     color: 'white',
     height: 50,
     // padding: '0 30px',
-    width: '80%',
+    width: '90%',
     alignSelf: 'center',
     justifySelf: 'center',
     margin: '10px',

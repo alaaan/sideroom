@@ -34,14 +34,16 @@ const Header = () => {
       </div>
       <div className="nav-buttons">
         {/* <h3>How does this work?</h3> */}
-        {!isAuthenticated ?
-        <SRButtonOutlined onClick={toggleLogin}>Login</SRButtonOutlined> :
+        {!isAuthenticated ? <></>
+
+        // <SRButtonOutlined onClick={toggleLogin}>Login</SRButtonOutlined> 
+        :
         <>
           <img className="user-img" src={loggedInUser.ProfileImageSmall} alt="profile"/> 
           <div style={{display:'flex',flexDirection:'column'}}>
             <h3>{loggedInUser.Name}</h3>
             <h3 
-            style={{color:'var(--cerise)',fontSize:'.8rem'}}
+            style={{cursor:'pointer',color:'var(--cerise)',fontSize:'.8rem'}}
             onClick={()=>(clearLoggedInUser())}
             >Logout</h3>
           </div>

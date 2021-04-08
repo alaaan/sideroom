@@ -31,6 +31,20 @@
   object-fit: cover;
 } */
 
+.shadow {
+  width: 50%;
+  max-width: 350px;
+  border-radius: 7px;
+  margin-bottom: 5%;
+  height: 50%;
+  max-height: 350px;
+  position: absolute;
+  box-shadow: inset 3px 3px 10px 0 pink;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+}
+
 .host-detail-pagev2 img{
   width: 50%;
   max-width: 350px;
@@ -39,6 +53,17 @@
   height: 50%;
   max-height: 350px;
 }
+
+/* .host-img-border {
+  width: 50%;
+  max-width: 350px;
+  border-radius: 7px;
+  margin-bottom: 5%;
+  height: 50%;
+  max-height: 350px;
+  background-color: red;
+} */
+
 .host-detail-info-container{
   width: 90%;
   border-radius: 7px;
@@ -54,7 +79,7 @@
 
 
 .host-detail-checkout{
-  min-height: 100vh;
+  /* min-height: 100vh; */
     background: var(--raisin-black);
     padding-left: 2%;
     padding-right: 2%;
@@ -171,12 +196,19 @@
 
 .host-detail-checkout p{
   font-size:.8rem; 
-  text-align: center;
 }
 
-.card-element {
+/* .card-element {
   width: auto;
+} */
+
+.MuiOutlinedInput-root {
+  font-size: 1rem !important;
 }
 
+/* .ElementsApp .InputElement 
+  {
+  font-size: 1rem !important;
+} */
 
 }

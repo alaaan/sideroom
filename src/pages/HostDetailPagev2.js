@@ -9,6 +9,7 @@ import { Redirect,useParams } from "react-router-dom";
 import HostWebService from '../web_services/host_webservice';
 import SRLoader from '../components/SRLoader';
 import useImageLoader from '../hooks/useImageLoad';
+import {Helmet} from "react-helmet";
 
 
 
@@ -85,6 +86,10 @@ const HostDetailPagev2 = () => {
 
   return (
     <>
+         {/* <Helmet>
+              
+        </Helmet> */}
+
     {shouldRedirect && <Redirect to={"/"} />}
   
   
@@ -100,7 +105,10 @@ const HostDetailPagev2 = () => {
 
       <div className='host-detail-right'>
         <div className="host-detail-info-container">
-          <img src={hostImage} alt='host' style={{alignSelf:'center'}} />
+       
+            <img src={hostImage} alt='host' style={{alignSelf:'center'}} />
+         
+
 
           <h3 style={{color:'white'}}>A personal video call from</h3>
           <h2>{hostName}</h2>
