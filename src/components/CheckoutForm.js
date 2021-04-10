@@ -50,7 +50,7 @@ const defaultValidationSchema = yup.object({
     .required('Name is required!'),
   request: yup
     .string('Tell us a little bit about your request')
-    .min(20, 'Tell us a little bit more!')
+    .min(3, 'Tell us a little bit more!')
     .required('Please tell us about your request'),
 });
 
@@ -397,7 +397,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
           />
 
           <SRButton type="submit" disabled={isSubmitting} style={{ width:'90%', maxWidth:'600px', marginTop: '20px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
-          <p style={{marginTop:'2%',marginBottom:'2%',textAlign:'center'}}>By purchasing a call, you agree to CONNECTR's <span onClick={()=>{window.open('http://localhost:3000/tos')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Terms of Service </span> and <span onClick={()=>{window.open('http://localhost:3000/privacy')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Privacy Policy</span></p>
+          <p style={{marginTop:'2%',marginBottom:'2%',textAlign:'center'}}>By purchasing a video call, you agree to CONNECTR's <span onClick={()=>{window.open('http://localhost:3000/tos')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Terms of Service </span> and <span onClick={()=>{window.open('http://localhost:3000/privacy')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Privacy Policy</span></p>
           
         </div>
 

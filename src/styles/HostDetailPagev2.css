@@ -1,7 +1,7 @@
 .host-detail-pagev2 {
   min-height: 100vh;
   background: var(--raisin-black);
-  /* padding-top: 100px; */
+  padding-top: 100px;
   padding-left: 2%;
   padding-right: 2%;
   display: flex;

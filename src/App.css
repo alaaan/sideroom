@@ -8,7 +8,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nobile&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@800&family=Martel:wght@200&family=Nobile&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
@@ -37,6 +36,7 @@
   --headline-font:'Exo', sans-serif;
   --subheadline-font: 'Nobile', sans-serif;
   --body-font:'Nobile', sans-serif;
+  /* --body-font: 'Noto Serif', serif; */
 
 
 /* CSS HEX */
@@ -111,7 +111,8 @@ p{
 font-family: var(--body-font);
 font-size: 1rem;
 color: white;
-font-weight: 400;
+/* font-weight: 400; */
+font-weight:200;
 }
 
 /* Components  */

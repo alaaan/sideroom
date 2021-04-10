@@ -114,23 +114,25 @@ const HostDetailPagev2 = () => {
          
 
 
-          <h3 style={{color:'white'}}>A personal video call from</h3>
+          <h3 style={{color:'white'}}>A personal {time} minute video call from</h3>
           <h2>{hostName}</h2>
           <div style={{height:'10px',width:'20%',background:'var(--ocean-blue'}}></div>
-          <h3 style={{color:'white',marginTop:'2%',fontSize:'1.5rem'}}>${price} for {time} minutes</h3>
+          <h3 style={{color:'white',marginTop:'2%',fontSize:'2rem'}}>${price}</h3>
 
           <div>
-            <h3 style={{marginTop:'5%'}}>About the Event</h3>
+            <h3 style={{marginTop:'5%'}}>About the Video Call</h3>
             <p>{description}</p>
           </div>
 
           <div>
             <h3 style={{marginTop:'5%'}}>Details and Info</h3>
-            <p>You’ll have three chances to answer your call. You wont be charged if David doesn’t fulfill the order within 14 days.</p>
+            <p>You’ll have three chances at different times to answer your video calls. Calls are made at random, and you will be refunded if {hostName} doesn’t fulfill the order within 14 days.</p>
           </div>
         </div>
-        {!soldOut && <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '5%',marginBottom:'5%'}}>Purchase Call</SRButton>}
+        {!soldOut && <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '5%',marginBottom:'5%'}}>Purchase Video Call</SRButton>}
         {soldOut && <SRButton disabled style={{ marginTop: '5%',marginBottom:'5%'}}>Sold Out</SRButton>}
+        {soldOut && <p>Check back soon for more openings.</p>}
+
 
       </div>
       
