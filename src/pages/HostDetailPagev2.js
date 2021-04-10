@@ -11,6 +11,9 @@ import SRLoader from '../components/SRLoader';
 import useImageLoader from '../hooks/useImageLoad';
 import {Helmet} from "react-helmet";
 import {ThemeContext} from '../context/theme-context';
+import ReactPlayer from 'react-player';
+import HostVideo from '../components/HostVideo'
+
 
 
 
@@ -31,6 +34,8 @@ const HostDetailPagev2 = () => {
   const [listing,setListing]=useState({});
   const [hostImg, hostImgLoaded] = useImageLoader(hostImage);
   const {setHasHeader} = useContext(ThemeContext);
+  const [videoExists,setVideoExists] = useState(false);
+  const [videoReady,setVideoReady] = useState(false);
 
 
   useEffect(() => {
@@ -110,7 +115,8 @@ const HostDetailPagev2 = () => {
       <div className='host-detail-right'>
         <div className="host-detail-info-container">
        
-            <img src={hostImage} alt='host' style={{alignSelf:'center'}} />
+          <img className='host-image' src={hostImage} alt='host' style={{alignSelf:'center'}} />
+         
          
 
 
@@ -132,6 +138,11 @@ const HostDetailPagev2 = () => {
         {!soldOut && <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '5%',marginBottom:'5%'}}>Purchase Video Call</SRButton>}
         {soldOut && <SRButton disabled style={{ marginTop: '5%',marginBottom:'5%'}}>Sold Out</SRButton>}
         {soldOut && <p>Check back soon for more openings.</p>}
+
+        <div style={{visibility:(videoReady ? 'hidden' : 'visible'),height:'20px'}}><SRLoader/></div>
+        <section className='host-welcome-video' style={{visibility:(videoReady ? 'visible' : 'hidden'), marginTop:'50px',marginBottom:'50px',visiblity:'hidden'}}>
+          <HostVideo loaded={()=>setVideoReady(true)} url='https://conectrmedia.blob.core.windows.net/files/dave-test.mp4' />
+        </section>
 
 
       </div>
