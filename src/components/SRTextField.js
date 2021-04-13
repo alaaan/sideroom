@@ -6,7 +6,7 @@ const SRTextField = withStyles({
   root: {
     '& label.Mui-focused': {
       color: 'white',
-      fontSize: '1.7rem',
+      fontSize: '1rem',
     },
     '& label.MuiInputLabel-root': {
       color: 'white',
@@ -14,9 +14,12 @@ const SRTextField = withStyles({
     '& .MuiInput-underline:after': {
       borderBottomColor: 'green',
     },
+   
     '& .MuiOutlinedInput-root': {
       color: 'white',
       fontSize: '1.7rem',
+      minWidth:'300px',
+      maxWidth:'500px',
 
       '& fieldset': {
         borderColor: 'var(--fadedpink)',
@@ -26,6 +29,11 @@ const SRTextField = withStyles({
       },
       '&.Mui-focused fieldset': {
         borderColor: 'white',
+      },
+
+      "&:-webkit-autofill": {
+        transitionDelay: '9999s',
+        transitionProperty: 'background-color, red',
       },
     },
   },

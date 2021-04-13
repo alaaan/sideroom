@@ -201,9 +201,9 @@
   font-size:.8rem; 
 }
 
-/* .card-element {
-  width: auto;
-} */
+.card-element {
+  width: 100%;
+}
 
 .MuiOutlinedInput-root {
   font-size: 1rem !important;
@@ -218,12 +218,12 @@
 
 
 .host-video{
-  border-radius: 75px;
-  border: var(--ocean-blue) solid 3px;
-  width: 200px;
-  height: 350px;
-  overflow: hidden;
-  position:relative;
+    border-radius: 75px;
+    /* border: var(--ocean-blue) solid 1px; */
+    /* width: 250px; */
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 .host-video > div:nth-of-type(1) {

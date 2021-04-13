@@ -13,6 +13,7 @@ import {Helmet} from "react-helmet";
 import {ThemeContext} from '../context/theme-context';
 import ReactPlayer from 'react-player';
 import HostVideo from '../components/HostVideo'
+import videoGradient from '../img/video-gradient.svg'
 
 
 
@@ -110,7 +111,6 @@ const HostDetailPagev2 = () => {
     animate={{ opacity: 1,duration:1}}
     exit={{ opacity: 0 }}>
     <div className="host-detail-pagev2">
-      {/* <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' /> */}
 
       <div className='host-detail-right'>
         <div className="host-detail-info-container">
@@ -136,11 +136,13 @@ const HostDetailPagev2 = () => {
           </div>
         </div>
         {!soldOut && <SRButton type="submit" onClick={handleCheckout} style={{ marginTop: '5%',marginBottom:'5%'}}>Purchase Video Call</SRButton>}
-        {soldOut && <SRButton disabled style={{ marginTop: '5%',marginBottom:'5%'}}>Sold Out</SRButton>}
+        {soldOut && <SRButton disabled style={{ marginTop: '5%',marginBottom:'2%'}}>Sold Out</SRButton>}
         {soldOut && <p>Check back soon for more openings.</p>}
 
-        <div style={{visibility:(videoReady ? 'hidden' : 'visible'),height:'20px'}}><SRLoader/></div>
-        <section className='host-welcome-video' style={{visibility:(videoReady ? 'visible' : 'hidden'), marginTop:'50px',marginBottom:'50px',visiblity:'hidden'}}>
+        {/* <div style={{visibility:(videoReady ? 'hidden' : 'visible'),height:'20px'}}><SRLoader/></div> */}
+        <section className='host-welcome-video' style={{visibility:(videoReady ? 'visible' : 'hidden'), width:'250px', height:'406px', marginTop:'20px',marginBottom:'50px',position:'relative'}}>
+          {/* <img style={{position:'absolute',left:'5%',top:'5%'}} src={videoGradient} alt='background' /> */}
+
           <HostVideo loaded={()=>setVideoReady(true)} url='https://conectrmedia.blob.core.windows.net/files/dave-test.mp4' />
         </section>
 

@@ -142,7 +142,7 @@ const SRFormControlLabel = withStyles({
 
 const FormField = withStyles({
   root: {
-    margin: '10px',
+    marginTop: '10px',
     '& label.Mui-focused': {
       color: 'white',
       fontSize: '.5rem',
@@ -254,7 +254,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
     validationSchema: defaultValidationSchema,
     onSubmit:  (values) => {
       console.log('got into submit');
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
       setIsSubmitting(true);
       console.log('submitting');
       handleCharge();
@@ -296,12 +296,15 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
         1,formik.values.request,true,loggedInUser.Username,paymentMethodId,Date.now()
       );
       if (result.Errored) {
+        setIsSubmitting(false);
         console.log("There was an error processing your payment - " + result.Message)
     ;
       } else {
         console.log('purchase success')
-        setRedemptionCode(result.Payload.RedemptionCode)
+        setRedemptionCode(result.Payload.RedemptionCode);
+        setIsSubmitting(false);
         setShowSuccess(true); 
+
       }
     }
 
@@ -311,7 +314,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       {!showSuccess ? 
       <>
       <CheckoutItem listing={listing} />
-      <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
+      <form autoComplete='off' onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
       <img src = {closeSvg} 
 
         alt='close'
@@ -321,8 +324,8 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
         
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
 
-        <h2 style={{ marginTop: '10px' }}>Your Info</h2>
-        <Divider divWidth='35%' divHeight='5px' />
+        <h2 style={{ marginTop: '10px' }}>Checkout</h2>
+        <Divider divWidth='45%' divHeight='7px' />
 
         {!isAuthenticated && 
         <>
@@ -350,12 +353,14 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
 
             </div>
 
-        <div className='checkout-info'>
+        <div className='checkout-info' style={{marginTop: '10px',marginBottom:'20px'}}>
+        <p style={{marginBottom:'10px'}}>Your name</p>
           <SRTextField
+            autoComplete= "off"
+        
             fullWidth
-            id="name"
-            name="name"
-            label="Name"
+            id="nadamucho"
+            name="searchTerm"
             variant="outlined"
             value={formik.values.name}
             onChange={formik.handleChange}
@@ -366,10 +371,9 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
 
 
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
-          <h2 style={{ marginTop: '10px' }}>Call Info</h2>
-          <Divider divWidth='35%' divHeight='5px' />
-          <h3>What info do you want to share with the host?</h3>
-          <p>Is this a gift? What's the occasion?</p>
+          {/* <h2 style={{ marginTop: '10px' }}>Call Info</h2> */}
+          {/* <Divider divWidth='35%' divHeight='5px' /> */}
+          <p>What do you want to tell the host?</p>
           <FormField
             multiline
             rows={3}
@@ -384,11 +388,11 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
         </div>
 
 
-        <h2 style={{ marginTop: '10px' }}>Payment Details</h2>
-        <Divider divWidth='65%' divHeight='5px' />
+        {/* <h2 style={{ marginTop: '10px' }}>Payment Details</h2> */}
+        {/* <Divider divWidth='65%' divHeight='5px' /> */}
 
 
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column',marginTop:'50px' }}>
           <CardElement
             id="card-element"
             options={CARD_ELEMENT_OPTIONS}

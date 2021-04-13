@@ -120,15 +120,16 @@ const LoginForm = ({close})=>{
        {!processingGetCode && !processingConfirmCode &&
       <div>
         <h2>Login</h2>
-        <p style={{fontSize:'1.1rem',marginTop:'20px'}}>CONNECTR is a mobile first platform, please login with your phone number below. This will allow for a quick checkout. </p>
+        <p style={{fontSize:'1.1rem',marginTop:'20px',marginBottom:'10px'}}>CONNECTR is a mobile first platform, please login with your phone number below. This will allow for a quick checkout. </p>
       </div>}
       {showGetCodeInputs &&
         <> 
         <SRTextField
+          autoComplete='off'
           value={username}
           onChange={handleUserNameChange}
           id="phone"
-          name="phone"
+          name="search"
           label="phone"
           variant="outlined">
         </SRTextField>
@@ -138,7 +139,7 @@ const LoginForm = ({close})=>{
 
       {showConfirmCodeInputs &&
         <div style={{marginTop:'5%'}}>
-          <h3>Please Enter your code</h3>
+          <h3 style={{marginBottom:'5px'}}>Please Enter your code</h3>
           <SRTextField
             value={code}
             onChange={handleConfirmCodeChange}
