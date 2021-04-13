@@ -355,12 +355,24 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
 
         <div className='checkout-info' style={{marginTop: '10px',marginBottom:'20px'}}>
         <p style={{marginBottom:'10px'}}>Your name</p>
-          <SRTextField
+          {/* <SRTextField
             autoComplete= "off"
         
             fullWidth
-            id="nadamucho"
-            name="searchTerm"
+            id="requestname"
+            name="requestname"
+            variant="outlined"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          /> */}
+
+            <FormField
+            multiline
+            rows={1}
+            id="name"
+            name="name"
             variant="outlined"
             value={formik.values.name}
             onChange={formik.handleChange}
