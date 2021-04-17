@@ -8,6 +8,7 @@ import calendar from '../img/calendar.svg'
 import talentcall from '../img/talentcall.svg'
 import earnings from '../img/earnings.svg'
 import HostBox from '../components/HostBox'
+import Divider from '../components/Divider'
 import '../styles/TalentPage.css'
 
 const TalentPage = ()=>{
@@ -41,20 +42,50 @@ const TalentPage = ()=>{
       <meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
     </MetaTags>
      */}
+
+     <div className="talent-wrapper">
     <section className="talent-header">
-        <h1 className='talent-headline'>A platform to safely and securely video call your fans</h1>
-        <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>Welcome your superfans.</h3>
+        <h1 className='talent-headline' style={{fontSize:'3rem'}}>A more exciting fan connection starts here.</h1>
+        <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>We make it easy to make paid video calls to your fans.</h3>
+
     </section>
-    <section className="talent-calculator">
+
+    <Divider  divWidth='50%' divHeight='12px'/>
+    {/* <section className="talent-calculator">
       <TalentCalculator />
       <div className='talent-screens' style={{overflow:'hidden',borderRadius:'7px',height:'400px'}}>
         <h3>host view video from app</h3>
-        {/* <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' /> */}
       </div>
-    </section>
+    </section> */}
     <section className="talent-how-it-works">
-      <h1 style={{marginTop:'5vh'}}>How it works</h1>
-      <div className="talent-how-it-works-content">
+      {/* <h1 style={{marginBottom:'5%'}}>How it works</h1> */}
+      <section>
+        <h1>Setup your listing.</h1>
+        <h3 className="hero-secondary-text" >Easily through the mobile app, set the length of your calls, how many you want to open up at any time
+          and your pricing. You can adjust any of these listings on the fly at any time in the app.</h3>
+      </section>
+      <section>
+      <h1>Your fans book.</h1>
+      <h3 className="hero-secondary-text" >Fans will book a call request with you on our website.
+        They can purchase for themselves or as a gift. 
+        You will be notified of new requests, 
+        and you can check pending requests at any time in the app. </h3>
+      </section>
+      <section>
+      <h1>Start making money.</h1>
+      <h3 className="hero-secondary-text" >Open up the app to see your bookings, 
+        and begin fulfilling them. You can do them all 
+        in a row or pick and choose. Users have three 
+        opportunities to answer your calls. </h3>
+        </section>
+        <section>
+      <h1>Cash Out.</h1>
+      <h3 className="hero-secondary-text" >You retain 80% of your earnings, and payments are made 
+        directly into your account. Payments are securely handled 
+        entirely by our third-party provider, Stripe.</h3>
+      </section>
+     
+      {/* <div className="talent-how-it-works-content">
         <TalentStep title="Open Up Bookings" 
         image={calendar}
         info="Fans will book a call request with you on our website.
@@ -73,9 +104,9 @@ const TalentPage = ()=>{
         directly into your account. Payments are securely handled 
         entirely by our third-party provider, Stripe." />
       
-      </div>
+      </div> */}
     </section>
-    <section className="talent-cta">
+    {/* <section className="talent-cta">
       <div className='talent-footer-video'style={{overflow:'hidden', height: '350px', borderRadius:'7px',boxShadow:'rgba(80, 63, 205, 0.5) 0px 1px 5px'}}>
         <ReactPlayer width='auto' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/talentpricechange.MP4' />
       </div>
@@ -83,23 +114,11 @@ const TalentPage = ()=>{
         <h1 className='talent-footer-headline' style={{marginTop:'5vh'}}>Adjust your pricing and availability easily from the app.</h1>
       </div>
 
-      
+    
 
-      {/* <div class="scene">
-        <div class="box">
-          <div class="box__face box__face--front">
-            <ReactPlayer width='100%' loop muted playing playsinline url='https://conectrmedia.blob.core.windows.net/files/testfacetime.mp4' />
-        
-        </div>
-          <div class="box__face box__face--back"></div>
-          <div class="box__face box__face--right"></div>
-          <div class="box__face box__face--left"></div>
-          <div class="box__face box__face--top"></div>
-          <div class="box__face box__face--bottom"></div>
-        </div>
-      </div> */}
+    </section> */}
+        <Divider  divWidth='50%' divHeight='12px'/>
 
-    </section>
     <section className="talent-partners">
       <h1>Who we've worked with</h1>
       <h3>We're just getting started, but here are our beta release partners.</h3>
@@ -118,6 +137,7 @@ const TalentPage = ()=>{
 
 
     </section>
+    </div>
     </>
 
 

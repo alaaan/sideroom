@@ -5,15 +5,34 @@ earnings{
   color:var(--cerise)
 }
 
-.talent-header{
-  /* height: 20vh; */
-  background: rgb(32,27,67);
-  background: linear-gradient(180deg, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
-  padding: 10vw;
-  padding-bottom: 0;
-  background:var(--raisin-black); 
+.talent-wrapper{
+  display:flex; 
+  flex-direction:column;
 }
 
+.talent-header {
+  /* height: 20vh; */
+  background: rgb(32,27,67);
+  background: linear-gradient(
+180deg
+, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
+  padding: 10vw;
+  padding-bottom: 0;
+  background: var(--raisin-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 600px;
+  align-items: center;
+}
+
+.talent-header h1{
+  font-size: 3rem;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
 .talent-calculator{
   height: 40vh;
   display: grid;
@@ -56,13 +75,31 @@ earnings{
 
 
 .talent-how-it-works{
-  border-top:1px solid var(--cerise);
+  /* border-top:1px solid var(--cerise); */
   display:flex; 
   flex-direction:column; 
   padding-left: 5%;
   padding-right: 5%;
   background:var(--raisin-black);
+  padding-top:5%;
+  padding-bottom:5%;
 }
+
+.talent-how-it-works section{
+  margin-bottom:5%;
+  margin-left:10%;
+  margin-right:10%
+}
+
+.talent-how-it-works section h3{
+  font-size:1.2rem;
+}
+
+.talent-how-it-works section h1{
+  font-size:3rem;
+}
+
+
 
 .talent-how-it-works-content{
   display:grid; 
@@ -104,10 +141,14 @@ earnings{
   justify-items: center;
   padding-top: 5vh;
   background:var(--raisin-black);
-  border-top:1px solid var(--cerise);
+  /* border-top:1px solid var(--cerise); */
   padding-left: 5%;
   padding-right: 5%;
 
+}
+
+.talent-partners h1{
+  font-size:3rem;
 }
 
 .host-box-container{
@@ -131,9 +172,9 @@ earnings{
 .host-box img{
   border-radius:10px;
   width: 300px;
-  box-shadow: rgb(80 63 205 / 50%) 0px 4px 8px;
   height: 300px;
   object-fit: cover;
+  border:solid 2px var(--ocean-blue);
 }
 
 .host-box-info{
