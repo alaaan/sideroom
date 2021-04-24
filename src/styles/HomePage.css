@@ -264,6 +264,15 @@
 /* ipad */
 @media all and (min-width: 300px) and (max-width: 862px) { 
 
+  .gradient{
+    color: transparent !important;
+    -webkit-background-clip: text !important;
+    /* background-image: linear-gradient(to right, #ffeeee, #ddefbb); */
+    background-image:linear-gradient(
+      110deg
+      , rgba(169,148,255,1) 20%, rgba(105,255,174,1) 100%) !important;
+  }
+
 
 
   .hero-section {
@@ -278,13 +287,15 @@
 .hero-left-container {
   display: flex;
   flex-direction: column;
-  margin-left: 2%;
-  justify-content: space-around;
-  /* align-items: center; */
+  margin-left: 0;
+  width:100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .headline-h1 {
-  padding-bottom: 1rem;
+  line-height: normal;
+  padding-bottom: 0;
   transform: translate(0px, 0px);
   /* background: rgb(255,207,246); */
   /* background-image: linear-gradient(
@@ -293,15 +304,14 @@
   color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(to right, #efefbb, #d4d3dd);
-  font-size:4rem;
+  font-size:2rem;
 }
 
-/* .hero-secondary-text {
-  color: #DA4167;
-  font-weight: 500;
-  font-size: 1.75rem;
+.hero-secondary-text {
+ 
+  font-size: 1.4rem;
 
-} */
+}
 
 .how-to-box {
   width: 100%;
@@ -322,7 +332,7 @@
   font-size: 1.5rem;
 }
 .how-to-box h3 {
-  color: var(--cerise);
+  /* color: var(--cerise); */
   font-size: .9rem;
 }
 
@@ -332,6 +342,7 @@
 }
 .header {
   justify-content: space-between;
+  height:50px; 
 }
 
 .book{

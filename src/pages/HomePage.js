@@ -105,7 +105,7 @@ function App() {
         </section> */}
         <section className="hero-section">
           <div className="hero-left-container" style={{ gridRow: 2}}>
-          <h1 className='headline-h1 gradient' style={{paddingBottom:'1rem'}}>a video call for fans.</h1>
+          <h1 className='headline-h1 gradient'>a video call for fans.</h1>
       
       {/* <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span> */}
      
