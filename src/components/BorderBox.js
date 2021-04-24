@@ -1,10 +1,11 @@
 import React from 'react'
+import boxSvg from '../img/boxsvg.svg'
 
 const BorderBox = (props)=>{
 
   return(
     <>
-    <div className="border-box" style={{width:props.width,height:props.height}}>
+    <div className="border-box">
       {props.children}
     </div>
     </>

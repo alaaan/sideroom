@@ -29,7 +29,7 @@ const Header = () => {
     
     <div className="header">
 
-      <div style={{ display: 'flex',paddingTop:'10px' }}>
+      <div style={{ display: 'flex',paddingTop:'2%' }}>
         <Logo />
       </div>
       <div className="nav-buttons">

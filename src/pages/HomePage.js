@@ -19,6 +19,7 @@ import step2 from '../img/how-to-section/step2.png'
 import step3 from '../img/how-to-section/step3.png'
 import instagram from '../img/ig.svg'
 import twitter from '../img/twitter.svg'
+import Divider from '../components/Divider'
 
 
 
@@ -48,7 +49,7 @@ function App() {
     let headerTextTl = gsap.timeline();
     headerTextTl.set('#host-type-celeb',{display:'inline-block'})
     headerTextTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:20,rotateX:25,y:500,x:-800,duration:.5,ease:'power1'}) ;
-    headerTextTl.to('.hero-secondary-text',{text:"top fan status.",duration:3,ease:'back',},'>')
+    headerTextTl.to('.hero-secondary-text',{text:"meet your favorite celeb.",duration:3,ease:'back',},'>')
     headerTextTl.to('#host-type-celeb',{delay:1,duration:.25,opacity:0,display:"none"});
 
     headerTextTl.set('#host-type-athlete',{display:'inline-block'})
@@ -104,26 +105,32 @@ function App() {
         </section> */}
         <section className="hero-section">
           <div className="hero-left-container" style={{ gridRow: 2}}>
-      <h1 className='headline-h1' style={{paddingBottom:'1rem'}}>Get a video call from your favorite <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span>
-      </h1>
+          <h1 className='headline-h1 gradient' style={{paddingBottom:'1rem'}}>a video call for fans.</h1>
+      
+      {/* <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span> */}
+     
       
 
             <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}> </h2>
+
           </div>
-        
-          {/* <PhoneSvg className='phoneSVG' style={{ gridRow: 2, gridColumn: 3, justifySelf:'center' }} /> */}
-          <div className="wave-top">
+
+          {/* <div className="wave-top">
           <WaveTop />
-          </div>
+          </div> */}
         </section>
         
        
-        
+        <Divider divWidth='100%' divHeight="2px" style={{alignSelf:'start'}} />
+
         <section className="how-to-section">
 
+
           <div className='how-to-box text book'>
-              <h1>book your call.</h1>
-              <h3>Easily and securely buy a video call for you or buy one as a perfect gift for that special mega fan.</h3>
+              <h1 className='gradient' >book a video call.</h1>
+              <h3 subheadline>Easily and securely buy a video call for you or buy one as a perfect gift for that special mega fan. After purchasing your call, you will recieve an access code.
+                You can use this for yourself, or send it along as a gift. 
+              </h3>
           </div>
           <div className='how-to-box book-img'  >
               <img src={step1} alt='step1'/>
@@ -132,13 +139,15 @@ function App() {
             <img src={step2} alt='step2'/>
           </div>
           <div className='how-to-box text redeem'>
-              <h1 className='redeem-headline'>redeem your access code.</h1>
-              <h3 className='redeem-subheadline'>download the app on iOS and Android.</h3>
+              <h1 className='redeem-headline gradient'>get the app.</h1>
+              <h3 className='redeem-subheadline subheadline'>Download the app on iOS or Android, within 48 hours of purchase. The host will be notificed that 
+              you have redeemed, and then be ready at any time for the host to call you. </h3>
           </div>
          
           <div className='how-to-box text call'>
-              <h1 className='call-headline'>wait for your call.</h1>
-              <h3 className='call-subheadline'>get ready for your call.</h3>
+              <h1 className='call-headline gradient'>be ready.</h1>
+              <h3 className='call-subheadline subheadline'>Talent will make calls at random, and thats the exciting part. You never know when a call may be coming. 
+              If you miss the call after three attempts or 30 days pass, you'll automatically be eligible for  refund. The process is 100% risk free.</h3>
 
           </div>
           <div className='how-to-box right call-img'>

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useContext} from 'react'
 import TalentCalculator from '../components/TalentCalculator'
 import gsap from 'gsap'
 import ReactPlayer from 'react-player'
@@ -10,18 +10,28 @@ import earnings from '../img/earnings.svg'
 import HostBox from '../components/HostBox'
 import Divider from '../components/Divider'
 import '../styles/TalentPage.css'
+import BorderBox from '../components/BorderBox'
+import {ThemeContext} from '../context/theme-context';
+import boxSvg from '../img/boxsvg.svg'
+
+
 
 const TalentPage = ()=>{
 
+  const {setHasHeader} = useContext(ThemeContext);
+  
+
+
   useEffect (()=>{
     let tl=gsap.timeline();
+    setHasHeader(false);
     gsap.set('.talent-headline',{visibility:'visible'})
     gsap.set('.hero-secondary-text',{visibility:'visible'})
     gsap.set('.talent-footer-video',{perspective:'100px',transformOrigin:'0% 50%'})
     gsap.set('.hero-secondary-text',{visibility:'visible'})
     tl.addLabel('start');
     tl.fromTo('.talent-headline',{opacity:0},{opacity:1,duration:1,delay:.1});
-    tl.fromTo('.hero-secondary-text',{opacity:0,x:-100},{opacity:1,x:0,duration:1},'start+=.5');
+    // tl.fromTo('.hero-secondary-text',{opacity:0,x:-100},{opacity:1,x:0,duration:1},'start+=.5');
     tl.from('.glowy-box',{opacity:0,duration:1},'start+=1');
     tl.from('#message',{opacity:0},'start+=1.5')
     tl.staggerFrom ('.talent-step-container',2,{opacity:0,stagger:.5})
@@ -45,12 +55,12 @@ const TalentPage = ()=>{
 
      <div className="talent-wrapper">
     <section className="talent-header">
-        <h1 className='talent-headline' style={{fontSize:'3rem'}}>A more exciting fan connection starts here.</h1>
-        <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>We make it easy to make paid video calls to your fans.</h3>
+        <h1 className='talent-headline gradient' style={{fontSize:'2.5rem'}}>A more exciting fan connection starts here.</h1>
+        <h3 className="hero-secondary-text" style={{visibility:'hidden'}}>CONNECTR makes it easy to make paid video calls to your fans.</h3>
+        <Divider  divWidth='50%' divHeight='12px'/>
 
     </section>
 
-    <Divider  divWidth='50%' divHeight='12px'/>
     {/* <section className="talent-calculator">
       <TalentCalculator />
       <div className='talent-screens' style={{overflow:'hidden',borderRadius:'7px',height:'400px'}}>
@@ -60,29 +70,39 @@ const TalentPage = ()=>{
     <section className="talent-how-it-works">
       {/* <h1 style={{marginBottom:'5%'}}>How it works</h1> */}
       <section>
-        <h1>Setup your listing.</h1>
-        <h3 className="hero-secondary-text" >Easily through the mobile app, set the length of your calls, how many you want to open up at any time
-          and your pricing. You can adjust any of these listings on the fly at any time in the app.</h3>
+        <BorderBox boxImg={boxSvg}>
+          <h1>Setup your listing.</h1>
+          <h3 className="hero-secondary-text" >Easily through the mobile app, set the length of your calls, how many you want to open up at any time
+            and your pricing. You can adjust any of these listings on the fly at any time in the app.</h3>
+        </BorderBox>
       </section>
       <section>
+      <BorderBox boxImg={boxSvg}>
       <h1>Your fans book.</h1>
-      <h3 className="hero-secondary-text" >Fans will book a call request with you on our website.
-        They can purchase for themselves or as a gift. 
+      <h3 className="hero-secondary-text" >Let your fans know.
+        Share your landing page, where fans can purchase for themselves or as a gift. We will run digital marketing to your page, while you have active listings. 
         You will be notified of new requests, 
         and you can check pending requests at any time in the app. </h3>
+        </BorderBox>
       </section>
       <section>
+      <BorderBox boxImg={boxSvg}>
+
       <h1>Start making money.</h1>
       <h3 className="hero-secondary-text" >Open up the app to see your bookings, 
         and begin fulfilling them. You can do them all 
         in a row or pick and choose. Users have three 
         opportunities to answer your calls. </h3>
+        </BorderBox>
         </section>
         <section>
+        <BorderBox width='80%'>
+
       <h1>Cash Out.</h1>
       <h3 className="hero-secondary-text" >You retain 80% of your earnings, and payments are made 
         directly into your account. Payments are securely handled 
         entirely by our third-party provider, Stripe.</h3>
+        </BorderBox>
       </section>
      
       {/* <div className="talent-how-it-works-content">

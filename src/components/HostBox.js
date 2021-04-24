@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const HostBox = ({name,genre,img})=>{
 
   return(

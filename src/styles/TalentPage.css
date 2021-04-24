@@ -10,6 +10,14 @@ earnings{
   flex-direction:column;
 }
 
+.talent-wrapper h1{
+  font-size: 2.5rem;
+}
+
+.talent-wrapper h3{
+  font-size: 1.2rem;
+}
+
 .talent-header {
   /* height: 20vh; */
   background: rgb(32,27,67);
@@ -27,10 +35,10 @@ earnings{
 }
 
 .talent-header h1{
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  /* margin-left: 10%;
+  margin-right: 10%; */
 
 }
 .talent-calculator{
@@ -87,8 +95,10 @@ earnings{
 
 .talent-how-it-works section{
   margin-bottom:5%;
-  margin-left:10%;
-  margin-right:10%
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .talent-how-it-works section h3{
@@ -96,7 +106,7 @@ earnings{
 }
 
 .talent-how-it-works section h1{
-  font-size:3rem;
+  font-size: 1.8rem;
 }
 
 
@@ -188,18 +198,37 @@ earnings{
 
 
 @media all and (min-width: 200px) and (max-width: 688px) { 
+  .talent-how-it-works section h1{
+    font-size: 1.7rem;
+  margin-bottom: 5px;
+  }
+  
+
+ 
+
+  .border-box{
+    width:300px;
+    height:300px;
+    background-image:url("../img/300square.svg");
+    padding:15px;
+  }
+
+  .talent-how-it-works section h3{
+    font-size:1rem;
+  }
 
   .talent-header {
     height: 40vh;
     background: rgb(32,27,67);
     background: linear-gradient(180deg, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
-    padding: 10vw;
     padding-bottom: 0;
     padding-top: 20%;
     background: var(--raisin-black);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 20px;
+    text-align: center;
 
 }
 
