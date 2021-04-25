@@ -138,6 +138,16 @@
   height: 350px;
 }
 
+.how-does-it-work{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.how-does-it-work h1{
+  font-size:3rem;
+}
 
 /* How To Section */
 
@@ -194,10 +204,17 @@
   font-size:4.2rem; 
 }
 
-.how-to-box h3{
+.how-does-it-work h3{
   color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(to right, #ffeeee, #ddefbb);
+  font-weight:100;
+}
+
+.large-border-box img{
+  width:30%; 
+  align-self:center; 
+  margin-bottom:20px;
 }
 
 .title-section{
@@ -263,6 +280,12 @@
 
 /* ipad */
 @media all and (min-width: 300px) and (max-width: 862px) { 
+
+  .large-border-box img {
+    width: 60%;
+    align-self: center;
+    margin-bottom: 20px;
+}
 
   .gradient{
     color: transparent !important;

@@ -20,6 +20,9 @@ import step3 from '../img/how-to-section/step3.png'
 import instagram from '../img/ig.svg'
 import twitter from '../img/twitter.svg'
 import Divider from '../components/Divider'
+import howtobook from '../img/howtocalendar.svg'
+import howtodownload from '../img/howtodownload.svg'
+import howtowait from '../img/howtowait.svg'
 
 
 
@@ -49,24 +52,56 @@ function App() {
     let headerTextTl = gsap.timeline();
     headerTextTl.set('#host-type-celeb',{display:'inline-block'})
     headerTextTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:20,rotateX:25,y:500,x:-800,duration:.5,ease:'power1'}) ;
-    headerTextTl.to('.hero-secondary-text',{text:"meet your favorite celeb.",duration:3,ease:'back',},'>')
-    headerTextTl.to('#host-type-celeb',{delay:1,duration:.25,opacity:0,display:"none"});
+    headerTextTl.to('.hero-secondary-text',{text:"meet your idol.",duration:3,ease:'back',},'>')
+    headerTextTl.from('.calendar',{opacity:0},'<1');
+    headerTextTl.from('.calendar-headline',{rotateX:-10,opacity:0,YPercent:100},'<');
+    headerTextTl.from('.calendar-text',{opacity:0,y:20},'<');
 
-    headerTextTl.set('#host-type-athlete',{display:'inline-block'})
-    headerTextTl.from('#host-type-athlete',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
-    headerTextTl.to('#host-type-athlete',{duration:.25,opacity:0,display:"none"},'<2');
+    // headerTextTl.to('#host-type-celeb',{delay:1,duration:.25,opacity:0,display:"none"});
 
-    headerTextTl.set('#host-type-artist',{display:'inline-block'})
-    headerTextTl.from('#host-type-artist',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
+    // headerTextTl.set('#host-type-athlete',{display:'inline-block'})
+    // headerTextTl.from('#host-type-athlete',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
+    // headerTextTl.to('#host-type-athlete',{duration:.25,opacity:0,display:"none"},'<2');
+
+    // headerTextTl.set('#host-type-artist',{display:'inline-block'})
+    // headerTextTl.from('#host-type-artist',{opacity:0,rotateX:-100,rotateZ:-1,duration:.5,transformOrigin:'center',ease:'back'});
     
 
-    let howToRedeem = gsap.timeline({scrollTrigger:{trigger:'.redeem',start:'top 70%'}});
-    howToRedeem.from('.redeem-headline',{opacity:0,y:10});
-    howToRedeem.from('.redeem-subheadline',{opacity:0,x:20,duration:.5},'>');
-    howToRedeem.from('.redeem-img',{opacity:0,z:-10},'<');
-    howToRedeem.from('.call-headline',{opacity:0,y:10},'<');
-    howToRedeem.from('.call-subheadline',{opacity:0,x:20,duration:.5},'>');
-    howToRedeem.from('.call-img',{opacity:0,z:-10},'<');
+    // let howToRedeem = gsap.timeline({scrollTrigger:{trigger:'.how-does-it-work',start:'top 40%',markers:'true'}});
+    // gsap.from('.calendar',{opacity:0,y:10,scrollTrigger:{trigger:'.calendar',start:'top 90%'}});
+    
+    // let calendarTl = gsap.timeline({scrollTrigger:{trigger:'.calendar',start:'top 90%'}});
+    // calendarTl.from('.calendar',{xPercent:-100,opacity:0});
+    // calendarTl.from('.calendar-headline',{rotateX:-10,opacity:0,YPercent:100});
+    // calendarTl.from('.calendar-text',{opacity:0,y:20});
+
+
+    let downloadTl = gsap.timeline({scrollTrigger:{trigger:'.download',start:'top 80%'}});
+    downloadTl.from('.download',{xPercent:-100,opacity:0});
+    downloadTl.from('.download-img',{scale:.5,opacity:0},'<.1');
+    downloadTl.from('.download-headline',{opacity:0});
+    downloadTl.from('.download-text',{rotateX:-10,opacity:0,y:50,duration:.1},'<.5');
+
+
+    let waitTl = gsap.timeline({scrollTrigger:{trigger:'.wait',start:'top 80%'}});
+    waitTl.from('.wait',{xPercent:-100,opacity:0});
+    waitTl.from('.wait-img',{scale:.5,opacity:0},'<.1');
+    waitTl.from('.wait-headline',{opacity:0});
+    waitTl.from('.wait-text',{rotateX:-10,opacity:0,y:50,duration:.1},'<.5');
+
+
+
+
+
+    // gsap.from('.wait',{rotateY:-50,opacity:0,y:10,scrollTrigger:{trigger:'.wait',start:'top 80%'}});
+
+
+
+    // howToRedeem.from('.redeem-subheadline',{opacity:0,x:20,duration:.5},'>');
+    // howToRedeem.from('.redeem-img',{opacity:0,z:-10},'<');
+    // howToRedeem.from('.call-headline',{opacity:0,y:10},'<');
+    // howToRedeem.from('.call-subheadline',{opacity:0,x:20,duration:.5},'>');
+    // howToRedeem.from('.call-img',{opacity:0,z:-10},'<');
 
     // let howToCall = gsap.timeline({scrollTrigger:{trigger:'.call',start:'top 70%'}});
     // howToCall.from('.call-headline',{opacity:0,y:10});
@@ -105,7 +140,7 @@ function App() {
         </section> */}
         <section className="hero-section">
           <div className="hero-left-container" style={{ gridRow: 2}}>
-          <h1 className='headline-h1 gradient'>a video call for fans.</h1>
+          <h1 className='headline-h1 gradient'>a video call for fans</h1>
       
       {/* <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span> */}
      
@@ -121,9 +156,40 @@ function App() {
         </section>
         
        
-        <Divider divWidth='100%' divHeight="2px" style={{alignSelf:'start'}} />
+        {/* <Divider divWidth='100%' divHeight="2px" style={{alignSelf:'start'}} /> */}
 
-        <section className="how-to-section">
+        <section className='how-does-it-work'>
+          <div className="large-border-box calendar">
+          <img src={howtobook} alt='calendar' />
+            <div>
+              <h1>book a video call.</h1>
+              <h3>Easily and securely buy a video call for you or buy one as a perfect gift for that special mega fan. After purchasing your call, you will recieve an access code.
+                You can use this for yourself, or send it along as a gift. 
+              </h3>
+            </div>
+          </div>
+
+          <div className="large-border-box download">
+          <img className="download-img" src={howtodownload} alt='download' />
+
+            <h1 className="download-headline">get the app.</h1>
+              <h3 className="download-text">Download the app on iOS or Android, within 48 hours of purchase. The host will be notificed that 
+              you have redeemed, and then be ready at any time for the host to call you. </h3>
+          </div>
+
+          <div className="large-border-box wait">
+          <img className="wait-img" src={howtowait} alt='wait' />
+
+          <h1 className="wait-headline">be ready.</h1>
+              <h3 className="wait-text">Talent will make calls at random, and thats the exciting part. You never know when a call may be coming. 
+              If you miss the call after three attempts or 30 days pass, you'll automatically be eligible for  refund. The process is 100% risk free.</h3>
+          </div>
+
+
+
+        </section>
+
+        {/* <section className="how-to-section">
 
 
           <div className='how-to-box text book'>
@@ -154,8 +220,10 @@ function App() {
             <img src={step3} alt='step3'/>
           </div>
      
-        </section>
-        <section className='home-footer' style={{textAlign:'end'}}>
+        </section> */}
+
+
+        {/* <section className='home-footer' style={{textAlign:'end'}}>
           <div className="home-footer-content">
             <div>
               <img src={instagram} alt="ig" width='30px' />
@@ -166,7 +234,7 @@ function App() {
               <p style={{fontSize:'.8rem',marginRight:'5%'}}>hello@connectr.live</p>
             </div>
           </div>
-        </section>
+        </section> */}
 
   
 {/* 

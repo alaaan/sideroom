@@ -1,5 +1,5 @@
 import React from 'react'
-import boxSvg from '../img/boxsvg.svg'
+import boxSvg from '../img/box800x250.svg'
 
 const BorderBox = (props)=>{
 

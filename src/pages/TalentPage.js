@@ -12,7 +12,7 @@ import Divider from '../components/Divider'
 import '../styles/TalentPage.css'
 import BorderBox from '../components/BorderBox'
 import {ThemeContext} from '../context/theme-context';
-import boxSvg from '../img/boxsvg.svg'
+import boxSvg from '../img/box800x250.svg'
 
 
 
