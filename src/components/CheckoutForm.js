@@ -37,7 +37,8 @@ import ConfirmationModal from '../components/ConfirmationModal'
 import CheckoutItem from '../components/CheckoutItem'
 import gsap from 'gsap'
 import closeSvg from '../img/close.svg';
-import Loader from '../components/SRLoader';
+import Loader from '../components/SRLoaderSlim';
+
 import Divider from '../components/Divider';
 
 import 'yup-phone';
@@ -188,9 +189,16 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
   const [showSuccess,setShowSuccess] = useState(false);
   const [redemptionCode,setRedemptionCode]= useState(null);
   const [isSubmitting,setIsSubmitting] = useState(false);
+  const [isDisabled,setIsDisabled] = useState(true);
+  const [paymentError,setPaymentError] = useState('');
+  const [isError,setIsError] = useState(false);
 
 
   useEffect(()=>{
+
+    if (isAuthenticated){
+      setIsDisabled(false);
+    }
 
     let tl = gsap.timeline(); 
     tl.from('.checkout-item',{opacity:0,duration:1,delay:.5});
@@ -201,8 +209,11 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
 
   const toggleLogin = ()=>{
     setShowLogin(!showLogin);
-    console.log("trying to toggle login");
   }
+
+
+
+
 
 
 
@@ -256,16 +267,20 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       console.log('got into submit');
       // alert(JSON.stringify(values, null, 2));
       setIsSubmitting(true);
+      setIsDisabled(false);
       console.log('submitting');
       handleCharge();
     },
   
   });
 
-  const today = new Date();
+  const logout = () =>{
+
+    clearLoggedInUser();
+    setIsDisabled(true);
+  }
 
   
-
   const handleCharge= async () => {
 
     // if (!isSubmittingPayment) {
@@ -298,6 +313,8 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       if (result.Errored) {
         setIsSubmitting(false);
         console.log("There was an error processing your payment - " + result.Message)
+        setIsError(true);
+        setPaymentError("There was an error - " + result.Message);
     ;
       } else {
         console.log('purchase success')
@@ -325,7 +342,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
 
         <h2 style={{ marginTop: '10px' }}>Checkout</h2>
-        <Divider divWidth='45%' divHeight='7px' />
+        <Divider start divWidth='100%' divHeight='7px' />
 
         {!isAuthenticated && 
         <>
@@ -345,7 +362,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
               <h3>{formatPhone(loggedInUser.Username)}</h3>
               <h3 
               style={{color:'var(--cerise)',fontSize:'.8rem', marginTop:'1%'}}
-              onClick={()=>(clearLoggedInUser())}
+              onClick={logout}
               >Change Phone Number</h3>
             </div></>:
 
@@ -412,9 +429,9 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
             className="card-element"
           />
 
-          <SRButton type="submit" disabled={isSubmitting} style={{ width:'90%', maxWidth:'600px', marginTop: '20px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
+          <SRButton type="submit" disabled={isDisabled} style={{ width:'90%', maxWidth:'600px', marginTop: '20px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
+          {isError && <p style={{fontSize:'.8rem',textAlign:'center',marginBottom:'5px'}}>⚠️{paymentError} ⚠️</p>}
           <p style={{marginTop:'2%',marginBottom:'2%',textAlign:'center'}}>By purchasing a video call, you agree to CONNECTR's <span onClick={()=>{window.open('http://localhost:3000/tos')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Terms of Service </span> and <span onClick={()=>{window.open('http://localhost:3000/privacy')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Privacy Policy</span></p>
-          
         </div>
 
       </form >
@@ -444,7 +461,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       
       {showLogin? (
       <Modal>
-          <LoginForm close={toggleLogin} />
+          <LoginForm loggedInCallback={()=>{setIsDisabled(false)}} close={toggleLogin} />
       </Modal>): null}
 
     </div>

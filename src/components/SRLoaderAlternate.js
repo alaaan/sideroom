@@ -9,10 +9,15 @@ const Loader = withStyles({
 })(CircularProgress);
 
 
-const SRLoaderSlim = ({label})=>{
+const SRLoaderAlternate = ({label})=>{
   return(
   
+    <div className="loader-wrapper">
+      <div className="loader">
+        <h3 className='gradient' style={{marginBottom:'5px'}}>{label}</h3>
         <Loader style={{height:'25px',width:'25px'}} />
+      </div>
+    </div>
   )
 }
-export default SRLoaderSlim; 
+export default SRLoaderAlternate; 

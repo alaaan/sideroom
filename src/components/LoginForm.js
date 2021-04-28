@@ -9,7 +9,7 @@ import SRLoader from '../components/SRLoader';
 import { UserContext } from "../context/user-context"
 
 
-const LoginForm = ({close})=>{
+const LoginForm = ({close,loggedInCallback})=>{
 
   //context
   //const {setLoggedInUser} = useContext(UserContext);
@@ -62,7 +62,9 @@ const LoginForm = ({close})=>{
       if (!result.Errored && result.Payload) {
         setProcessingConfirmCode(false);
         userContext.setLoggedInUser(result.Payload);
+        loggedInCallback();
         close();
+
       } else {
         setProcessingConfirmCode(false);
         setError(true);

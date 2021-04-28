@@ -89,6 +89,12 @@ function App() {
     waitTl.from('.wait-headline',{opacity:0});
     waitTl.from('.wait-text',{rotateX:-10,opacity:0,y:50,duration:.1},'<.5');
 
+    let getCallTl = gsap.timeline({scrollTrigger:{trigger:'.get-call',start:'top 80%'}});
+    getCallTl.from('.get-call',{xPercent:-100,opacity:0});
+    getCallTl.from('.get-call-img',{scale:.5,opacity:0},'<.1');
+    getCallTl.from('.get-call-headline',{opacity:0});
+    getCallTl.from('.get-call-text',{rotateX:-10,opacity:0,y:50,duration:.1},'<.5');
+
 
 
 
@@ -163,8 +169,8 @@ function App() {
           <img src={howtobook} alt='calendar' />
             <div>
               <h1>book a video call.</h1>
-              <h3>Easily and securely buy a video call for you or buy one as a perfect gift for that special mega fan. After purchasing your call, you will recieve an access code.
-                You can use this for yourself, or send it along as a gift. 
+              <h3>Easily and securely buy a video call for yourself or as a perfect and unforgettable gift. After completing your purchase, you'll receive an access code, that you can redeem yourself or send along to that lucky someone.  
+
               </h3>
             </div>
           </div>
@@ -172,18 +178,24 @@ function App() {
           <div className="large-border-box download">
           <img className="download-img" src={howtodownload} alt='download' />
 
-            <h1 className="download-headline">get the app.</h1>
-              <h3 className="download-text">Download the app on iOS or Android, within 48 hours of purchase. The host will be notificed that 
-              you have redeemed, and then be ready at any time for the host to call you. </h3>
+            <h1 className="download-headline">redeem your access code.</h1>
+              <h3 className="download-text">Use our iOS or android app to redeem an access code. Once you have redeemed your code, you’ll go into the queue and the talent will see your purchase. </h3>
           </div>
 
           <div className="large-border-box wait">
           <img className="wait-img" src={howtowait} alt='wait' />
 
           <h1 className="wait-headline">be ready.</h1>
-              <h3 className="wait-text">Talent will make calls at random, and thats the exciting part. You never know when a call may be coming. 
-              If you miss the call after three attempts or 30 days pass, you'll automatically be eligible for  refund. The process is 100% risk free.</h3>
+              <h3 className="wait-text">Here is where it gets fun. Talent will make calls at random, and you never know when a call may be coming. </h3>
           </div>
+
+          <div className="large-border-box get-call">
+          <img className="get-call-img" src={howtowait} alt='get-call' />
+
+          <h1 className="get-call-headline">get your call.</h1>
+              <h3 className="wait-text">When you answer your call you’ll see a countdown of the time remaining, and the call will automatically end when complete . If you cant pick up the call, dont sweat it, you’ll have three chances to answer. If thirty days go by or you miss the call three times, we’re glad to offer you a refund on your purchase. </h3>
+          </div>
+
 
 
 

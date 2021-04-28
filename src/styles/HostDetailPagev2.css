@@ -118,6 +118,9 @@
   max-width:300px; 
 }
 
+.checkout-button {
+  width:500px;
+}
 
 @media all and (min-width: 300px) and (max-width: 862px) { 
 

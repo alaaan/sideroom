@@ -30,6 +30,7 @@ const HostDetailPagev2 = () => {
   const [hostName,setHostName]=useState(null);
   const [description,setDescription]=useState(null);
   const [soldOut,setSoldOut]=useState(false);
+  const [hostVideo,setHostVideo]=useState(null);
   // const [soldOut,setSoldOut]=useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [listing,setListing]=useState({});
@@ -40,7 +41,7 @@ const HostDetailPagev2 = () => {
 
 
   useEffect(() => {
-    setHasHeader(false);
+    setHasHeader(true);
     setIsLoading(true);
     console.log('host param:' + hostParam)
     const webService = new HostWebService();
