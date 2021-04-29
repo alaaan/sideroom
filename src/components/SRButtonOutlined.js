@@ -7,7 +7,7 @@ const SRButtonOutlined = withStyles({
     background: 'transparent',
     borderRadius: 20,
     border: '.75px',
-    borderColor: '#da4167',
+    borderColor: 'var(--ocean-blue)',
     borderStyle: 'solid',
     color: 'white',
     padding: '0 30px',

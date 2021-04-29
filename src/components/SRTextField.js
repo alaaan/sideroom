@@ -12,14 +12,23 @@ const SRTextField = withStyles({
       color: 'white',
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: 'green',
+      borderBottomColor: 'var(--ocean-blue)',
     },
+
+    '& .MuiInput-underline:before': {
+      borderBottom: '1px solid rgba(86, 67, 204,.25)'
+    },
+
+    
    
-    '& .MuiOutlinedInput-root': {
+    '& .MuiInput-root': {
       color: 'white',
+      fontFamily:'var(--body-font)',
       fontSize: '1.7rem',
       minWidth:'300px',
       maxWidth:'500px',
+      marginBottom:'20px',
+      marginTop:'20px',
 
       '& fieldset': {
         borderColor: 'var(--fadedpink)',
