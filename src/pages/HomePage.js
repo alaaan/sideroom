@@ -23,6 +23,7 @@ import Divider from '../components/Divider'
 import howtobook from '../img/howtocalendar.svg'
 import howtodownload from '../img/howtodownload.svg'
 import howtowait from '../img/howtowait.svg'
+import heroIllustration from '../img/illustration.svg'
 
 
 
@@ -153,7 +154,8 @@ function App() {
       
 
             <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}> </h2>
-
+            <img className="hero-illustration" src={heroIllustration} alt="hero-illustration"/>
+ 
           </div>
 
           {/* <div className="wave-top">
@@ -166,7 +168,7 @@ function App() {
 
         <section className='how-does-it-work'>
           <div className="large-border-box calendar">
-          <img src={howtobook} alt='calendar' />
+          {/* <img src={howtobook} alt='calendar' /> */}
             <div>
               <h1>book a video call.</h1>
               <h3>Easily and securely buy a video call for yourself or as a perfect and unforgettable gift. After completing your purchase, you'll receive an access code, that you can redeem yourself or send along to that lucky someone.  
@@ -176,24 +178,24 @@ function App() {
           </div>
 
           <div className="large-border-box download">
-          <img className="download-img" src={howtodownload} alt='download' />
+          {/* <img className="download-img" src={howtodownload} alt='download' /> */}
 
             <h1 className="download-headline">redeem your access code.</h1>
               <h3 className="download-text">Use our iOS or android app to redeem an access code. Once you have redeemed your code, you’ll go into the queue and the talent will see your purchase. </h3>
           </div>
 
           <div className="large-border-box wait">
-          <img className="wait-img" src={howtowait} alt='wait' />
+          {/* <img className="wait-img" src={howtowait} alt='wait' /> */}
 
           <h1 className="wait-headline">be ready.</h1>
               <h3 className="wait-text">Here is where it gets fun. Talent will make calls at random, and you never know when a call may be coming. </h3>
           </div>
 
           <div className="large-border-box get-call">
-          <img className="get-call-img" src={howtowait} alt='get-call' />
+          {/* <img className="get-call-img" src={howtowait} alt='get-call' /> */}
 
           <h1 className="get-call-headline">get your call.</h1>
-              <h3 className="wait-text">When you answer your call you’ll see a countdown of the time remaining, and the call will automatically end when complete . If you cant pick up the call, dont sweat it, you’ll have three chances to answer. If thirty days go by or you miss the call three times, we’re glad to offer you a refund on your purchase. </h3>
+              <h3 className="get-call-text">When you answer your call you’ll see a countdown of the time remaining, and the call will automatically end when complete . If you cant pick up the call, dont sweat it, you’ll have three chances to answer. If thirty days go by or you miss the call three times, we’re glad to offer you a refund on your purchase. </h3>
           </div>
 
 

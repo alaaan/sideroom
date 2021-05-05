@@ -66,13 +66,18 @@ const HostDetailPagev2 = () => {
       setDescription(data.Description);
       setSoldOut(data.SoldOut);
 
+      if (data.HostVideo){
+        setVideoExists(true);
+        setHostVideo(data.HostVideo)
+      }
+
       setListing({
         price:data.Price,
         time:data.Time,
         hostImg:data.HostImage, 
         hostName:data.HostName, 
         description:data.Description,
-        soldOut:data.SoldOut
+        soldOut:data.SoldOut,
       })
 
       setIsLoading(false);
@@ -144,7 +149,7 @@ const HostDetailPagev2 = () => {
         <section className='host-welcome-video' style={{visibility:(videoReady ? 'visible' : 'hidden'), width:'250px', height:'406px', marginTop:'20px',marginBottom:'50px',position:'relative'}}>
           {/* <img style={{position:'absolute',left:'5%',top:'5%'}} src={videoGradient} alt='background' /> */}
 
-          <HostVideo loaded={()=>setVideoReady(true)} url='https://conectrmedia.blob.core.windows.net/files/dave-test.mp4' />
+          {videoExists && <HostVideo loaded={()=>setVideoReady(true)} url={hostVideo} />}
         </section>
 
 
