@@ -371,7 +371,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
             </div>
 
         <div className='checkout-info' style={{marginTop: '10px',marginBottom:'20px'}}>
-        <p style={{marginBottom:'10px'}}>Your name</p>
+        <p>Your name</p>
           {/* <SRTextField
             autoComplete= "off"
         

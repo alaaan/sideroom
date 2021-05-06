@@ -132,12 +132,12 @@ const HostDetailPagev2 = () => {
           <h3 style={{color:'white',marginTop:'2%',fontSize:'2rem'}}>${price}</h3>
 
           <div>
-            <h3 style={{marginTop:'5%'}}>About the Video Call</h3>
+            <h3 className="gradient" style={{marginTop:'5%'}}>About the Video Call</h3>
             <p>{description}</p>
           </div>
 
           <div>
-            <h3 style={{marginTop:'5%'}}>Details and Info</h3>
+            <h3 className="gradient" style={{marginTop:'5%'}}>Details and Info</h3>
             <p>You’ll have three chances at different times to answer your video calls. Calls are made at random, and you will be refunded if {hostName} doesn’t fulfill the order within 14 days.</p>
           </div>
         </div>
@@ -146,7 +146,7 @@ const HostDetailPagev2 = () => {
         {soldOut && <p>Check back soon for more openings.</p>}
 
         {/* <div style={{visibility:(videoReady ? 'hidden' : 'visible'),height:'20px'}}><SRLoader/></div> */}
-        <section className='host-welcome-video' style={{visibility:(videoReady ? 'visible' : 'hidden'), width:'250px', height:'406px', marginTop:'20px',marginBottom:'50px',position:'relative'}}>
+        <section className='host-welcome-video' style={{display:(videoReady ? 'block' : 'none'), width:'250px', height:'406px', marginTop:'20px',marginBottom:'50px',position:'relative'}}>
           {/* <img style={{position:'absolute',left:'5%',top:'5%'}} src={videoGradient} alt='background' /> */}
 
           {videoExists && <HostVideo loaded={()=>setVideoReady(true)} url={hostVideo} />}

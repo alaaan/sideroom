@@ -19,8 +19,13 @@ const SRTextField = withStyles({
       borderBottom: '1px solid rgba(86, 67, 204,.25)'
     },
 
+    '& .MuiInputBase-root':{
+      color:'white',
+      border: '1px solid white'
+    },
+
     
-   
+    
     '& .MuiInput-root': {
       color: 'white',
       fontFamily:'var(--body-font)',

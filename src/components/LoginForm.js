@@ -132,7 +132,6 @@ const LoginForm = ({close,loggedInCallback})=>{
           onChange={handleUserNameChange}
           id="phone"
           name="search"
-          label="phone"
           variant="outlined">
         </SRTextField>
         <SROutlinedButton onClick={()=>{handleGetCode(username)}}>Send Code</SROutlinedButton>

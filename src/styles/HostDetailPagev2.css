@@ -74,7 +74,7 @@
 }
 
 .host-detail-info-container h3{
-  color: var(--cerise);
+  width:30%;
 }
 
 
@@ -83,7 +83,7 @@
     background: var(--raisin-black);
     padding-left: 2%;
     padding-right: 2%;
-    padding-top: 7vh;
+    padding-top: 15vh;
     display: grid;
     justify-content: center;
     justify-items: center;
@@ -127,7 +127,7 @@
   .host-detail-pagev2 {
     min-height: 100vh;
     background: var(--raisin-black);
-    padding-top: 1vh;
+    padding-top: 8vh;
     padding-left: 2%;
     padding-right: 2%;
     display: flex;
@@ -152,6 +152,8 @@
 
 .host-detail-info-container h3{
   font-size: 1rem;
+  width:75%;
+  
 }
 
 .host-detail-info-container p{
@@ -172,6 +174,8 @@
   /* margin-left: 5%; */
   /* margin-right: 5%; */
   /* width: 90%; */
+  padding-top: 8vh;
+
 }
 .checkout-item{
   display:none; 

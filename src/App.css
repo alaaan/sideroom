@@ -84,6 +84,7 @@ iframe{
 
 .App {
   height: 100%;
+  background: linear-gradient(180deg, #1a1b25, #16171f, #0d0d13, #040406, #000000);
 }
 
 h1 {
@@ -1122,6 +1123,16 @@ media queries  */
   .large-border-box h3{
     font-size:1rem; 
   }
+
+  .border-box h1{
+    font-size:1.8rem !important; 
+    margin-bottom:10px
+  }
+
+  .border-box h3{
+    font-size:1rem; 
+  }
+  
   
 
   .host-profile-container{
