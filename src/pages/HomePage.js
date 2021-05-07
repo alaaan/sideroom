@@ -13,19 +13,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { TextPlugin } from "gsap/TextPlugin";
 // import HostCard from '../components/HostCard'
 import ReactPlayer from 'react-player';
-import {ReactComponent as WaveTop} from '../img/wave-top.svg';
-import step1 from '../img/how-to-section/step1.png'
-import step2 from '../img/how-to-section/step2.png'
-import step3 from '../img/how-to-section/step3.png'
-import instagram from '../img/ig.svg'
-import twitter from '../img/twitter.svg'
-import Divider from '../components/Divider'
-import howtobook from '../img/howtocalendar.svg'
-import howtodownload from '../img/howtodownload.svg'
-import howtowait from '../img/howtowait.svg'
 import heroIllustration from '../img/illustration.svg'
-import bookIllustration from '../img/book.svg'
-import redeemIllustration from '../img/redeem.svg'
+
 
 
 
