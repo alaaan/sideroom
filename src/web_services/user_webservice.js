@@ -5,6 +5,33 @@ export default class UserWebService extends WebService {
 
   loginPath = `${this.routePrefix}/loginweb`;
   requestCodePath= `${this.routePrefix}/requestlogincode`;
+  imgUploadPath= `${this.routePrefix}/upload/image`;
+
+  onDemandPrefix= '/ondemand';
+  onboardPath = `${this.onDemandPrefix}/onboard`;
+
+
+
+  async uploadImg(image) {
+    console.log(image);
+    const formData = new FormData();
+    formData.append(
+        "Image",
+        image,
+      );
+    let result = new JsonPayload();
+    try {
+      // const data = {
+      //   Image: image};
+      result = await this.makePostRequest(this.imgUploadPath, formData);
+    } catch (ex) {
+      result.Errored = true;
+      result.Message = ex.message;
+    }
+    return result;
+  }
+
+
 
 
   async login(username, password) {
@@ -46,4 +73,31 @@ export default class UserWebService extends WebService {
     }
     return result;
   }
+
+  async onboard(accessCode,username,password,name,imageUrl,listingPrice,listingDescription,maxSlots,time) {
+    
+    let result = new JsonPayload();
+    try {
+        const data = {
+            AccessCode:accessCode,
+            Username:username, 
+            Password:password,
+            Name:name,
+            ImageUrl:imageUrl,
+            ListingPrice:listingPrice, 
+            ListingDescription:listingDescription,
+            MaxSlots:maxSlots, 
+            Time:time
+        };
+        result = await this.makePostRequest(this.onboardPath, data);
+    } catch (ex) {
+        result.Errored = true;
+        result.Message = ex.message;
+    }
+    return result;
+  }
+  
+
 }
+
+

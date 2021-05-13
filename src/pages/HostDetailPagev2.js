@@ -34,7 +34,7 @@ const HostDetailPagev2 = () => {
   // const [soldOut,setSoldOut]=useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [listing,setListing]=useState({});
-  const [hostImg, hostImgLoaded] = useImageLoader(hostImage);
+  const [hostImgLoaded] = useImageLoader(hostImage);
   const {setHasHeader} = useContext(ThemeContext);
   const [videoExists,setVideoExists] = useState(false);
   const [videoReady,setVideoReady] = useState(false);

@@ -3,6 +3,7 @@ import WebService, { JsonPayload } from "./webservice";
 export default class PurchaseWebService extends WebService {
   routePrefix = "/ondemand";
   purchasePath = `${this.routePrefix}/purchase`;
+  
 
   //  ondemand/listing/hostId
 

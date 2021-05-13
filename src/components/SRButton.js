@@ -15,6 +15,7 @@ const SRButton = withStyles({
     alignSelf: 'center',
     justifySelf: 'center',
     margin: '10px',
+    maxWidth:'500px',
     
 
     '&:hover': {
