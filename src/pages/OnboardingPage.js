@@ -130,18 +130,29 @@ const OnboardingPage = () =>{
     <div className="partner-page-wrapper">
       <div className="onboarding-content">
         <h2 className="gradient">Lets get started.</h2>
-        <h3 style={{marginBottom:'20px',marginLeft:'10%',marginRight:'10%',textAlign:'center'}}>Please fill out the informaiton below. The information here will be what publishes to your profile in our marketplace. You can edit this information at any time in the mobile app.</h3>
+        <h3 style={{marginBottom:'20px',marginLeft:'10%',marginRight:'10%',textAlign:'center'}}>Please fill out the information below. The information here will be what publishes to your profile in our marketplace. You can edit this information at any time in the mobile app.</h3>
 
-        <ImageCropper />
-        
-        {/* {showImg && (imgLoaded? <img className="profile-img" src={profileImgUrl} alt="profile-img" /> : <SRLoader />)} 
-        <label class="upload-wrapper">
-          <input type="file" name="file" onChange={handleUpload} />
-          {!profileUploaded? <span>Upload Profile Image</span> : <span>Change Profile Image</span>}
-        </label>  */}
+        <section className="onboarding-section">
+          <h3 className='gradient'>Choose your profile image</h3>
+          <p>This is what your fans will see on your landing page and when you call.</p>
+          <ImageCropper />
+        </section>
+
+        <section className="onboarding-section">
+          <h3 className='gradient'>Choose your profile URL</h3>
+          <p>This is where fans will go to purchase a call</p>
+          <div>
+            <h3 style={{display:'inline'}}>connect.fans/</h3>
+            <input className='onboard-input slug' type='text' placeholder='michaeljordan' onChange={e => setName(e.target.value)} />
+          </div>
+        </section>
 
         
-        <div className="large-border-box input-wrapper">
+
+  
+        <section className="onboarding-section input-wrapper">
+        <h3  className='gradient'>Complete the call info</h3>
+        <p style={{marginBottom:'20px'}}>Set your pricing and listing info. This can be edited at any time in the mobile app.</p>
           <div className="input-stack">
             <p className='input-label'>Name</p>
             <input className='onboard-input' type='text' placeholder='Michael Jordan' onChange={e => setName(e.target.value)} />
@@ -164,17 +175,17 @@ const OnboardingPage = () =>{
 
           <div className="input-stack">
             <p className='input-label'>Price per call</p>
-            <input className='onboard-input-small' type='text' placeholder='$100' onChange={e => setListingPrice(e.target.value)} />
+            <input className='onboard-input' type='text' placeholder='$100' onChange={e => setListingPrice(e.target.value)} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'>Minutes per call</p>
-            <input className='onboard-input-small' type='text' placeholder='2 minutes' onChange={e => setTime(e.target.value)} />
+            <input className='onboard-input' type='text' placeholder='2 minutes' onChange={e => setTime(e.target.value)} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'># of available</p>
-            <input className='onboard-input-small' type='text' placeholder='slots available' onChange={e => setMaxSlots(e.target.value)} />
+            <input className='onboard-input' type='text' placeholder='slots available' onChange={e => setMaxSlots(e.target.value)} />
           </div>
 
           <div className="input-stack">
@@ -182,8 +193,10 @@ const OnboardingPage = () =>{
             {/* <img src={infoIcon} alt='info' /> */}
             <textarea className='onboard-input text-area-input' cols="40" rows="5" type='text' placeholder='Im excited to meet you. In your request, tell me what you want to talk about.' onChange={e => setListingDescription(e.target.value)} />
           </div>
+          
+         
 
-        </div>
+        </section>
 
         <SRButton onClick={()=>{submitOnboard()}}>Submit</SRButton>
 

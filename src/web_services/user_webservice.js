@@ -31,6 +31,20 @@ export default class UserWebService extends WebService {
     return result;
   }
 
+  async uploadFormImage(formData) {
+  
+    let result = new JsonPayload();
+    try {
+      // const data = {
+      //   Image: image};
+      result = await this.makePostRequest(this.imgUploadPath, formData);
+    } catch (ex) {
+      result.Errored = true;
+      result.Message = ex.message;
+    }
+    return result;
+  }
+
 
 
 
