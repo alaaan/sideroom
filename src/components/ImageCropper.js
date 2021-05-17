@@ -54,6 +54,7 @@ class ImageCropper extends PureComponent {
       );
       // this.setState({isUploading:false})
       this.setState({ croppedImageUrl });
+      this.props.profileSet(croppedImageUrl);
       this.setState({showCropped:true});
       this.setState({src:null});
     }

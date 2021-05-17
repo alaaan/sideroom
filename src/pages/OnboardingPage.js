@@ -21,6 +21,7 @@ import SRLoader from '../components/SRLoader';
 import useImageLoader from '../hooks/useImageLoad';
 import SRButton from '../components/SRButton';
 import ImageCropper from '../components/ImageCropper';
+import Loader from '../components/SRLoaderSlim';
 
 
 
@@ -41,6 +42,9 @@ registerPlugin(FilePondPluginFileEncode,FilePondPluginFileValidateType,
   
 
   const onboardingSchema = yup.object({
+    profileImg:yup
+      .string()
+      .required('a profile image required'),
     slug: yup
       .string('enter your slug')
       .required('a listing url is required'),
@@ -87,13 +91,14 @@ const OnboardingPage = () =>{
   const [profileUploaded,setProfileUploaded] = useState(false);
   const [isUploading,setIsUploading]=useState(false);
 
+  const [disabled,setDisabled] = useState (true);
   const [accessCode,setAccessCode] = useState('testcode');
   const [slug,setSlug]=useState(null);
   const [username,setUsername] = useState(null);
   const [password,setPassword] = useState(null);
   const [passwordConfirmation,setPasswordConfirmation] = useState(null);
   const [name,setName] = useState(null);
-  const [profileImgUrl,setProfileImgUrl] = useState(''); 
+  const [profileImgUrl,setProfileImgUrl] = useState(null); 
   const [price,setPrice] = useState(null);
   const [description,setDescription] = useState(null);
   const [slots,setSlots] = useState(null);
@@ -110,6 +115,7 @@ const OnboardingPage = () =>{
 
     //create form data 
     let formData = {
+      profileImg:profileImgUrl,
       slug: slug,
       name: name,
       username: username,
@@ -124,7 +130,22 @@ const OnboardingPage = () =>{
     //validation
 
     onboardingSchema.validate(formData, { abortEarly: false })
-    .then(function() {})
+    .then(async function() {
+
+      setIsUploading(true);
+      const result = await service.onboard(accessCode,username,password,name,profileImgUrl,price,description,slots,minutes);
+      if (!result.Errored) {
+        //success
+        setIsUploading(false);
+      }
+
+      else{
+        //error
+        setIsUploading(false);
+      }
+
+
+      })
     .catch(function (err) {
         err.inner.forEach(e => {console.log(e.message)});});
 
@@ -133,67 +154,30 @@ const OnboardingPage = () =>{
     // });
     // console.log(formData);
     // console.log(isValid);
-    // const result = await service.onboard(accessCode,username,password,name,profileImgUrl,listingPrice,listingDescription,maxSlots,time);
     
-    // if (!result.Errored) {
-    
-    //   //success
-
-    // }
-
-    // else{
-    //   //error
-
-    // }
 
 
   }
 
-  const handleInit = ()=> {
-    console.log('FilePond instance has initialised');
-}
-
-  const handleFileChange = (e)=>{
-      // console.log(e.target.files[0]); 
-      // setProfileImgFile(e.target.files[0]);
-      // handleUpload(e);
-    
-    };
-
-
-  const handleUpload = async (e)=>{
-
-    // const formData = new FormData();
-    // // Update the formData object
-    // formData.append(
-    //   "image",
-    //   e.target.files[0],
-    // );
-  
-    // Details of the uploaded file
-    console.log(e.target.files[0]);
-  
-    // Request made to the backend api
-
-    const result = await service.uploadImg(e.target.files[0]);
-    setIsUploading(true);
-    setShowImg(true);
-
-    if (!result.Errored) {
-      setProfileImgUrl(result.Payload.imageUrl); 
-      setIsUploading(false);
-      setProfileUploaded(true);
-      //success
-
+  const checkReady = () =>{
+    let formData = {
+      profileImg:profileImgUrl,
+      slug: slug,
+      name: name,
+      username: username,
+      password: password,
+      passwordConfirmation: passwordConfirmation,
+      price: price,
+      minutes: minutes,
+      slots: slots,
+      description: description
     }
 
-    else{
-      //error
-
+    onboardingSchema.validate(formData, { abortEarly: false })
+    .then(async function() {setDisabled(false)})
+    .catch(function (err) {})
     }
 
-
-    }
 
 
   return (
@@ -202,18 +186,18 @@ const OnboardingPage = () =>{
     <div className="partner-page-wrapper">
       <div className="onboarding-content">
         <h2 className="gradient">Lets get started.</h2>
-        <h3 style={{marginBottom:'20px',marginLeft:'10%',marginRight:'10%',textAlign:'center'}}>Please fill out the information below. The information here will be what publishes to your profile in our marketplace. You can edit this information at any time in the mobile app.</h3>
+        <h3 style={{marginBottom:'20px',marginLeft:'10%',marginRight:'10%',textAlign:'center'}}>The information you complete below will be what publishes to your profile in our marketplace. You can edit this information at any time in the mobile app.</h3>
 
         <section className="onboarding-section">
           <h3 className='gradient'>Choose your profile image</h3>
           <p>This is what your fans will see on your landing page and when you call.</p>
-          <ImageCropper />
+          <ImageCropper profileSet={(img)=>{setProfileImgUrl(img); checkReady()}} />
         </section>
 
         <section className="onboarding-section">
           <h3 className='gradient'>Choose your profile URL</h3>
           <p>This is where fans will go to purchase a call</p>
-          <div>
+          <div className='slug-wrapper'>
             <h3 style={{display:'inline'}}>connect.fans/</h3>
             <input className='onboard-input slug' type='text' placeholder='michaeljordan' onChange={e => setSlug(e.target.value)} />
           </div>
@@ -227,52 +211,50 @@ const OnboardingPage = () =>{
         <p style={{marginBottom:'20px'}}>Set your pricing and listing info. This can be edited at any time in the mobile app.</p>
           <div className="input-stack">
             <p className='input-label'>Name</p>
-            <input className='onboard-input' type='text' placeholder='Michael Jordan' onChange={e => setName(e.target.value)} />
+            <input className='onboard-input' type='text' placeholder='Michael Jordan' onChange={e => {setName(e.target.value); checkReady()}} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'>Username</p>
-            <input className='onboard-input' type='text' placeholder='username' onChange={e => setUsername(e.target.value)}  />
+            <input className='onboard-input' type='text' placeholder='username' onChange={e => {setUsername(e.target.value); checkReady()}}  />
           </div>
 
           <div className="input-stack">
             <p className='input-label'>Password</p>
-            <input className='onboard-input' type='password' onChange={e => setPassword(e.target.value)} />
+            <input className='onboard-input' type='password' onChange={e => {setPassword(e.target.value); checkReady()}} />
           </div>
             
           <div className="input-stack">
             <p className='input-label'>Confirm Password</p>
-            <input className='onboard-input' type='password' onChange={e => setPasswordConfirmation(e.target.value)} />
+            <input className='onboard-input' type='password' onChange={e => {setPasswordConfirmation(e.target.value); checkReady()}} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'>Price per call</p>
-            <input className='onboard-input' type='text' placeholder='$100' onChange={e => setPrice(e.target.value)} />
+            <input className='onboard-input' type='text' placeholder='$100' onChange={e => {setPrice(e.target.value); checkReady()}} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'>Minutes per call</p>
-            <input className='onboard-input' type='text' placeholder='2 minutes' onChange={e => setMinutes(e.target.value)} />
+            <input className='onboard-input' type='text' placeholder='2 minutes' onChange={e => {setMinutes(e.target.value); checkReady()}} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'># of available</p>
-            <input className='onboard-input' type='text' placeholder='slots available' onChange={e => setSlots(e.target.value)} />
+            <input className='onboard-input' type='text' placeholder='slots available' onChange={e => {setSlots(e.target.value); checkReady()}} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'>Describe your public listing</p>
             {/* <img src={infoIcon} alt='info' /> */}
-            <textarea className='onboard-input text-area-input' cols="40" rows="5" type='text' placeholder='Im excited to meet you. In your request, tell me what you want to talk about.' onChange={e => setDescription(e.target.value)} />
+            <textarea className='onboard-input text-area-input' cols="40" rows="5" type='text' placeholder='Im excited to meet you. In your request, tell me what you want to talk about.' onChange={e => {setDescription(e.target.value); checkReady()}} />
           </div>
           
          
 
         </section>
 
-        <SRButton onClick={()=>{submitOnboard()}}>Submit</SRButton>
-
-
+        <SRButton disabled={disabled} onClick={()=>{submitOnboard()}}>{!isUploading ? ('Create Profile') : <Loader />}</SRButton>
 
 
 

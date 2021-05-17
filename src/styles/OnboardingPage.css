@@ -6,6 +6,7 @@
   align-items: center;
 }
 
+
 .onboarding-content p{
   margin-top:5px;
 }
@@ -171,5 +172,47 @@ input[type="file"] {
 .filepond--root {
 	width:170px;
 	margin: 0 auto;
+}
+
+@media all and (min-width: 200px) and (max-width: 688px) { 
+
+  .partner-page-wrapper{
+    padding-top:20px;
+  }
+
+  .onboarding-content h3{
+    margin-left:0px !important;
+    margin-right:0px !important; 
+    font-size: .9rem;
+  }
+
+  .onboarding-content h2{
+    font-size:2rem; 
+    margin-bottom:10px; 
+  }
+
+  .onboarding-content p{
+    font-size:.9rem
+  }
+
+  .onboarding-section {
+    width:100%;
+  }
+
+  .slug-wrapper{
+    width:100%;
+  }
+
+  .slug{
+    width:150px !important; 
+  }
+
+  .input-wrapper{
+    flex-wrap:nowrap; 
+  }
+
+
+
+
 }
 
