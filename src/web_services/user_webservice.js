@@ -9,6 +9,7 @@ export default class UserWebService extends WebService {
 
   onDemandPrefix= '/ondemand';
   onboardPath = `${this.onDemandPrefix}/onboard`;
+  onboardAccessPath = `${this.onDemandPrefix}/code/check`;
 
 
 
@@ -19,6 +20,20 @@ export default class UserWebService extends WebService {
         "Image",
         image,
       );
+    let result = new JsonPayload();
+    try {
+      // const data = {
+      //   Image: image};
+      result = await this.makePostRequest(this.imgUploadPath, formData);
+    } catch (ex) {
+      result.Errored = true;
+      result.Message = ex.message;
+    }
+    return result;
+  }
+
+  async uploadFormImage(formData) {
+  
     let result = new JsonPayload();
     try {
       // const data = {
@@ -74,12 +89,13 @@ export default class UserWebService extends WebService {
     return result;
   }
 
-  async onboard(accessCode,username,password,name,imageUrl,listingPrice,listingDescription,maxSlots,time) {
+  async onboard(accessCode,userKey,username,password,name,imageUrl,listingPrice,listingDescription,maxSlots,time) {
     
     let result = new JsonPayload();
     try {
         const data = {
             AccessCode:accessCode,
+            UserKey:userKey,
             Username:username, 
             Password:password,
             Name:name,
@@ -90,6 +106,20 @@ export default class UserWebService extends WebService {
             Time:time
         };
         result = await this.makePostRequest(this.onboardPath, data);
+    } catch (ex) {
+        result.Errored = true;
+        result.Message = ex.message;
+    }
+    return result;
+  }
+
+  async checkAccessCode(code) {
+    let result = new JsonPayload();
+    try {
+        const data = {
+            code: code
+        };
+        result = await this.makePostRequest(this.onboardAccessPath, data);
     } catch (ex) {
         result.Errored = true;
         result.Message = ex.message;

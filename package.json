@@ -48,7 +48,7 @@
     "semantic-ui-react": "^2.0.1",
     "video-react": "^0.14.1",
     "web-vitals": "^0.2.4",
-    "yup": "^0.32.8",
+    "yup": "^0.32.9",
     "yup-phone": "^1.2.18"
   },
   "scripts": {

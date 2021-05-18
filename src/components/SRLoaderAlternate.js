@@ -12,7 +12,7 @@ const Loader = withStyles({
 const SRLoaderAlternate = ({label})=>{
   return(
   
-    <div className="loader-wrapper">
+    <div className="loader-wrapper" style={{width:'25px'}}>
       <div className="loader">
         <h3 className='gradient' style={{marginBottom:'5px'}}>{label}</h3>
         <Loader style={{height:'25px',width:'25px'}} />

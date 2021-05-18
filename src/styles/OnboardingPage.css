@@ -1,7 +1,68 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .onboarding-content {
   display:flex; 
   flex-direction: column;
   height:90%;
+  margin-bottom:50px;
+  align-items: center;
+}
+
+.onboarding-content .onboard-input{
+  font-size:1rem !important; 
+  font-family:var(--body-font) !important; 
+}
+
+
+.onboarding-content p{
+  margin-top:5px;
+}
+
+.ReactCrop__image {
+  max-height:300px;
+}
+
+.access-display {
+  position:absolute; 
+  top:5px;
+  right:20px; 
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
+.access-display h3{
+  font-size:1rem; 
+  margin-top:-12px; 
+}
+
+
+.cropped-img{
+  max-width:300px; 
+  border-radius: 10px;
+}
+
+.onboarding-box{
+  margin-top:10px !important; 
+}
+
+.onboarding-section{
+  border: 1px solid var(--ocean-blue);
+  border-radius: 10px;
+  padding:20px;
+  margin-top:20px;
+  width:800px;
+  background: rgba(0,0,0,.025);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -14,8 +75,10 @@
 
 .input-wrapper{
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items:center;
 }
 
 input[type="file"] {
@@ -66,6 +129,14 @@ input[type="file"] {
   width:300px;
   height:50px;
   text-align: center;
+}
+
+.slug {
+  height:30px !important;
+  margin-left:5px !important; 
+  text-align: left !important;
+  padding-left:5px !important; 
+  width:200px !important; 
 }
 
 .onboard-input-small {
@@ -130,5 +201,47 @@ input[type="file"] {
 .filepond--root {
 	width:170px;
 	margin: 0 auto;
+}
+
+@media all and (min-width: 200px) and (max-width: 688px) { 
+
+  .partner-page-wrapper{
+    padding-top:20px;
+  }
+
+  .onboarding-content h3{
+    margin-left:0px !important;
+    margin-right:0px !important; 
+    font-size: .9rem;
+  }
+
+  .onboarding-content h2{
+    font-size:2rem; 
+    margin-bottom:10px; 
+  }
+
+  .onboarding-content p{
+    font-size:.9rem
+  }
+
+  .onboarding-section {
+    width:100%;
+  }
+
+  .slug-wrapper{
+    width:100%;
+  }
+
+  .slug{
+    width:150px !important; 
+  }
+
+  .input-wrapper{
+    flex-wrap:nowrap; 
+  }
+
+
+
+
 }
 
