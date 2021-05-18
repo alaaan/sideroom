@@ -16,7 +16,7 @@ import Loader from '../components/SRLoaderSlim';
     profileImg:yup
       .string()
       .required('a profile image required'),
-    slug: yup
+    userKey: yup
       .string('enter your slug')
       .required('a listing url is required'),
     name: yup
@@ -59,7 +59,7 @@ const OnboardingPage = ({accessCode}) =>{
   const {setHasHeader} = useContext(ThemeContext);
   const [isUploading,setIsUploading]=useState(false);
   const [disabled,setDisabled] = useState (true);
-  const [slug,setSlug]=useState(null);
+  const [userKey,setUserKey]=useState(null);
   const [username,setUsername] = useState(null);
   const [password,setPassword] = useState(null);
   const [passwordConfirmation,setPasswordConfirmation] = useState(null);
@@ -82,7 +82,7 @@ const OnboardingPage = ({accessCode}) =>{
     //create form data 
     let formData = {
       profileImg:profileImgUrl,
-      slug: slug,
+      userKey: userKey,
       name: name,
       username: username,
       password: password,
@@ -99,7 +99,7 @@ const OnboardingPage = ({accessCode}) =>{
     .then(async function() {
 
       setIsUploading(true);
-      const result = await service.onboard(accessCode,username,password,name,profileImgUrl,price,description,slots,minutes);
+      const result = await service.onboard(accessCode,userKey,username,password,name,profileImgUrl,price,description,slots,minutes);
       if (!result.Errored) {
         //success
         setIsUploading(false);
@@ -125,10 +125,14 @@ const OnboardingPage = ({accessCode}) =>{
 
   }
 
+  const handlePrice = (e)=>{
+    
+  }
+
   const checkReady = () =>{
     let formData = {
       profileImg:profileImgUrl,
-      slug: slug,
+      userKey: userKey,
       name: name,
       username: username,
       password: password,
@@ -169,7 +173,7 @@ const OnboardingPage = ({accessCode}) =>{
           <p>This is where fans will go to purchase a call</p>
           <div className='slug-wrapper'>
             <h3 style={{display:'inline'}}>connect.fans/</h3>
-            <input className='onboard-input slug' type='text' placeholder='michaeljordan' onChange={e => setSlug(e.target.value)} />
+            <input className='onboard-input slug' type='text' placeholder='michaeljordan' onChange={e => setUserKey(e.target.value)} />
           </div>
         </section>
 
@@ -201,12 +205,12 @@ const OnboardingPage = ({accessCode}) =>{
 
           <div className="input-stack">
             <p className='input-label'>Price per call</p>
-            <input className='onboard-input' type='text' placeholder='$100' onChange={e => {setPrice(e.target.value); checkReady()}} />
+            <input className='onboard-input' type='number' pattern="[0-9]*" placeholder='$100' onChange={e => {setPrice(e.target.value); checkReady()}} />
           </div>
 
           <div className="input-stack">
             <p className='input-label'>Minutes per call</p>
-            <input className='onboard-input' type='text' placeholder='2 minutes' onChange={e => {setMinutes(e.target.value); checkReady()}} />
+            <input className='onboard-input' type='number' pattern="[0-9]*" placeholder='2 minutes' onChange={e => {setMinutes(e.target.value); checkReady()}} />
           </div>
 
           <div className="input-stack">

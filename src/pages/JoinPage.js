@@ -1,11 +1,12 @@
 import React,{useState,useEffect,useContext} from 'react';
 import {ThemeContext} from '../context/theme-context';
-import {useHistory} from 'react-router-dom';
 import OnboardingPage from '../pages/OnboardingPage';
 import '../styles/JoinPage.css'
 import SRButton from '../components/SRButton'
 import BorderBox from '../components/BorderBox'
 import boxSvg from '../img/box800x250.svg'
+import UserWebService from '../web_services/user_webservice';
+import Loader from '../components/SRLoaderSlim';
 
 
 const JoinPage = () =>{
@@ -14,6 +15,9 @@ const JoinPage = () =>{
   const [accessCode,setAccessCode] = useState('');
   const [isDisabled,setIsDisabled] = useState(true);
   const [showOnboarding,setShowOnboarding]=useState(false);
+  const [isProcessing,setIsProcessing] = useState(false);
+
+  const service = new UserWebService(); 
 
   useEffect(() => {
     setHasHeader(true);
@@ -28,6 +32,21 @@ const JoinPage = () =>{
     // else {
     //   setIsDisabled(true);
     // }
+  }
+
+  const handleSubmit = async ()=>{
+    setIsProcessing(true);
+    const result = await service.checkAccessCode(accessCode);
+    if (!result.Errored) {
+      //success
+      setIsProcessing(false);
+      setShowOnboarding(true);
+    }
+
+    else{
+      //error
+      setIsProcessing(false);
+    }
 
   }
 
@@ -43,7 +62,9 @@ return(
     
     <input className='onboard-input' type='text' onChange={(e)=>{handleAccessCode(e)}}/>
 
-    <SRButton onClick={()=>{setShowOnboarding(true)}} disabled={isDisabled} style={{ width:'80%', maxWidth:'300px', marginTop: '20px', marginBottom: '20px'}}>Submit</SRButton>
+    <SRButton disabled={isDisabled} onClick={()=>{handleSubmit()}}>{!isProcessing ? ('Submit') : <Loader />}</SRButton>
+
+    {/* <SRButton onClick={()=>{hanldeSubmit()}} disabled={isDisabled} style={{ width:'80%', maxWidth:'300px', marginTop: '20px', marginBottom: '20px'}}>Submit</SRButton> */}
 
     <section className="talent-how-it-works">
       <h1 className='gradient' style={{marginBottom:'20px',fontSize:'3.5rem'}}>How does this work?</h1>
