@@ -1,4 +1,5 @@
 import React,{useState,useEffect,useContext} from 'react';
+import Emoji from '../components/Emoji';
 import {ThemeContext} from '../context/theme-context';
 import OnboardingPage from '../pages/OnboardingPage';
 import '../styles/JoinPage.css'
@@ -16,6 +17,8 @@ const JoinPage = () =>{
   const [isDisabled,setIsDisabled] = useState(true);
   const [showOnboarding,setShowOnboarding]=useState(false);
   const [isProcessing,setIsProcessing] = useState(false);
+  const [isErrored,setIsErrored]=useState(false);
+  const [error,setError] = useState('');
 
   const service = new UserWebService(); 
 
@@ -35,9 +38,11 @@ const JoinPage = () =>{
   }
 
   const handleSubmit = async ()=>{
+    setIsErrored(false);
+    setError('');
     setIsProcessing(true);
     const result = await service.checkAccessCode(accessCode);
-    if (!result.Errored) {
+    if (result.Payload) {
       //success
       setIsProcessing(false);
       setShowOnboarding(true);
@@ -45,7 +50,10 @@ const JoinPage = () =>{
 
     else{
       //error
+      
       setIsProcessing(false);
+      setIsErrored(true);
+      setError('Invalid Access Code, please double check your code.'); 
     }
 
   }
@@ -63,6 +71,7 @@ return(
     <input className='onboard-input' type='text' onChange={(e)=>{handleAccessCode(e)}}/>
 
     <SRButton disabled={isDisabled} onClick={()=>{handleSubmit()}}>{!isProcessing ? ('Submit') : <Loader />}</SRButton>
+    {isErrored && <p> {` ${error} `}</p>}
 
     {/* <SRButton onClick={()=>{hanldeSubmit()}} disabled={isDisabled} style={{ width:'80%', maxWidth:'300px', marginTop: '20px', marginBottom: '20px'}}>Submit</SRButton> */}
 
