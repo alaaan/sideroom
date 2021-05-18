@@ -7,39 +7,10 @@ import infoIcon from '../img/info-icon.svg'
 import { FilePond, registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
 import * as yup from 'yup';
-
-import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import FilePondPluginImageResize from 'filepond-plugin-image-resize';
-import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import UserWebService from '../web_services/user_webservice';
-
-import ImageUploader from '../components/ImageUploader'
-import SRLoader from '../components/SRLoader';
-import useImageLoader from '../hooks/useImageLoad';
 import SRButton from '../components/SRButton';
 import ImageCropper from '../components/ImageCropper';
 import Loader from '../components/SRLoaderSlim';
-
-
-
-registerPlugin(FilePondPluginFileEncode,FilePondPluginFileValidateType,
-  FilePondPluginImageResize,FilePondPluginImageExifOrientation,FilePondPluginImagePreview,
-  FilePondPluginImageCrop); 
-
-  // const defaultValidationSchema = yup.object({
-  
-  //   name: yup
-  //     .string('Enter your name')
-  //     .required('Name is required!'),
-  //   request: yup
-  //     .string('Tell us a little bit about your request')
-  //     .min(3, 'Tell us a little bit more!')
-  //     .required('Please tell us about your request'),
-  // });
-  
 
   const onboardingSchema = yup.object({
     profileImg:yup
@@ -81,18 +52,13 @@ registerPlugin(FilePondPluginFileEncode,FilePondPluginFileValidateType,
 
 
 
-const OnboardingPage = () =>{
+const OnboardingPage = ({accessCode}) =>{
 
 
 
   const {setHasHeader} = useContext(ThemeContext);
-  const [showImg,setShowImg] = useState(false);
-  const [profileImgFile,setProfileImgFile] = useState(null);
-  const [profileUploaded,setProfileUploaded] = useState(false);
   const [isUploading,setIsUploading]=useState(false);
-
   const [disabled,setDisabled] = useState (true);
-  const [accessCode,setAccessCode] = useState('testcode');
   const [slug,setSlug]=useState(null);
   const [username,setUsername] = useState(null);
   const [password,setPassword] = useState(null);
@@ -108,7 +74,7 @@ const OnboardingPage = () =>{
   const service = new UserWebService(); 
 
   useEffect(() => {
-    setHasHeader(false);
+    setHasHeader(true);
   })
 
   const submitOnboard = async ()=>{
@@ -186,6 +152,10 @@ const OnboardingPage = () =>{
     <div className="partner-page-wrapper">
       <div className="onboarding-content">
         <h2 className="gradient">Lets get started.</h2>
+        <div className='access-display'>
+          <h2 className='gradient'>{accessCode}</h2>
+          <h3>access code</h3>
+        </div>
         <h3 style={{marginBottom:'20px',marginLeft:'10%',marginRight:'10%',textAlign:'center'}}>The information you complete below will be what publishes to your profile in our marketplace. You can edit this information at any time in the mobile app.</h3>
 
         <section className="onboarding-section">
