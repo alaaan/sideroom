@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ConfigService } from '../services/config_service';
 import UserService from '../services/user_service';
 const queryString = require('querystring');
             
@@ -9,12 +10,6 @@ export class JsonPayload {
 }
 
 export default class WebService {
-
-  // apiUrl = 'https://dudewheresmyapi.conectr.io';
-
-  apiUrl = ' https://conectr-api-dev.azurewebsites.net';
-
- 
 
   async makeGetRequest(
       path,
@@ -39,7 +34,7 @@ export default class WebService {
       isJsonRequest = true,
     ) {
       
-      const fullUrl = `${this.apiUrl}${path}`;
+      const fullUrl = `${ConfigService.data.apiUrl}${path}`;
       const request =
         requestType === "GET"
           ? this.buildGetRequest(fullUrl, data)

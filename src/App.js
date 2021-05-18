@@ -13,10 +13,12 @@ import PartnerPage from './pages/PartnerPage';
 import TOSPage from "./pages/TOSPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import OnboardingPage from './pages/OnboardingPage'
+import { ConfigService } from "./services/config_service";
 
 
 
 const App = () => {
+  ConfigService.loadConfig(ConfigService.environmentType.dev);
   const user = useUser();
   const theme = useTheme(); 
 
