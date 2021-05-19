@@ -14,6 +14,7 @@ import TOSPage from "./pages/TOSPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import OnboardingPage from './pages/OnboardingPage'
 import { ConfigService } from "./services/config_service";
+import UserLogin from './components/UserLogin';
 
 
 
@@ -35,7 +36,11 @@ const App = () => {
             {/* <Route exact path="/onboarding" component={OnboardingPage} /> */}
 
             <Route exact path="/join" component={JoinPage} />     
-            <Route exact path="/partner" component={PartnerPage} /> 
+            {/* <Route exact path="/partner" component={PartnerPage} />  */}
+            <Route exact path="/partner" render={()=>{
+            return user.isAuthenticated && user.loggedInUser.IsPartner ? (<PartnerPage />):
+            (<UserLogin />)
+            }} />
             <Route path="/tos" component={TOSPage} />        
             <Route path="/privacy" component={PrivacyPolicyPage} />              
             <Route path="/:hostParam" component={HostDetailPagev2} />    

@@ -148,6 +148,19 @@ font-weight:200;
   min-height: 200px;
 } */
 
+.login-wrapper{
+  height: 100vh;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login{
+  align-items: center !important;
+}
+
 .border-box {
     background-image: url('./img/box800x250.svg');
     padding: 30px;

@@ -39,7 +39,7 @@ const Header = () => {
         // <SRButtonOutlined onClick={toggleLogin}>Login</SRButtonOutlined> 
         :
         <>
-          <img className="user-img" src={loggedInUser.ProfileImageSmall} alt="profile"/> 
+          {/* <img className="user-img" src={loggedInUser.ProfileImageSmall} alt="profile"/>  */}
           <div style={{display:'flex',flexDirection:'column'}}>
             <h3>{loggedInUser.Name}</h3>
             <h3 

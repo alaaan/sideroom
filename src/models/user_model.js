@@ -13,4 +13,5 @@ export default class UserModel {
   IsAdmin = false;
   ProfileImageSmall = "";
   ProfileImageMedium = "";
+  isPartner=false; 
 }
