@@ -1,45 +1,70 @@
-import React from 'react'
-import BorderBox from '../components/BorderBox'
-import '../styles/PartnerPage.css'
-import SRButton from '../components/SRButton'
-import PartnerCell from '../components/PartnerCell'
+import React, { useEffect, useState } from "react";
+import BorderBox from "../components/BorderBox";
+import "../styles/PartnerPage.css";
+import PartnerCell from "../components/PartnerCell";
+import ListingWebService from "../web_services/listing_webservice";
+import { ConfigService } from "../services/config_service";
+import SRLoader from "../components/SRLoader";
+import PartnerBankInfo from "../components/PartnerBankInfo";
 
-const PartnerPage = () =>{
+const PartnerPage = () => {
+  const [listingInfo, setListingInfo] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const loadData = async () => {
+      var service = new ListingWebService();
+      var listingResult = await service.getPartnerProfile(
+        ConfigService.data.apiUrl,
+        ConfigService.data.returnUrl
+      );
+      if (!listingResult.Errored) {
+        setListingInfo(listingResult.Payload);
+      }
+      setIsLoading(false);
+    };
+    loadData();
+  }, []);
 
-
-  return(
+  return !isLoading ? (
     <div className="partner-page-wrapper">
       <div className="partner-page-header">
-        <BorderBox width='400px' height='250px'>
+        <BorderBox width="400px" height="250px">
           <div className="referral-wrapper">
             <h2>Your Referral Code</h2>
-            <h2 style={{color:'var(--ocean-blue)'}}>ABC123</h2>
-            <p>Share this code in private channels with hosts youre onboarding</p>
-          </div>
-          
-        </BorderBox>
-      
-        <BorderBox width='400px' height='250px'>
-          <div className="referral-wrapper">
-            <h2>Bank Info</h2>
-            <SRButton>Connect to Stripe</SRButton>
-            <p style={{color:'var(--cerise)'}}>Until you setup your Stripe account you will not be able to receive payouts</p>
+            <h2 style={{ color: "var(--ocean-blue)" }}>
+              {listingInfo.AccessCode}
+            </h2>
+            <p>
+              Share this code in private channels with hosts you're onboarding
+            </p>
           </div>
         </BorderBox>
+
+        <PartnerBankInfo
+          paymentStatus={listingInfo.PaymentStatus}
+          paymentUrl={listingInfo.PaymentUrl}
+        />
       </div>
-
-      <div className="partner-page-network">
-        <h1>Your Network</h1>
-        <PartnerCell hostName='Bill Murray' hostImg="http://www.fillmurray.com/200/200" />
-        <PartnerCell hostName='Arthur Blank' hostImg="https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/falcons/ukwadfetxuecqttkliwg" />
-
-
-      </div>
-
+      {listingInfo.Hosts.length > 0 && (
+        <div className="partner-page-network">
+          <h1 style={{ alignSelf: "center" }}>Your Network</h1>
+          {listingInfo.Hosts.map((record) => {
+            return (
+              <PartnerCell
+                hostName={record.HostName}
+                hostImg={record.HostImage}
+                commissionRate={listingInfo.CommissionRate}
+                commissionEarned={record.CommissionEarned}
+                totalCalls={record.TotalCalls}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
+  ) : (
+    <SRLoader label="loading event details..." />
+  );
+};
 
-
-  )
-}
-
-export default PartnerPage; 
+export default PartnerPage;

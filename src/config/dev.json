@@ -1,4 +1,5 @@
 {
     "apiUrl": "https://conectr-api-dev.azurewebsites.net",
-    "paymentKey": "pk_test_3buay5fqqWRRQ6lsNDXiqph5"
+    "paymentKey": "pk_test_3buay5fqqWRRQ6lsNDXiqph5",
+    "returnUrl": "http://localhost:3000/partner"
 }
