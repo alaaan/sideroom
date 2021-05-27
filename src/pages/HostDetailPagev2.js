@@ -14,6 +14,7 @@ import {ThemeContext} from '../context/theme-context';
 import ReactPlayer from 'react-player';
 import HostVideo from '../components/HostVideo'
 import videoGradient from '../img/video-gradient.svg'
+import { ConfigService } from '../services/config_service';
 
 
 
@@ -96,7 +97,7 @@ const HostDetailPagev2 = () => {
   }
 
   //load stripe
-  const stripePromise = loadStripe("pk_test_3buay5fqqWRRQ6lsNDXiqph5");
+  const stripePromise = loadStripe(ConfigService.data.paymentKey);
 
 
 

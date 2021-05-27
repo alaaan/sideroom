@@ -43,6 +43,7 @@ import Divider from '../components/Divider';
 
 import 'yup-phone';
 import { Link } from 'react-dom';
+import UserService from '../services/user_service';
 
 const defaultValidationSchema = yup.object({
   
@@ -344,7 +345,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
         <h2 style={{ marginTop: '10px' }}>Checkout</h2>
         <Divider start divWidth='100%' divHeight='7px' />
 
-        {!isAuthenticated && 
+        {(!isAuthenticated || (isAuthenticated && loggedInUser.IsPartner)) && 
         <>
           <h3>You must verify your phone number</h3>
           <p style={{marginTop:'3%'}}>We will send you your access code and receipt to this number. If purchasing as a gift for someone else, please use your own number.</p>
@@ -352,7 +353,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
         
         }
 
-        {isAuthenticated ? 
+        {isAuthenticated && !loggedInUser.IsPartner ? 
           <>
           <div style={{display:'flex', alignItems:'center'}}>
             <h3 style={{marginTop:'1%'}}>Phone Verified</h3>
