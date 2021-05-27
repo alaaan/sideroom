@@ -14,6 +14,10 @@ import { TextPlugin } from "gsap/TextPlugin";
 // import HostCard from '../components/HostCard'
 import ReactPlayer from 'react-player';
 import heroIllustration from '../img/illustration.svg'
+import booksvg from '../img/bookcall.svg'
+import redeemsvg from '../img/redeem.svg'
+import bg1 from '../img/homebg1.svg'
+import banner from '../img/banner.svg'
 
 
 
@@ -44,7 +48,7 @@ function App() {
     let headerTextTl = gsap.timeline();
     headerTextTl.set('#host-type-celeb',{display:'inline-block'})
     headerTextTl.from('.headline-h1',{transform:'skew(0deg)',rotateY:20,rotateX:25,y:500,x:-800,duration:.5,ease:'power1'}) ;
-    headerTextTl.to('.hero-secondary-text',{text:"meet your idol.",duration:3,ease:'back',},'>')
+    headerTextTl.to('.hero-secondary-text',{text:"the easy way to meet and greet.",duration:3,ease:'back',},'>')
     headerTextTl.from('.hero-illustration',{opacity:0,x:-10,ease:'back'},'<1')
 
     headerTextTl.from('.calendar',{opacity:0},'<1.5');
@@ -134,13 +138,15 @@ function App() {
       transition={{ duration: 1 }}>
       {/* <Header /> */}
       <div className="section-wrapper">
+        {/* <img src={bg1} alt='bg'/> */}
+
         {/* <section className="loading-section">
           <img className="sofa" src={Sofa} />
           <h1 className="loading-text"></h1>
         </section> */}
         <section className="hero-section">
           <div className="hero-left-container" style={{ gridRow: 2}}>
-          <h1 className='headline-h1 gradient'>a video call for fans</h1>
+          <h1 className='headline-h1'>a video call for fans</h1>
       
       {/* <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span> */}
      
@@ -148,6 +154,7 @@ function App() {
 
             <h2 className="hero-secondary-text" style={{visiblity:'hidden',height:'2rem'}}> </h2>
             <img className="hero-illustration" src={heroIllustration} alt="hero-illustration"/>
+
  
           </div>
 
@@ -158,10 +165,10 @@ function App() {
         
        
         {/* <Divider divWidth='100%' divHeight="2px" style={{alignSelf:'start'}} /> */}
-
+          <div className="header-divider"></div>
         <section className='how-does-it-work'>
           <div className="border-box calendar">
-          {/* <img src={bookIllustration} alt='calendar' /> */}
+          <img className='action-img' src={booksvg} alt='calendar' />
             <div>
               <h1>book a video call.</h1>
               <h3>Easily and securely buy a video call for yourself or as an unforgettable gift. After completing your purchase, you'll receive an access code, that you can redeem yourself or send along to that lucky someone.  
@@ -171,13 +178,15 @@ function App() {
           </div>
 
           <div className="border-box download">
-          {/* <img className="download-img" src={redeemIllustration} alt='download' /> */}
+          <img className='action-img' src={redeemsvg} alt='calendar' />
 
             <h1 className="download-headline">redeem your access code.</h1>
               <h3 className="download-text">Use our iOS or android app to redeem an access code. Once you have redeemed your code, you’ll go into the queue and the talent will see your purchase. </h3>
           </div>
 
           <div className="border-box wait">
+          <img className='action-img' src={redeemsvg} alt='calendar' />
+
           {/* <img className="wait-img" src={howtowait} alt='wait' /> */}
 
           <h1 className="wait-headline">be ready.</h1>
@@ -185,6 +194,8 @@ function App() {
           </div>
 
           <div className="border-box get-call">
+          <img className='action-img' src={redeemsvg} alt='calendar' />
+
           {/* <img className="get-call-img" src={howtowait} alt='get-call' /> */}
 
           <h1 className="get-call-headline">get your call.</h1>

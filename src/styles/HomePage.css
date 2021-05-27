@@ -8,13 +8,28 @@
   width:10vw;
 }
 
+.action-img{
+  width: 150px;
+  position: absolute;
+  right: -10px;
+  top: -30px;
+}
+
+.left{
+  left: -200px;
+  bottom: -150px;
+  top:auto;
+}
+
 .gradient{
   color: transparent;
   -webkit-background-clip: text;
   /* background-image: linear-gradient(to right, #ffeeee, #ddefbb); */
-  background-image:linear-gradient(
+  /* background-image:linear-gradient(
     110deg
-    , rgba(169,148,255,1) 20%, rgba(105,255,174,1) 100%);
+    , rgba(169,148,255,1) 20%, rgba(105,255,174,1) 100%); */
+
+    background-image:linear-gradient(110deg , #5643cc 100%, rgba(169,148,255,1) 20%)
 }
 .headline-h1{
   line-height: 75px;
@@ -64,16 +79,33 @@
 
 
 .hero-secondary-text {
-  color: transparent;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(to right, #ffeeee, #ddefbb);
-  font-weight: 500;
-  font-size:1.75rem; 
+ 
+  font-size: 1.2rem;
+  line-height: normal;
+  padding-bottom: 0;
+  transform: translate(0px, 0px);
+  color: hsl(256, 97%, 69%);
+  font-weight: 400;
+
 }
 
 .hero-illustration {
-  width:15%; 
-  margin-top:30px; 
+  transform: translate(0px, 0px);
+  opacity: 1;
+  width: 356px;
+  position: absolute;
+  top: -125px;
+  right: 10px;
+  opacity: .10;
+  z-index: -1;
+}
+
+.header-divider{
+  background: rgb(140,99,253);
+  background: linear-gradient(281deg, rgba(140,99,253,1) 13%, rgba(140,99,253,0) 100%);
+  width:100%;
+  height:1px; 
+  opacity:.2; 
 }
 
 
@@ -210,12 +242,6 @@
   font-size:4.2rem; 
 }
 
-.how-does-it-work h3{
-  color: transparent;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(to right, #ffeeee, #ddefbb);
-  font-weight:100;
-}
 
 .large-border-box img{
   width:30%; 
@@ -287,6 +313,13 @@
 /* ipad */
 @media all and (min-width: 300px) and (max-width: 862px) { 
 
+  .action-img{
+    width: 125px;
+    position: absolute;
+    right: -10px;
+    top: -60px;
+  }
+
   .large-border-box img {
     width: 60%;
     align-self: center;
@@ -333,19 +366,17 @@
   line-height: normal;
   padding-bottom: 0;
   transform: translate(0px, 0px);
-  /* background: rgb(255,207,246); */
-  /* background-image: linear-gradient(
-52deg
-, rgba(255,207,246,1) 5%, rgba(255,255,255,1) 100%); */
-  color: transparent;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(to right, #efefbb, #d4d3dd);
-  font-size:2rem;
+  color: hsl(256, 97%, 69%);
+
 }
 
 .hero-secondary-text {
  
   font-size: 1.4rem;
+  line-height: normal;
+  padding-bottom: 0;
+  transform: translate(0px, 0px);
+  color: hsl(256, 97%, 69%);
 
 }
 

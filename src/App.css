@@ -98,13 +98,18 @@ h2 {
 h1,h2
  {
 
-  font-family: var(--headline-font);
+  font-family: usual,Inter-Regular,-apple-system,BlinkMacSystemFont,"Roboto","Open Sans",sans-serif;
   color: white;
 }
 
 h3,h4 {
-  font-family: var(--subheadline-font);
+  font-family: usual,Inter-Regular,-apple-system,BlinkMacSystemFont,"Roboto","Open Sans",sans-serif;
   color: white;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, #ffeeee, #ddefbb);
+  font-weight: 300;
+  opacity: .75;
 
 }
 
