@@ -127,13 +127,13 @@ const HostDetailPagev2 = () => {
          
 
 
-          <h3 style={{color:'white'}}>A personal {time} minute video call from</h3>
+          <h2 className="hero-secondary-text">A personal {time} minute video call from</h2>
           <h2>{hostName}</h2>
           <div style={{height:'10px',width:'20%',background:'var(--ocean-blue'}}></div>
           <h3 style={{color:'white',marginTop:'2%',fontSize:'2rem'}}>${price}</h3>
 
           <div>
-            <h3 className="gradient" style={{marginTop:'5%'}}>About the Video Call</h3>
+            <h3 className="gradient" style={{marginTop:'5%'}}>A message from {hostName}</h3>
             <p>{description}</p>
           </div>
 

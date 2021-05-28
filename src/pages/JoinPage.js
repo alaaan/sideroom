@@ -80,14 +80,14 @@ return(
       <section>
         <BorderBox boxImg={boxSvg}>
           <h1>Setup your listing.</h1>
-          <h3 className="hero-secondary-text" >Easily through the mobile app, set the length of your calls, how many you want to open up at any time
+          <h3 >Easily through the mobile app, set the length of your calls, how many you want to open up at any time
             and your pricing. You can adjust any of these listings on the fly at any time in the app.</h3>
         </BorderBox>
       </section>
       <section>
       <BorderBox boxImg={boxSvg}>
       <h1>Your fans book.</h1>
-      <h3 className="hero-secondary-text" >Let your fans know.
+      <h3>Let your fans know.
         Share your landing page, where fans can purchase for themselves or as a gift. We will run digital marketing to your page, while you have active listings. 
         You will be notified of new requests, 
         and you can check pending requests at any time in the app. </h3>
@@ -97,7 +97,7 @@ return(
       <BorderBox boxImg={boxSvg}>
 
       <h1>Start making money.</h1>
-      <h3 className="hero-secondary-text" >Open up the app to see your bookings, 
+      <h3>Open up the app to see your bookings, 
         and begin fulfilling them. You can do them all 
         in a row or pick and choose. Users have three 
         opportunities to answer your calls. </h3>
@@ -107,7 +107,7 @@ return(
         <BorderBox width='80%'>
 
       <h1>Cash Out.</h1>
-      <h3 className="hero-secondary-text" >You retain 80% of your earnings, and payments are made 
+      <h3>You retain 80% of your earnings, and payments are made 
         directly into your account. Payments are securely handled 
         entirely by our third-party provider, Stripe.</h3>
         </BorderBox>

@@ -74,7 +74,11 @@
 }
 
 .host-detail-info-container h3{
-  width:30%;
+
+  font-size: 1.2rem;
+  line-height: normal;
+  padding-bottom: 0;
+  color: hsl(256, 97%, 69%);
 }
 
 

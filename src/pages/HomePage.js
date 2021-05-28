@@ -75,14 +75,14 @@ function App() {
 
 
     let downloadTl = gsap.timeline({scrollTrigger:{trigger:'.download',start:'top 80%'}});
-    downloadTl.from('.download',{xPercent:-100,opacity:0});
+    downloadTl.from('.download',{xPercent:-100,rotation:40,opacity:0});
     downloadTl.from('.download-img',{scale:.5,opacity:0},'<.1');
     downloadTl.from('.download-headline',{opacity:0});
     downloadTl.from('.download-text',{rotateX:-10,opacity:0,y:50,duration:.1},'<.5');
 
 
     let waitTl = gsap.timeline({scrollTrigger:{trigger:'.wait',start:'top 80%'}});
-    waitTl.from('.wait',{xPercent:-100,opacity:0});
+    waitTl.from('.wait',{xPercent:100,rotation:40,opacity:0});
     waitTl.from('.wait-img',{scale:.5,opacity:0},'<.1');
     waitTl.from('.wait-headline',{opacity:0});
     waitTl.from('.wait-text',{rotateX:-10,opacity:0,y:50,duration:.1},'<.5');
@@ -146,7 +146,7 @@ function App() {
         </section> */}
         <section className="hero-section">
           <div className="hero-left-container" style={{ gridRow: 2}}>
-          <h1 className='headline-h1'>a video call for fans</h1>
+          <h1 style={{fontSize:'4.5rem'}} className='headline-h1'>a video call for fans.</h1>
       
       {/* <span id="host-type-celeb"> celeb</span><span id="host-type-athlete" style={{display:'none'}}> athlete</span><span id="host-type-artist" style={{display:'none'}}> artist</span> */}
      

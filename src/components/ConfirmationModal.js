@@ -14,24 +14,27 @@ const ConfirmationModal = ({hostName,hostImg,redemptionCode,userNumber,redirect}
         style={{ position: 'absolute', top: 5, right: 5,width:'35px',cursor:'pointer' }} />
       <Emoji symbol="🤘"/>
         <img className="confirmation-img-wrapper" src={hostImg} alt="host" />
-      <div className="headline-container">
-        <h3>You're locked in.</h3>
-        <p>We’ve got your order to connect with <span style={{fontWeight:'700'}}>{hostName}</span>.<br></br>
-          We’ve started lining things up on our end to make the magic happen.</p>
-
+      <div style={{paddingLeft:'30px',paddingRight:'30px'}} className="headline-container">
+        <h3>You're locked in.</h3> 
+    
         <div className="redemption-box">
           <h3 className="redemption-code-top">Your Redemption Code</h3>
           <h3 className="redemption-code">{redemptionCode}</h3>
         </div>
 
+          <p>We’ve started lining things up on our end to make the magic happen. 
+            All you have to do from here is download our mobile app and redeem your code.  
+            Once you've done that, we'll let {hostName} know you've purchased a call, so get ready for that epic moment. 
+            We’ve also texted you this code to you.</p>
+
+     
       </div>
       <div>
-        <p>We’ve also texted you this code to {userNumber}</p>
-        <p>Head to the App Store and download CONNECTR, and standby for that call.</p>
+  
       </div>
       <div className="store-logos">
-      <img src={appStore} alt='google play' />
-       <img src={googlePlay} alt='google play' />
+      <img src={appStore} style={{cursor:'pointer'}} alt='apple store' onClick={()=>{window.open('https://apps.apple.com/us/app/connectr-fan-video-calls/id1360670381','_blank')}}  />
+       <img src={googlePlay} style={{cursor:'pointer'}} alt='google play' onClick={()=>{window.open('https://play.google.com/store/apps/details?id=com.conectr&hl=en_US&gl=US','_blank')}} />
       </div>
      
 
