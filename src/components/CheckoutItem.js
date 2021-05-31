@@ -7,10 +7,10 @@ const CheckoutItem = ({listing}) =>{
     <div className="checkout-item">
       <div className="checkout-item-top">
         <img src={listing.hostImg} alt='host' />
-        <h2>{listing.hostName}</h2>
-        <h3>${listing.price} for {listing.time} minutes</h3>
+        <h2 style={{textAlign:'center'}}>{listing.hostName}</h2>
+        <h3 style={{textAlign:'center'}}>${listing.price} for {listing.time} minutes</h3>
       </div>
-      <p>{listing.description}</p>
+      <p style={{textAlign:'center',marginTop:'5%'}}>{listing.description}</p>
     </div>
 
   )

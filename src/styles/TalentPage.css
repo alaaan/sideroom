@@ -1,0 +1,307 @@
+
+/* talent page */
+
+earnings{
+  color:var(--cerise)
+}
+
+.talent-wrapper{
+  display:flex; 
+  flex-direction:column;
+}
+
+.talent-wrapper h1{
+  font-size: 2.5rem;
+}
+
+.talent-wrapper h3{
+  font-size: 1.2rem;
+}
+
+.talent-header {
+  /* height: 20vh; */
+  background: rgb(32,27,67);
+  background: linear-gradient(
+180deg
+, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
+  padding: 10vw;
+  padding-bottom: 0;
+  background: var(--raisin-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 600px;
+  align-items: center;
+}
+
+.talent-header h1{
+  font-size: 2.5rem;
+  text-align: center;
+  /* margin-left: 10%;
+  margin-right: 10%; */
+
+}
+.talent-calculator{
+  height: 40vh;
+  display: grid;
+  /* flex-direction: row; */
+  /* flex-wrap: nowrap; */
+  grid-template-columns: 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  justify-items: center;
+  background:var(--raisin-black);
+}
+
+.calculator-input{
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  color: var(--cerise);
+  font-weight: 700;
+  font-family: var(--new-font);
+  margin: 2px;
+  width: 75px;
+  text-align: center;
+  border-bottom: solid 2px var(--cerise);
+}
+
+.talent-calc-banner{
+  height: 10vh;
+  width: 100%;
+  /* background: rgb(206,65,164);
+  background: linear-gradient(297deg, rgba(206,65,164,1) 44%, rgba(214,67,115,1) 100%); */
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  margin-left: -10px;
+  padding:5px; 
+  text-align:center; 
+}
+
+
+.talent-how-it-works{
+  /* border-top:1px solid var(--cerise); */
+  display:flex; 
+  flex-direction:column; 
+  padding-left: 5%;
+  padding-right: 5%;
+  background:var(--raisin-black);
+  padding-top:5%;
+  padding-bottom:5%;
+}
+
+.talent-how-it-works section{
+  margin-bottom:5%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.talent-how-it-works section h3{
+  font-size:1.2rem;
+}
+
+.talent-how-it-works section h1{
+  font-size: 1.8rem;
+}
+
+
+
+.talent-how-it-works-content{
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  column-gap:1vw;
+  row-gap:2vw;
+  justify-items:center; 
+  margin-top:3vh;
+
+}
+.talent-step-container{
+  display:grid; 
+  grid-template-rows:1fr 1fr; 
+  justify-items: center;
+}
+
+.talent-step-content{
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  align-items:center; 
+  padding:10px; 
+ 
+}
+
+.talent-cta{
+  height:40vh; 
+  background-color: rgba(66,36,105,1);
+  padding-left: 5%;
+  padding-right: 5%;
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  padding-top: 3%;
+  background:var(--raisin-black);
+}
+
+.talent-partners{
+  justify-items: center;
+  padding-top: 5vh;
+  background:var(--raisin-black);
+  /* border-top:1px solid var(--cerise); */
+  padding-left: 5%;
+  padding-right: 5%;
+
+}
+
+.talent-partners h1{
+  font-size:3rem;
+}
+
+.host-box-container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+}
+
+.host-box{
+  height:90%; 
+  max-height: 500px;
+  display:flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin-top: 4%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.host-box img{
+  border-radius:10px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border:solid 2px var(--ocean-blue);
+}
+
+.host-box-info{
+  display:flex; 
+  flex-direction: column;
+}
+
+.host-box-info h2{
+  font-size:2rem;
+}
+
+
+@media all and (min-width: 200px) and (max-width: 688px) { 
+  .talent-how-it-works section h1{
+    font-size: 1.7rem;
+  margin-bottom: 5px;
+  }
+  
+
+ 
+
+  .border-box{
+    width:300px;
+    height:300px;
+    background-image:url("../img/box300square.svg");
+    padding:15px;
+  }
+
+  .talent-how-it-works section h3{
+    font-size:1rem;
+  }
+
+  .talent-header {
+    height: 40vh;
+    background: rgb(32,27,67);
+    background: linear-gradient(180deg, rgba(32,27,67,1) 0%,rgba(66,36,105,1) 100%);
+    padding-bottom: 0;
+    padding-top: 20%;
+    background: var(--raisin-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.talent-headline{
+  font-size:2rem; 
+}
+
+.talent-header .hero-secondary-text{
+  font-size: 1.3rem;
+  margin-top: 2%;
+}
+
+.talent-screens{
+  display:none; 
+}
+
+.talent-calculator {
+  height:50vh; 
+  margin-top:5%;
+  margin-bottom:5%;
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: nowrap; */
+  grid-template-columns: 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  justify-items: center;
+  background: var(--raisin-black);
+  text-align: center;
+}
+
+.talent-calc-banner {
+  height: auto;
+  width: 100%;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  margin-left: -10px;
+  padding: 5px;
+  text-align: center;
+}
+
+.talent-cta{
+  height:auto; 
+  background-color: rgba(66,36,105,1);
+  padding-left: 5%;
+  padding-right: 5%;
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  padding-top: 3%;
+  background:var(--raisin-black);
+}
+
+.talent-how-it-works-content {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+
+.talent-how-it-works h1, .talent-cta h1, .talent-partners h1{
+  font-size:2.5rem; 
+}
+
+.talent-step-container {
+  text-align: center;
+}
+
+.glowy-box{
+  height:auto !important;
+  width:auto !important; 
+}
+
+}

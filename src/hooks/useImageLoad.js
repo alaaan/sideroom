@@ -16,7 +16,7 @@ const useImageLoader = (img) =>{
     // .then(setIsLoaded(true))
 
 
-  return [loadedImg,isLoaded]; 
+  return isLoaded; 
 
 }
 

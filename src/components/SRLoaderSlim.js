@@ -2,19 +2,17 @@ import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 
-
-//a loader component without the wrapper 
-
 const Loader = withStyles({
   root: {
-    color:'var(--cerise)'
+    color:'white'
   },
 })(CircularProgress);
 
-const SRLoader = ({label})=>{
+
+const SRLoaderSlim = ({label})=>{
   return(
-    <Loader style={{height:'25px',width:'25px'}} />
+  
+        <Loader style={{height:'25px',width:'25px'}} />
   )
 }
-
-export default Loader; 
+export default SRLoaderSlim; 

@@ -31,7 +31,21 @@
   object-fit: cover;
 } */
 
-.host-detail-pagev2 img{
+.shadow {
+  width: 50%;
+  max-width: 350px;
+  border-radius: 7px;
+  margin-bottom: 5%;
+  height: 50%;
+  max-height: 350px;
+  position: absolute;
+  box-shadow: inset 3px 3px 10px 0 pink;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+}
+
+.host-detail-pagev2 .host-image{
   width: 50%;
   max-width: 350px;
   border-radius: 7px;
@@ -39,6 +53,17 @@
   height: 50%;
   max-height: 350px;
 }
+
+/* .host-img-border {
+  width: 50%;
+  max-width: 350px;
+  border-radius: 7px;
+  margin-bottom: 5%;
+  height: 50%;
+  max-height: 350px;
+  background-color: red;
+} */
+
 .host-detail-info-container{
   width: 90%;
   border-radius: 7px;
@@ -49,20 +74,25 @@
 }
 
 .host-detail-info-container h3{
-  color: var(--cerise);
+
+  font-size: 1.2rem;
+  line-height: normal;
+  padding-bottom: 0;
+  color: hsl(256, 97%, 69%);
 }
 
 
 .host-detail-checkout{
-  min-height: 100vh;
+  /* min-height: 100vh; */
     background: var(--raisin-black);
     padding-left: 2%;
     padding-right: 2%;
-    padding-top: 7vh;
+    padding-top: 15vh;
     display: grid;
     justify-content: center;
     justify-items: center;
     grid-template-columns: 1fr 1fr;
+    
 }
 
 .host-detail-checkout #checkout-form{
@@ -92,25 +122,28 @@
   max-width:300px; 
 }
 
+.checkout-button {
+  width:500px;
+}
 
 @media all and (min-width: 300px) and (max-width: 862px) { 
 
   .host-detail-pagev2 {
     min-height: 100vh;
     background: var(--raisin-black);
-    padding-top: 20%;
+    padding-top: 8vh;
     padding-left: 2%;
     padding-right: 2%;
     display: flex;
     grid-template-columns: 1fr 1.5fr;
-    justify-content: center;
+    justify-content: start;
     /* align-items: center; */
     flex-direction: column;
 }
 
-.host-detail-pagev2 img {
+.host-detail-pagev2 .host-image {
   width: 90%;
-  max-width: 350px;
+  max-width: 200px;
   border-radius: 7px;
   margin-bottom: 5%;
   height: 50%;
@@ -123,6 +156,8 @@
 
 .host-detail-info-container h3{
   font-size: 1rem;
+  width:75%;
+  
 }
 
 .host-detail-info-container p{
@@ -134,7 +169,7 @@
   background: var(--raisin-black);
   /* padding-left: 2%; */
   /* padding-right: 2%; */
-  /* padding-top: 7vh; */
+  padding-top: 1vh;
   display: flex;
   flex-direction: row;
   /* justify-content: center; */
@@ -143,6 +178,8 @@
   /* margin-left: 5%; */
   /* margin-right: 5%; */
   /* width: 90%; */
+  padding-top: 8vh;
+
 }
 .checkout-item{
   display:none; 
@@ -159,6 +196,8 @@
   padding-bottom: 1%;
   position: relative;
   width: 95%;
+  padding-top: 8%;
+
 }
 
 .host-detail-checkout h2{
@@ -171,12 +210,34 @@
 
 .host-detail-checkout p{
   font-size:.8rem; 
-  text-align: center;
 }
 
 .card-element {
-  width: auto;
+  width: 100%;
+}
+
+.MuiOutlinedInput-root {
+  font-size: 1rem !important;
+}
+
+/* .ElementsApp .InputElement 
+  {
+  font-size: 1rem !important;
+} */
+
 }
 
 
+.host-video{
+    border-radius: 75px;
+    /* border: var(--ocean-blue) solid 1px; */
+    /* width: 250px; */
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.host-video > div:nth-of-type(1) {
+  /* width:100% !important; */
+  height:100% !important; 
 }

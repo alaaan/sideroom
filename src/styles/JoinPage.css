@@ -1,0 +1,29 @@
+.join-page-container{
+  min-height: 100vh;
+  background: var(--raisin-black);
+  padding-top: 100px;
+  padding-left: 2%;
+  padding-right: 2%;
+  display: flex;
+  /* grid-template-columns: 1fr 1.5fr; */
+  /* justify-items: center; */
+  /* align-items: center; */
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+
+.join-page-container .onboard-input{
+  font-family: var(--headline-font);
+  margin-top:10px;
+  font-size:2rem; 
+}
+
+.join-page-container .border-box{
+  margin-top:0px;
+  margin-bottom:0px; 
+}
+
+.join-page-container .partner-page-wrapper{
+  padding-top:0px;
+}

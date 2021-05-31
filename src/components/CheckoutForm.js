@@ -37,29 +37,23 @@ import ConfirmationModal from '../components/ConfirmationModal'
 import CheckoutItem from '../components/CheckoutItem'
 import gsap from 'gsap'
 import closeSvg from '../img/close.svg';
-import Loader from '../components/SRLoader';
+import Loader from '../components/SRLoaderSlim';
+
+import Divider from '../components/Divider';
 
 import 'yup-phone';
-import { render } from 'react-dom';
+import { Link } from 'react-dom';
+import UserService from '../services/user_service';
 
 const defaultValidationSchema = yup.object({
-  email: yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
-
+  
   name: yup
     .string('Enter your name')
     .required('Name is required!'),
-
   request: yup
     .string('Tell us a little bit about your request')
-    .min(20, 'Tell us a little bit more!')
+    .min(3, 'Tell us a little bit more!')
     .required('Please tell us about your request'),
-
-  date: yup
-    .string('whats up with a date fam')
-    .required('Please select a date'),
 });
 
 
@@ -150,7 +144,7 @@ const SRFormControlLabel = withStyles({
 
 const FormField = withStyles({
   root: {
-    margin: '10px',
+    marginTop: '10px',
     '& label.Mui-focused': {
       color: 'white',
       fontSize: '.5rem',
@@ -184,20 +178,28 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
 
   const {isAuthenticated,loggedInUser,clearLoggedInUser} = useContext(UserContext);
   const [showLogin,setShowLogin] = useState(false);
-  const [giftChecked, toggleGiftCheked] = useCycle(false, true);
-  const [selectedDate, setSelectedDate] = useState(Date.now());
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    formik.values.date = date;
-  };
+  // const [giftChecked, toggleGiftCheked] = useCycle(false, true);
+  // const [selectedDate, setSelectedDate] = useState(Date.now());
+  // const handleDateChange = (date) => {
+  //   setSelectedDate(date);
+  //   formik.values.date = date;
+  // };
 
   const stripe = useStripe();
   const elements = useElements();
   const [showSuccess,setShowSuccess] = useState(false);
   const [redemptionCode,setRedemptionCode]= useState(null);
   const [isSubmitting,setIsSubmitting] = useState(false);
+  const [isDisabled,setIsDisabled] = useState(true);
+  const [paymentError,setPaymentError] = useState('');
+  const [isError,setIsError] = useState(false);
+
 
   useEffect(()=>{
+
+    if (isAuthenticated){
+      setIsDisabled(false);
+    }
 
     let tl = gsap.timeline(); 
     tl.from('.checkout-item',{opacity:0,duration:1,delay:.5});
@@ -208,8 +210,11 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
 
   const toggleLogin = ()=>{
     setShowLogin(!showLogin);
-    console.log("trying to toggle login");
   }
+
+
+
+
 
 
 
@@ -219,14 +224,12 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
     style: {
       base: {
         color: "white",
-        fontFamily: "Raleway",
-        fontWeight: "bold",
-        fontSize: "20px",
+        fontFamily: "var(--subheadline-font)",
+        fontSize: "15px",
         fontSmoothing: "antialiased",
         "::placeholder": {
           color: "white",
-          fontFamily: "Raleway",
-          fontWeight: "bold"
+          fontFamily: "var(--subheadline-font)",
         },
         ":-webkit-autofill": {
           color: "#157420",
@@ -234,7 +237,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       },
       invalid: {
         color: "#E25950",
-        fontFamily: "Raleway",
+        fontFamily: "var(--subheadline-font)",
         fontWeight: "bold"
       },
     },
@@ -251,34 +254,34 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
     // setHasCompleteCard(event.complete);
   };
 
-  const handleGiftChecked = () => {
-    toggleGiftCheked();
-  };
+  // const handleGiftChecked = () => {
+  //   toggleGiftCheked();
+  // };
 
   const formik = useFormik({
     initialValues: {
-      email: '',
       name: '',
-      request: '',
-      date: '',
-      recipientName: '',
-      recipientPhone: ''
+      request: ''
     },
     validationSchema: defaultValidationSchema,
     onSubmit:  (values) => {
-        // alert(JSON.stringify(values, null, 2));
-        setIsSubmitting(true);
-        console.log('submitting');
-        handleCharge();
+      console.log('got into submit');
+      // alert(JSON.stringify(values, null, 2));
+      setIsSubmitting(true);
+      setIsDisabled(false);
+      console.log('submitting');
+      handleCharge();
     },
   
-    
   });
 
-  const today = new Date();
+  const logout = () =>{
+
+    clearLoggedInUser();
+    setIsDisabled(true);
+  }
 
   
-
   const handleCharge= async () => {
 
     // if (!isSubmittingPayment) {
@@ -309,12 +312,17 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
         1,formik.values.request,true,loggedInUser.Username,paymentMethodId,Date.now()
       );
       if (result.Errored) {
+        setIsSubmitting(false);
         console.log("There was an error processing your payment - " + result.Message)
+        setIsError(true);
+        setPaymentError("There was an error - " + result.Message);
     ;
       } else {
         console.log('purchase success')
-        setRedemptionCode(result.Payload.RedemptionCode)
+        setRedemptionCode(result.Payload.RedemptionCode);
+        setIsSubmitting(false);
         setShowSuccess(true); 
+
       }
     }
 
@@ -324,17 +332,28 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       {!showSuccess ? 
       <>
       <CheckoutItem listing={listing} />
-      <form onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
+      <form autoComplete='off' onSubmit={formik.handleSubmit} id='checkout-form' key='checkout-form'>
       <img src = {closeSvg} 
 
         alt='close'
         onClick={toggle}
         
         style={{ position: 'absolute', top: 5, right: 5,width:'35px',cursor:'pointer', display: isSubmitting ? 'none' : 'visible' }} />
-        <h2 style={{ marginTop: '10px' }}>Your Info</h2>
-        {!isAuthenticated && <h3>You must verify your phone number</h3>}
+        
+        <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
 
-        {isAuthenticated ? 
+        <h2 style={{ marginTop: '10px' }}>Checkout</h2>
+        <Divider start divWidth='100%' divHeight='7px' />
+
+        {(!isAuthenticated || (isAuthenticated && loggedInUser.IsPartner)) && 
+        <>
+          <h3>You must verify your phone number</h3>
+          <p style={{marginTop:'3%'}}>We will send you your access code and receipt to this number. If purchasing as a gift for someone else, please use your own number.</p>
+        </>
+        
+        }
+
+        {isAuthenticated && !loggedInUser.IsPartner ? 
           <>
           <div style={{display:'flex', alignItems:'center'}}>
             <h3 style={{marginTop:'1%'}}>Phone Verified</h3>
@@ -344,60 +363,47 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
               <h3>{formatPhone(loggedInUser.Username)}</h3>
               <h3 
               style={{color:'var(--cerise)',fontSize:'.8rem', marginTop:'1%'}}
-              onClick={()=>(clearLoggedInUser())}
+              onClick={logout}
               >Change Phone Number</h3>
             </div></>:
 
             <SRButtonOutlined onClick={toggleLogin}>Verify Phone</SRButtonOutlined>}
 
-        <div className='checkout-info'>
-          <SRTextField
+            </div>
+
+        <div className='checkout-info' style={{marginTop: '10px',marginBottom:'20px'}}>
+        <p>Your name</p>
+          {/* <SRTextField
+            autoComplete= "off"
+        
             fullWidth
+            id="requestname"
+            name="requestname"
+            variant="outlined"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          /> */}
+
+            <FormField
+            multiline
+            rows={1}
             id="name"
             name="name"
-            label="Name"
             variant="outlined"
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
             helperText={formik.touched.name && formik.errors.name}
           />
-          {/* <MyField label="Name" key="name-input" value={name} variant="outlined" onChange={handleName} error={nameError} /> */}
-          {/* <MyField label="Email" variant="outlined" /> */}
-          <SRTextField
-            fullWidth
-            id="email"
-            name="email"
-            label="Email"
-            variant="outlined"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
-          />
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
-          {/* <MyField label="Phone" variant="outlined" /> */}
-          {/* <SRTextField
-            id="phone"
-            name="phone"
-            label="Phone"
-            variant="outlined"
-            value={formik.values.phone}
-            onChange={formik.handleChange}
-            error={formik.touched.phone && Boolean(formik.errors.phone)}
-            helperText={formik.touched.phone && formik.errors.phone}
-          /> */}
-
-        
-          
-        </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', marginTop: '5px' }}>
-          <h2 style={{ marginTop: '10px' }}>Call Info</h2>
-          <h3>Tell the host all about your request!</h3>
-          <h4>Is it your birthday? Whats popping?</h4>
+          {/* <h2 style={{ marginTop: '10px' }}>Call Info</h2> */}
+          {/* <Divider divWidth='35%' divHeight='5px' /> */}
+          <p>What do you want to tell the host?</p>
           <FormField
             multiline
             rows={3}
@@ -409,80 +415,25 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
             error={formik.touched.request && Boolean(formik.errors.request)}
             helperText={formik.touched.request && formik.errors.request}
           />
-
-          <h3 style={{ marginTop: '10px' }}>What is your preferred date for a call? (no promises😜)</h3>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <ThemeProvider theme={materialTheme}>
-              <DatePicker
-                style={{ marginLeft: '10px' }}
-                minDate={today}
-                margin="normal"
-                inputVariant="outlined"
-                id="date-picker-dialog"
-                format="MM/dd/yyyy"
-                value={formik.values.date}
-                onChange={handleDateChange}
-                error={formik.touched.date && Boolean(formik.errors.date)}
-                helperText={formik.touched.date && formik.errors.date}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </ThemeProvider>
-          </MuiPickersUtilsProvider>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'row', marginTop: '10px', alignItems: 'center' }}>
-          <h3>Is this a gift for someone else?</h3>
-          <SRFormControlLabel
-            control={<Checkbox style={{ marginLeft: '20px' }} checked={giftChecked} onChange={handleGiftChecked} name="gift" />}
-          />
-        </div>
 
-        {giftChecked &&
-          <div>
-            <h2 style={{ marginTop: '10px' }}>Gift Info</h2>
-            <SRTextField
-              id="recipientName"
-              name="recipientName"
-              label="Recipient Name"
-              variant="outlined"
-              value={formik.values.recipientName}
-              onChange={formik.handleChange}
-              error={formik.touched.recipientName && Boolean(formik.errors.recipientName)}
-              helperText={formik.touched.recipientName && formik.errors.recipientName}
-            />
-            <SRTextField
-              id="recipientPhone"
-              name="recipientPhone"
-              label="Recipient Phone"
-              variant="outlined"
-              value={formik.values.recipientPhone}
-              onChange={formik.handleChange}
-              error={formik.touched.recipientPhone && Boolean(formik.errors.recipientPhone)}
-              helperText={formik.touched.recipientPhone && formik.errors.recipientPhone}
-            />
-          </div>}
+        {/* <h2 style={{ marginTop: '10px' }}>Payment Details</h2> */}
+        {/* <Divider divWidth='65%' divHeight='5px' /> */}
 
-        <h2 style={{ marginTop: '10px' }}>Payment Details</h2>
-        {/* <MyField label="Credit Card" variant="outlined" /> */}
 
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column',marginTop:'50px' }}>
           <CardElement
             id="card-element"
             options={CARD_ELEMENT_OPTIONS}
             onChange={handleCardChange}
             className="card-element"
           />
-          {/* <MyField label="Expiration" variant="outlined" />
-          <MyField label="CVV" variant="outlined" />
-          <MyField label="Zip Code" variant="outlined" />  */}
-          <SRButton type="submit" disabled={isSubmitting} style={{ width:'80%', maxWidth:'500px', marginTop: '20px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
-          <p style={{marginTop:'2%'}}>By purchasing a call, you agree to CONNECTR's Terms of Service and Privacy Policy</p>
-        
-        </div>
 
-        {/* <StyledButton  /> */}
+          <SRButton type="submit" disabled={isDisabled} style={{ width:'90%', maxWidth:'600px', marginTop: '20px', marginBottom: '20px' }}>{!isSubmitting ? (`Purchase Call - $${listing.price}`) : <Loader />}</SRButton>
+          {isError && <p style={{fontSize:'.8rem',textAlign:'center',marginBottom:'5px'}}>⚠️{paymentError} ⚠️</p>}
+          <p style={{marginTop:'2%',marginBottom:'2%',textAlign:'center'}}>By purchasing a video call, you agree to CONNECTR's <span onClick={()=>{window.open('http://localhost:3000/tos')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Terms of Service </span> and <span onClick={()=>{window.open('http://localhost:3000/privacy')}} style={{color:'var(--cerise)',cursor:'pointer'}}>Privacy Policy</span></p>
+        </div>
 
       </form >
       </>: 
@@ -511,7 +462,7 @@ const CheckoutForm = ({toggle,listing,redirect}) => {
       
       {showLogin? (
       <Modal>
-          <LoginForm close={toggleLogin} />
+          <LoginForm loggedInCallback={()=>{setIsDisabled(false)}} close={toggleLogin} />
       </Modal>): null}
 
     </div>

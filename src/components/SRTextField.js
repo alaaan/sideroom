@@ -4,20 +4,36 @@ import { withStyles } from '@material-ui/core/styles';
 
 const SRTextField = withStyles({
   root: {
-    margin: '10px',
     '& label.Mui-focused': {
       color: 'white',
-      fontSize: '1.7rem',
+      fontSize: '1rem',
     },
     '& label.MuiInputLabel-root': {
       color: 'white',
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: 'green',
+      borderBottomColor: 'var(--ocean-blue)',
     },
-    '& .MuiOutlinedInput-root': {
+
+    '& .MuiInput-underline:before': {
+      borderBottom: '1px solid rgba(86, 67, 204,.25)'
+    },
+
+    '& .MuiInputBase-root':{
+      color:'white',
+      border: '1px solid white'
+    },
+
+    
+    
+    '& .MuiInput-root': {
       color: 'white',
+      fontFamily:'var(--body-font)',
       fontSize: '1.7rem',
+      minWidth:'300px',
+      maxWidth:'500px',
+      marginBottom:'20px',
+      marginTop:'20px',
 
       '& fieldset': {
         borderColor: 'var(--fadedpink)',
@@ -27,6 +43,11 @@ const SRTextField = withStyles({
       },
       '&.Mui-focused fieldset': {
         borderColor: 'white',
+      },
+
+      "&:-webkit-autofill": {
+        transitionDelay: '9999s',
+        transitionProperty: 'background-color, red',
       },
     },
   },

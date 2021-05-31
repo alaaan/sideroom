@@ -9,7 +9,7 @@ import SRLoader from '../components/SRLoader';
 import { UserContext } from "../context/user-context"
 
 
-const LoginForm = ({close})=>{
+const LoginForm = ({close,loggedInCallback})=>{
 
   //context
   //const {setLoggedInUser} = useContext(UserContext);
@@ -27,6 +27,11 @@ const LoginForm = ({close})=>{
   const [showGetCodeInputs,setShowGetCodeInputs] = useState(true); 
   const [showConfirmCodeInputs,setShowConfirmCodeInputs] = useState(false); 
 
+  //error states
+  const[error,setError] = useState(false);
+  const [errorMessage,setErrorMessage] = useState('');
+  const [showStartOver,setShowStartOver] = useState(false);
+
   //service
   const service = new UserWebService();
 
@@ -39,6 +44,14 @@ const LoginForm = ({close})=>{
         console.log("got a code result");
         gotCodeHelper();
       }
+
+      else{
+        setError(true);
+        setErrorMessage('There was an issue requesting a code, please try again.');
+        setProcessingGetCode(false);
+        setShowGetCodeInputs(true);
+
+      }
     };
   }
 
@@ -49,10 +62,15 @@ const LoginForm = ({close})=>{
       if (!result.Errored && result.Payload) {
         setProcessingConfirmCode(false);
         userContext.setLoggedInUser(result.Payload);
+        loggedInCallback();
         close();
+
       } else {
         setProcessingConfirmCode(false);
-        console.log('there was an issue with login')
+        setError(true);
+        setErrorMessage('There was an issue confirming your code, please double check.');
+        setShowStartOver(true);
+        setShowConfirmCodeInputs(true);
       }
   }
 
@@ -75,33 +93,45 @@ const LoginForm = ({close})=>{
 
   const gotCodeHelper = ()=>{
     //stop showing loading state, and prepare for confirm code from user 
+    setError(false);
     setProcessingGetCode(false);
     setShowConfirmCodeInputs(true);
   }
 
+  const resetHelper = ()=>{
+    setError(false);
+    setProcessingGetCode(false);
+    setShowConfirmCodeInputs(false);
+    setShowGetCodeInputs(true);
+    setShowStartOver(false);
+    setCode('');
+    setUsername('');
+  }
+
   const confirmedCodeHelper = ()=>{
     setProcessingConfirmCode(false);
-    console.log("code is correct")
+    console.log("code is correct");
   }
 
   return(
     <div className="login-form-container">
+
       <CloseIcon
         onClick={close}
-        fontSize='medium' color="white" style={{ position: 'absolute', top: 5, right: 5 }} />
+        fontSize='medium' color="white" style={{ position: 'absolute', top: 5, right: 5 }} />   
        {!processingGetCode && !processingConfirmCode &&
       <div>
         <h2>Login</h2>
-        <p style={{fontSize:'1.1rem',marginTop:'20px'}}>SIDEROOM is a mobile first platform, please login with your phone below.</p>
+        <p style={{fontSize:'1.1rem',marginTop:'20px',marginBottom:'10px'}}>CONNECTR is a mobile first platform, please login with your phone number below. This will allow for a quick checkout. </p>
       </div>}
       {showGetCodeInputs &&
         <> 
         <SRTextField
+          autoComplete='off'
           value={username}
           onChange={handleUserNameChange}
           id="phone"
-          name="phone"
-          label="phone"
+          name="search"
           variant="outlined">
         </SRTextField>
         <SROutlinedButton onClick={()=>{handleGetCode(username)}}>Send Code</SROutlinedButton>
@@ -109,8 +139,8 @@ const LoginForm = ({close})=>{
       }
 
       {showConfirmCodeInputs &&
-        <div>
-          <h3>Please Enter your code</h3>
+        <div style={{marginTop:'5%'}}>
+          <h3 style={{marginBottom:'5px'}}>Please Enter your code</h3>
           <SRTextField
             value={code}
             onChange={handleConfirmCodeChange}
@@ -126,6 +156,9 @@ const LoginForm = ({close})=>{
         <SRLoader label='requesting code'/>}
       {processingConfirmCode && 
         <SRLoader label='confirming code'/>}
+    
+    {error && <p style={{color:'var(--cerise)',marginTop:'5%'}}>{errorMessage}</p>}
+    {showStartOver && <p style={{fontWeight:'800',marginTop:'5%', cursor:'pointer'}} onClick={()=>{resetHelper()}}> start over</p>}
     </div>
   )
 

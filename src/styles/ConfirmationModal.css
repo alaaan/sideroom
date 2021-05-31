@@ -1,5 +1,10 @@
 @media all and (min-width: 688px){ 
 
+  .redemption-box{
+    margin-top:20px;
+    margin-bottom:30px;
+  }
+
 #modal > div > div > div> .confirmation-img-wrapper{
   width:200px;
   height:200px; 
@@ -36,6 +41,7 @@
   font-family:'Barlow', sans-serif;
   font-size: 4rem;
   color:#5643CC;
+  margin-bottom: 10px;
 }
 
 #modal > div > div >  .confirmation-container p{
@@ -128,6 +134,8 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
     min-height: 500px;
   }
   
@@ -135,6 +143,7 @@
     font-family:'Barlow', sans-serif;
     font-size: 2rem;
     color:#5643CC;
+    margin-bottom: 20px;
   }
   
   #modal > div > div >  .confirmation-container p{
